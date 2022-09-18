@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94f6275d8588cbc4c91701686218520b, type: 3}
+  m_Name: destroy_block
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 21300000, guid: 84faa07da90402d4aae2b9ed5ac41e66, type: 3}
+  - {fileID: 21300000, guid: dbd10adcc218c1c4cbc5e3eccd874637, type: 3}
+  - {fileID: 21300000, guid: 7b263bc7900d26442b8223ddd6a7caf8, type: 3}
+  - {fileID: 21300000, guid: 693991b56d2e69945bddf4db6e198937, type: 3}
+  - {fileID: 21300000, guid: 343859f7718e935419ea5956851ac01b, type: 3}
+  - {fileID: 21300000, guid: d7025b2317ec01c48bf6baf099e25e7d, type: 3}
+  - {fileID: 21300000, guid: d7025b2317ec01c48bf6baf099e25e7d, type: 3}
+  - {fileID: 21300000, guid: 8ca0e6f7ef439bd4fa4e1e5d8115a225, type: 3}
+  - {fileID: 21300000, guid: 9b023a8c5f132d640bd88a4d2aa430ff, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0
+  m_TileColliderType: 1
