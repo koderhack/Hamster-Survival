@@ -39174,6 +39174,7 @@ MonoBehaviour:
   tilenotdestroy:
   - {fileID: 11400000, guid: 0f1007faee4fc8a4db8d4e6db1a20549, type: 2}
   - {fileID: 11400000, guid: e1bfe75e358d52e469bc18df632ffbdb, type: 2}
+  - {fileID: 11400000, guid: a3a195c804489f04c8236a42dbd62625, type: 2}
   dropdownitem: {fileID: 0}
   lightorginal: {fileID: 1488696140096032372, guid: c5415e3fbe72e274081105d6a2fb1205, type: 3}
   lampbuildingallowed: 0

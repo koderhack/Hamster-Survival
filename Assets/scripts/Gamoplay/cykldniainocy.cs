@@ -78,7 +78,7 @@ public class cykldniainocy : MonoBehaviour
             if (timer >= dayLength)
             {
                 timer = 0;
-              
+              //reset timera
             }
         }
         
