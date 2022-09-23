@@ -43451,7 +43451,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 894567232}
         m_TargetAssemblyTypeName: WorldOptions, Assembly-CSharp
-        m_MethodName: SettingsCloseBtn
+        m_MethodName: CraftingCloseBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -495,6 +495,15 @@ public class BaseFunc : MonoBehaviour
         path = Path.Combine(path, "inventory.json");
         InventoryData data = new InventoryData();
         data.inventory = inventory.GetItemList();
+        foreach (var item in inventory.GetItemList())
+        {
+            ItemSave itemsave = new ItemSave();
+            itemsave.amount = item.amount;
+            itemsave.itemtype = item.itemtype;
+           
+            string tilename = item.itemtile.name;
+
+        }
         string json = JsonUtility.ToJson(data);
 
       //  string encryptedjson = EncryptDecrypt(json);
@@ -625,4 +634,29 @@ public class LevelData
 class InventoryData
 {
     public List<Item> inventory;
+}
+class InventoryDataSave
+{
+    public List<ItemSave> inventory;
+}
+[Serializable]
+
+public class ItemSave
+{
+    public int id;
+
+    public enum ItemType
+    {
+        Block,
+        Weapon,
+
+
+    }
+    public ItemType itemtype;
+    public int amount;
+    public string spritepath;
+    public string tilepath;
+  
+
+
 }

@@ -310,6 +310,11 @@ public class WorldOptions : MonoBehaviour
         SceneManager.LoadScene("Menu");
         PlayerPrefs.Save();
     }
+    public void CraftingCloseBtn()
+    {
+        craftpanel.SetActive(false);
+
+    }
 
 
 
