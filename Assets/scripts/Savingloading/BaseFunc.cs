@@ -493,23 +493,30 @@ public class BaseFunc : MonoBehaviour
     {
         string path = Path.Combine(Application.persistentDataPath, SecurityCheck(worldname));
         path = Path.Combine(path, "inventory.json");
-        InventoryData data = new InventoryData();
-        data.inventory = inventory.GetItemList();
+       
+        InventoryDataSave inventorysave = new InventoryDataSave();
+       
         foreach (var item in inventory.GetItemList())
         {
             ItemSave itemsave = new ItemSave();
             itemsave.amount = item.amount;
-            itemsave.itemtype = item.itemtype;
+            itemsave.itemtype = (ItemSave.ItemType)item.itemtype;
            
-            string tilename = item.itemtile.name;
+            string name = item.itemtile.name;
+            itemsave.tilepath = $"Tiles/{name}";
+            itemsave.spritepath = name;
+            
+            inventorysave.inventorysave.Add(itemsave);
+                string json = JsonUtility.ToJson(inventorysave);
+
+                //  string encryptedjson = EncryptDecrypt(json);
+
+                 File.WriteAllText(path, json);
+      
 
         }
-        string json = JsonUtility.ToJson(data);
 
-      //  string encryptedjson = EncryptDecrypt(json);
-
-        File.WriteAllText(path, json);
-      
+       
 
     }
     public void LoadInventory(string worldname,UI_inventory uiinventory)
@@ -520,13 +527,18 @@ public class BaseFunc : MonoBehaviour
         {
             string encryptedjson = File.ReadAllText(path);
             //string json = EncryptDecrypt(encryptedjson);
-            InventoryData data1 = JsonUtility.FromJson<InventoryData>(encryptedjson);
-            inventory.itemList = data1.inventory;
-          
-            foreach (var item in inventory.itemList)
+            InventoryDataSave data1 = JsonUtility.FromJson<InventoryDataSave>(encryptedjson);
+            
+            foreach (var itemsave in data1.inventorysave)
             {
-                Debug.Log(item);
+                Item item = new Item();
+                item.amount = itemsave.amount;
+                item.itemtype = (Item.ItemType)itemsave.itemtype;
+                item.itemtile = Resources.Load<TileBase>(itemsave.tilepath);
+                item.sprite = Resources.Load<Sprite>(itemsave.spritepath);
+                inventory.AddItem(item);
             }
+          
             uiinventory.RefreshInventoryItems();
         }
         else
@@ -631,13 +643,10 @@ public class LevelData
     public List<int> poses_x = new List<int>();
     public List<int> poses_y = new List<int>();
 }
-class InventoryData
-{
-    public List<Item> inventory;
-}
+
 class InventoryDataSave
 {
-    public List<ItemSave> inventory;
+    public List<ItemSave> inventorysave;
 }
 [Serializable]
 
