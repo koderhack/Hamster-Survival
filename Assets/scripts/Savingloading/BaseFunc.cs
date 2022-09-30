@@ -494,29 +494,33 @@ public class BaseFunc : MonoBehaviour
         string path = Path.Combine(Application.persistentDataPath, SecurityCheck(worldname));
         path = Path.Combine(path, "inventory.json");
        
-        InventoryDataSave inventorysave = new InventoryDataSave();
+     
        
-        foreach (var item in inventory.GetItemList())
+        foreach (Item item in inventory.itemList)
         {
+            Debug.Log(item);
+            
             ItemSave itemsave = new ItemSave();
             itemsave.amount = item.amount;
-            itemsave.itemtype = (ItemSave.ItemType)item.itemtype;
-           
+            itemsave.itemtype = ItemSave.ItemType.Block;
             string name = item.itemtile.name;
             itemsave.tilepath = $"Tiles/{name}";
             itemsave.spritepath = name;
+            Debug.Log(itemsave);
+                InventoryDataSave.inventorysave.Add(itemsave);
+                
             
-            inventorysave.inventorysave.Add(itemsave);
-                string json = JsonUtility.ToJson(inventorysave);
-
-                //  string encryptedjson = EncryptDecrypt(json);
-
-                 File.WriteAllText(path, json);
+               
+                
       
 
         }
+        string json = JsonUtility.ToJson(InventoryDataSave.inventorysave);
 
-       
+        //  string encryptedjson = EncryptDecrypt(json);
+
+        File.WriteAllText(path, json);
+
 
     }
     public void LoadInventory(string worldname,UI_inventory uiinventory)
@@ -527,9 +531,9 @@ public class BaseFunc : MonoBehaviour
         {
             string encryptedjson = File.ReadAllText(path);
             //string json = EncryptDecrypt(encryptedjson);
-            InventoryDataSave data1 = JsonUtility.FromJson<InventoryDataSave>(encryptedjson);
+            InventoryDataSave.inventorysave = JsonUtility.FromJson<List<ItemSave>>(encryptedjson);
             
-            foreach (var itemsave in data1.inventorysave)
+            foreach (var itemsave in InventoryDataSave.inventorysave)
             {
                 Item item = new Item();
                 item.amount = itemsave.amount;
@@ -644,15 +648,17 @@ public class LevelData
     public List<int> poses_y = new List<int>();
 }
 
-class InventoryDataSave
+public static class InventoryDataSave
 {
-    public List<ItemSave> inventorysave;
+    public static List<ItemSave> inventorysave;
+
+
+
 }
 [Serializable]
-
 public class ItemSave
 {
-    public int id;
+ 
 
     public enum ItemType
     {

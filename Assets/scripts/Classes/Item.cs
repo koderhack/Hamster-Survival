@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 
 public class Item
 {
-    public int id;
+    
 
     public enum ItemType
     {
