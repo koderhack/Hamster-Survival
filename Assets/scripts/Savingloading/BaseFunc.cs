@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Runtime.Serialization.Formatters ;
 using System.Security.Cryptography;
+using Newtonsoft.Json;
 
 public class BaseFunc : MonoBehaviour
 {
@@ -494,32 +495,39 @@ public class BaseFunc : MonoBehaviour
         string path = Path.Combine(Application.persistentDataPath, SecurityCheck(worldname));
         path = Path.Combine(path, "inventory.json");
 
-
-        InventoryDataSave.inventorysave = new List<ItemSave>();
-        foreach (Item item in inventory.itemList)
+       
+       
+        if(inventory.itemList != null)
         {
-            Debug.Log(item);
-            
-            ItemSave itemsave = new ItemSave();
-            itemsave.amount = item.amount;
-            itemsave.itemtype = ItemSave.ItemType.Block;
-            string name = item.itemtile.name;
-            itemsave.tilepath = $"Tiles/{name}";
-            itemsave.spritepath = name;
-            Debug.Log(itemsave);
-                InventoryDataSave.inventorysave.Add(itemsave);
+            InventoryDataSave invsave = new InventoryDataSave();
+            invsave.inventorysave = new List<ItemSave>();
+            foreach (Item item in inventory.itemList)
+            {
                 
-            
-               
-                
-      
 
+                ItemSave itemsave = new ItemSave();
+                itemsave.amount = item.amount;
+                itemsave.itemtype = ItemSave.ItemType.Block;
+                string name = item.itemtile.name;
+                itemsave.tilepath = $"Tiles/{name}";
+                itemsave.spritepath = name;
+              
+                invsave.inventorysave.Add(itemsave);
+
+
+
+
+
+
+            }
+            string json = JsonConvert.SerializeObject(invsave);
+
+            //  string encryptedjson = EncryptDecrypt(json);
+
+            File.WriteAllText(path, json);
         }
-        string json = JsonUtility.ToJson(InventoryDataSave.inventorysave);
-
-        //  string encryptedjson = EncryptDecrypt(json);
-
-        File.WriteAllText(path, json);
+        
+       
 
 
     }
@@ -531,19 +539,26 @@ public class BaseFunc : MonoBehaviour
         {
             string encryptedjson = File.ReadAllText(path);
             //string json = EncryptDecrypt(encryptedjson);
-            InventoryDataSave.inventorysave = JsonUtility.FromJson<List<ItemSave>>(encryptedjson);
+            InventoryDataSave invsave1 = JsonConvert.DeserializeObject<InventoryDataSave>(encryptedjson);
+            inventory.itemList = new List<Item>();
+        
+            foreach (var itemsave in invsave1.inventorysave)
+                {
+                    Item item = new Item();
             
-            foreach (var itemsave in InventoryDataSave.inventorysave)
-            {
-                Item item = new Item();
-                item.amount = itemsave.amount;
-                item.itemtype = (Item.ItemType)itemsave.itemtype;
-                item.itemtile = Resources.Load<TileBase>(itemsave.tilepath);
-                item.sprite = Resources.Load<Sprite>(itemsave.spritepath);
-                inventory.AddItem(item);
+                    item.amount = itemsave.amount;
+                    item.itemtype = (Item.ItemType)itemsave.itemtype;
+                    item.itemtile = Resources.Load<TileBase>(itemsave.tilepath);
+                    item.sprite = Resources.Load<Sprite>(itemsave.spritepath);
+                    inventory.AddItem(item);
+                Debug.Log(item.itemtile.name);
+                uiinventory.RefreshInventoryItems();
+                
             }
+         
+           
           
-            uiinventory.RefreshInventoryItems();
+           
         }
         else
         {
@@ -647,10 +662,10 @@ public class LevelData
     public List<int> poses_x = new List<int>();
     public List<int> poses_y = new List<int>();
 }
-
-public static class InventoryDataSave
+[Serializable]
+public class InventoryDataSave
 {
-    public static List<ItemSave> inventorysave;
+    public List<ItemSave> inventorysave;
 
 
 
