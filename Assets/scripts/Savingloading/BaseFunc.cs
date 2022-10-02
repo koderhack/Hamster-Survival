@@ -493,9 +493,9 @@ public class BaseFunc : MonoBehaviour
     {
         string path = Path.Combine(Application.persistentDataPath, SecurityCheck(worldname));
         path = Path.Combine(path, "inventory.json");
-       
-     
-       
+
+
+        InventoryDataSave.inventorysave = new List<ItemSave>();
         foreach (Item item in inventory.itemList)
         {
             Debug.Log(item);
