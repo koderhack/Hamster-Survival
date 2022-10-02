@@ -6,21 +6,23 @@ public class Enemy : MonoBehaviour
 {
     private Rigidbody2D rb;
      
-    private float moveSpeed;
+    public float moveSpeed;
     private Vector3 directiontotheplayer;
     private Vector3 LocalScale;
     public float jumpforce;
     public Collider2D collider;
-    GameObject player;
+    
+    public GameObject player;
     int hp = 10;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        moveSpeed = 2f;
+        
         LocalScale = transform.localScale;
         player = GameObject.FindGameObjectWithTag("Player");
+    
     }
 
     private void FixedUpdate()
@@ -62,14 +64,14 @@ public class Enemy : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision == player.GetComponent<Collider2D>())
+        if(collision.tag == "Player")
         {
             PlayerSettings.life--;
         }
     }
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision == player.GetComponent<Collider2D>())
+        if (collision.tag == "Player")
         {
             PlayerSettings.life--;
         }

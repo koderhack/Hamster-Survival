@@ -20,7 +20,7 @@ public class CharacterController2D : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
-
+	private bool istouching;
 	[Header("Events")]
 	[Space]
 
@@ -61,9 +61,20 @@ public class CharacterController2D : MonoBehaviour
 			}
 		}
 	}
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.tag == "enemy")
+        {
+			istouching = true;
+			
+        }
+        else
+        {
+			istouching = false;
+        }
+    }
 
-
-	public void Move(float move, bool crouch, bool jump)
+    public void Move(float move, bool crouch, bool jump)
 	{
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
@@ -71,7 +82,11 @@ public class CharacterController2D : MonoBehaviour
 			// If the character has a ceiling preventing them from standing up, keep them crouching
 			if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
 			{
-				crouch = true;
+                if (!istouching)
+                {
+					crouch = true;
+                }
+			
 			}
 		}
 

@@ -557,7 +557,11 @@ public class ruchgracza : MonoBehaviour
    
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        crouch = false;
+       
+        if(collision.tag == "enemy")
+        {
+            crouch = false;
+        }
        /* if (collision.tag == "Wheel")
         {
 
