@@ -417,6 +417,7 @@ public class ruchgracza : MonoBehaviour
                                 else
                                 {
                                     tiletwo.SetTile(mouseTileCoords, currentile);
+
                                 }
                             }
 

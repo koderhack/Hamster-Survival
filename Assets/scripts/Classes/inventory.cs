@@ -26,7 +26,7 @@ public static class inventory
                 {
                     if (inventoryItem.amount < 64)
                     {
-                        inventoryItem.amount++;
+                        inventoryItem.amount += 1;
                         IsItemAlreadyInInventory = true;
                     }
                     else
@@ -94,13 +94,14 @@ public static class inventory
        
        
         if(item.Stackable() == true)
-        {
-            item.amount --;
+        {    
             if (item.amount <= 0 && item != null)
             {
                 itemList.Remove(item);
                 
             }
+            item.amount--;
+        
         }
         else
         {
