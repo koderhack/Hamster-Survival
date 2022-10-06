@@ -593,13 +593,14 @@ public class ruchgracza : MonoBehaviour
         buildAllowed = false;
         tilemapdestroy.SetTile(mousepos, tiledestroy);
         yield return new WaitForSeconds(sek);
-        
-        inventory.AddItem(item);
-        uiInventory.RefreshInventoryItems();
+        tilemapdestroy.SetTile(mousepos, null);   
         tilemain.SetTile(mousepos, null);
         tiletwo.SetTile(mousepos, null);
+        inventory.AddItem(item);
+        uiInventory.RefreshInventoryItems();
+  
         buildAllowed = true;
-        tilemapdestroy.SetTile(mousepos, null);
+        
 
 
     }

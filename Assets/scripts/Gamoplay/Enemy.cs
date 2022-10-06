@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public Collider2D collider;
     
     public GameObject player;
-    int hp = 10;
+    int hp = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -78,9 +78,9 @@ public class Enemy : MonoBehaviour
     }
     public void OnMouseOver()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            hp -= 1;
+            
             StartCoroutine(redlight());
             
         }
@@ -89,6 +89,7 @@ public class Enemy : MonoBehaviour
   IEnumerator redlight()
     {
         this.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+        hp--;
         yield return new WaitForSeconds(1);
         this.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.white;
     }

@@ -24,10 +24,12 @@ public static class inventory
             {
                 if (inventoryItem.itemtile.name == item.itemtile.name)
                 {
+                    
                     if (inventoryItem.amount < 64)
                     {
-                        inventoryItem.amount += 1;
                         IsItemAlreadyInInventory = true;
+                        inventoryItem.amount++;
+                        
                     }
                     else
                     {
