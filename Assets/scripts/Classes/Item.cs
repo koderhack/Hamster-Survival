@@ -18,7 +18,7 @@ public class Item
 
     }
     public ItemType itemtype;
-    public int amount;
+    public int amount = 1;
     [SerializeField] public Sprite sprite;
     public float damagesec()
     {

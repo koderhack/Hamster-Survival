@@ -42,7 +42,7 @@ public class UI_inventory : MonoBehaviour
             Text text = images[i].transform.parent.GetComponentInChildren<Text>();
             if (i < inventory.GetItemList().ToArray().Length)
             {
-               if(inventory.GetItem(i).amount > 0)
+               if(inventory.GetItem(i).amount > 1)
                 {
                     text.text = inventory.GetItem(i).amount.ToString();
                 }

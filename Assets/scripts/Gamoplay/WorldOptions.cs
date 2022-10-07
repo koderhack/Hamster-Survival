@@ -202,6 +202,7 @@ public class WorldOptions : MonoBehaviour
     }
     public void Update()
     {
+
         if(WorldSettings.creative == false)
         {
             if (Input.GetKeyDown(KeyCode.C))

@@ -97,12 +97,17 @@ public static class inventory
        
         if(item.Stackable() == true)
         {    
+            if(item.amount > 0)
+            {
+                item.amount--;
+            }
+          
             if (item.amount <= 0 && item != null)
             {
                 itemList.Remove(item);
                 
             }
-            item.amount--;
+           
         
         }
         else

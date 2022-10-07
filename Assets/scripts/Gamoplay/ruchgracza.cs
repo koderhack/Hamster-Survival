@@ -68,6 +68,7 @@ public class ruchgracza : MonoBehaviour
     [SerializeField] private UI_inventory uiInventory;
     public Text lifetxt;
     public GameObject groundcheck;
+    public bool waiterrunning;
 
 
     private void Awake()
@@ -223,9 +224,12 @@ public class ruchgracza : MonoBehaviour
                                             {
                                                 
                                                 currentitem = itemtoadd;
-                                               // if (tilemain.GetTile(mouseTileCoords).name != "fire")
-                                               // {
-                                                    StartCoroutine(waiter(itemtoadd.damagesec(),itemtoadd,mouseTileCoords));
+                                                // if (tilemain.GetTile(mouseTileCoords).name != "fire")
+                                              if (waiterrunning == false)
+                                                {
+                                                    StartCoroutine(Waiter(itemtoadd.damagesec(), itemtoadd, mouseTileCoords));
+                                                }
+                                               
                                                 //}
                                                /* else
                                                 {
@@ -264,15 +268,19 @@ public class ruchgracza : MonoBehaviour
                                             {
                                                 currentitem = itemtoadd;
 
-                                                if (tiletwo.GetTile(mouseTileCoords).name != "fire")
+                                                // if (tiletwo.GetTile(mouseTileCoords).name != "fire")
+                                                // {
+                                                if (waiterrunning == false)
                                                 {
-                                                    StartCoroutine(waiter(itemtoadd.damagesec(), itemtoadd, mouseTileCoords));
+                                                    StartCoroutine(Waiter(itemtoadd.damagesec(), itemtoadd, mouseTileCoords));
                                                 }
-                                                else
-                                                {
+
+                                               // }
+                                                //else
+                                                /*{
                                                     tilemain.SetTile(mouseTileCoords, null);
                                                     tiletwo.SetTile(mouseTileCoords, null);
-                                                }
+                                                }*/
                                             }
                                            
                                            
@@ -387,9 +395,16 @@ public class ruchgracza : MonoBehaviour
                                     {
                                         if (inventory.GetItem(currentile) != null)
                                         {
+                                            if (tilemain.GetTile(mouseTileCoords) != currentile)
+                                            {
                                             tilemain.SetTile(mouseTileCoords, currentile);
+                                         
                                             inventory.DeleteItem(currentile);
+                                           
+                                           
                                             uiInventory.RefreshInventoryItems();
+                                            }
+                                                
                                         }
                                     }
                                    
@@ -416,8 +431,15 @@ public class ruchgracza : MonoBehaviour
                                 }
                                 else
                                 {
-                                    tiletwo.SetTile(mouseTileCoords, currentile);
+                                    if (tilemain.GetTile(mouseTileCoords) != currentile)
+                                    {
+                                        tilemain.SetTile(mouseTileCoords, currentile);
 
+                                        inventory.DeleteItem(currentile);
+
+
+                                        uiInventory.RefreshInventoryItems();
+                                    }
                                 }
                             }
 
@@ -434,7 +456,15 @@ public class ruchgracza : MonoBehaviour
                                 }
                                 else
                                 {
-                                    tilemain.SetTile(mouseTileCoords, currentile);
+                                    if (tilemain.GetTile(mouseTileCoords) != currentile)
+                                    {
+                                        tilemain.SetTile(mouseTileCoords, currentile);
+
+                                        inventory.DeleteItem(currentile);
+
+
+                                        uiInventory.RefreshInventoryItems();
+                                    }
                                 }
 
                             }
@@ -446,7 +476,15 @@ public class ruchgracza : MonoBehaviour
                                 }
                                 else
                                 {
-                                    tiletwo.SetTile(mouseTileCoords, currentile);
+                                    if (tilemain.GetTile(mouseTileCoords) != currentile)
+                                    {
+                                        tilemain.SetTile(mouseTileCoords, currentile);
+
+                                        inventory.DeleteItem(currentile);
+
+
+                                        uiInventory.RefreshInventoryItems();
+                                    }
                                 }
                             }
 
@@ -588,8 +626,9 @@ public class ruchgracza : MonoBehaviour
        */
 
     }
-    IEnumerator waiter(float sek, Item item,Vector3Int mousepos)
+    IEnumerator Waiter(float sek, Item item,Vector3Int mousepos)
     {
+        waiterrunning = true;
         buildAllowed = false;
         tilemapdestroy.SetTile(mousepos, tiledestroy);
         yield return new WaitForSeconds(sek);
@@ -600,9 +639,9 @@ public class ruchgracza : MonoBehaviour
         uiInventory.RefreshInventoryItems();
   
         buildAllowed = true;
-        
 
 
+        waiterrunning = false;
     }
     public void OnCrouching(bool isCrouching)
     {
