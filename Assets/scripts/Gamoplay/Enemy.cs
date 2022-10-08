@@ -80,9 +80,9 @@ public class Enemy : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            
-            StartCoroutine(redlight());
-            
+             StartCoroutine(redlight());
+
+          
         }
 
     }

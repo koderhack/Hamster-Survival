@@ -20,6 +20,7 @@ public class WorldOptions : MonoBehaviour
     public GameObject lightoryginal;
     public TileBase tilelight;
     GameObject[] clones;
+    public GameObject player;
     public GameObject escpanel;
     private bool gamePaused = false;
     public GameObject settingspanel;
@@ -33,8 +34,12 @@ public class WorldOptions : MonoBehaviour
     public GameObject diepanel;
     public GameObject survipanel;
     public GameObject craftpanel;
-   
+    public GameObject keyboardpanel;
+    public GameObject debugpanel;
+    public Text debug;
     bool craftingopened;
+    bool debugopened;
+    public Grid grid;
 
     public void Start()
     {
@@ -56,7 +61,7 @@ public class WorldOptions : MonoBehaviour
         volumeslider.minValue = 0;
         volumeslider.maxValue = 1;
         craftpanel.SetActive(false);
-       
+        keyboardpanel.SetActive(false);
 
 
 
@@ -202,9 +207,23 @@ public class WorldOptions : MonoBehaviour
     }
     public void Update()
     {
+        if (Input.GetKey(KeyCode.F6))
+        {
+            if (debugopened == true)
+            {
+                debugpanel.SetActive(false);
+                debugopened = false;
+            }
+            else
+            {
+                debugpanel.SetActive(true);
 
+                debugopened = true;
+            }
+        }
         if(WorldSettings.creative == false)
         {
+            
             if (Input.GetKeyDown(KeyCode.C))
             {
                
@@ -249,11 +268,18 @@ public class WorldOptions : MonoBehaviour
         {
             survipanel.SetActive(true);
         }
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+       
+        Vector3Int mouseTileCoords = grid.WorldToCell(mouseWorldPos);
+        int numbermonsters = GameObject.FindGameObjectsWithTag("enemy").Length;
+        debug.text = $"Player Position: {player.transform.position}\n" +
+            $"MousePosition:{mouseWorldPos}\n" +
+            $"Mouse Tile Position: {mouseTileCoords}\n" +
+            $"Is Day: {cykldniainocy.isday}\n" +
+            $"Creative: {WorldSettings.creative}\n" +
+            $"Monsters:{numbermonsters}\n";
 
-
-
-
-
+      
         /* if (PlayerPrefs.HasKey("Volume"))
          {
 
@@ -283,7 +309,7 @@ public class WorldOptions : MonoBehaviour
                 Time.timeScale = 1;
                 gamePaused = false;
                 escpanel.SetActive(false);
-               
+                keyboardpanel.SetActive(false);
                 settingspanel.SetActive(false);
                 music.Play();
 
@@ -295,6 +321,7 @@ public class WorldOptions : MonoBehaviour
                 Time.timeScale = 0;
                 gamePaused = true;
                 escpanel.SetActive(true);
+                keyboardpanel.SetActive(true);
                 craftpanel.SetActive(false);
                 music.Pause();
 

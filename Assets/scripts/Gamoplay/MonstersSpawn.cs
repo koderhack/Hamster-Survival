@@ -38,7 +38,11 @@ public class MonstersSpawn : MonoBehaviour
                     Vector3Int positiontilemap = new Vector3Int((int)position.x,(int)position.y,0);
                     if (tilemain.GetTile(positiontilemap) == null)
                     {
-                        Instantiate(oryginal, position, Quaternion.identity);
+                        
+                           
+                          Instantiate(oryginal, position, Quaternion.identity);
+                        
+                       
                     }
                     
 
