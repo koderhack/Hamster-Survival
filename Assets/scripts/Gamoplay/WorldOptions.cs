@@ -34,7 +34,7 @@ public class WorldOptions : MonoBehaviour
     public GameObject diepanel;
     public GameObject survipanel;
     public GameObject craftpanel;
-    public GameObject keyboardpanel;
+   
     public GameObject debugpanel;
     public Text debug;
     bool craftingopened;
@@ -61,7 +61,7 @@ public class WorldOptions : MonoBehaviour
         volumeslider.minValue = 0;
         volumeslider.maxValue = 1;
         craftpanel.SetActive(false);
-        keyboardpanel.SetActive(false);
+        
 
 
 
@@ -309,7 +309,7 @@ public class WorldOptions : MonoBehaviour
                 Time.timeScale = 1;
                 gamePaused = false;
                 escpanel.SetActive(false);
-                keyboardpanel.SetActive(false);
+                
                 settingspanel.SetActive(false);
                 music.Play();
 
@@ -321,7 +321,7 @@ public class WorldOptions : MonoBehaviour
                 Time.timeScale = 0;
                 gamePaused = true;
                 escpanel.SetActive(true);
-                keyboardpanel.SetActive(true);
+              
                 craftpanel.SetActive(false);
                 music.Pause();
 
