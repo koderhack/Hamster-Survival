@@ -35,7 +35,7 @@ public class WorldOptions : MonoBehaviour
     public GameObject survipanel;
     public GameObject craftpanel;
     public GameObject keyboardpanel;
-    public GameObject debugpanel;
+  
     public Text debug;
     bool craftingopened;
     bool debugopened;
@@ -207,19 +207,36 @@ public class WorldOptions : MonoBehaviour
     }
     public void Update()
     {
-        if (Input.GetKey(KeyCode.F6))
+        if (Input.GetKeyDown(KeyCode.F6))
         {
             if (debugopened == true)
             {
-                debugpanel.SetActive(false);
+               
                 debugopened = false;
             }
             else
             {
-                debugpanel.SetActive(true);
+                
 
                 debugopened = true;
             }
+        }
+        if (debugopened)
+        {
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            Vector3Int mouseTileCoords = grid.WorldToCell(mouseWorldPos);
+            int numbermonsters = GameObject.FindGameObjectsWithTag("enemy").Length;
+            debug.text = $"Player Position: {player.transform.position}\n" +
+                $"MousePosition:{mouseWorldPos}\n" +
+                $"Mouse Tile Position: {mouseTileCoords}\n" +
+                $"Is Day: {cykldniainocy.isday}\n" +
+                $"Creative: {WorldSettings.creative}\n" +
+                $"Monsters:{numbermonsters}\n";
+        }
+        else
+        {
+            debug.text = "";
         }
         if(WorldSettings.creative == false)
         {
@@ -268,16 +285,7 @@ public class WorldOptions : MonoBehaviour
         {
             survipanel.SetActive(true);
         }
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
        
-        Vector3Int mouseTileCoords = grid.WorldToCell(mouseWorldPos);
-        int numbermonsters = GameObject.FindGameObjectsWithTag("enemy").Length;
-        debug.text = $"Player Position: {player.transform.position}\n" +
-            $"MousePosition:{mouseWorldPos}\n" +
-            $"Mouse Tile Position: {mouseTileCoords}\n" +
-            $"Is Day: {cykldniainocy.isday}\n" +
-            $"Creative: {WorldSettings.creative}\n" +
-            $"Monsters:{numbermonsters}\n";
 
       
         /* if (PlayerPrefs.HasKey("Volume"))
