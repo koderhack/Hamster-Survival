@@ -34,8 +34,8 @@ public class WorldOptions : MonoBehaviour
     public GameObject diepanel;
     public GameObject survipanel;
     public GameObject craftpanel;
+   
 
-  
     public Text debug;
     bool craftingopened;
     bool debugopened;
