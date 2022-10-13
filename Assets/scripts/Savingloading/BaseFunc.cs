@@ -441,7 +441,7 @@ public class BaseFunc : MonoBehaviour
         PlayerSettings.life = 100;
         PlayerSettings.hunger = 100;
         PlayerSettings.sport = 100;
-        
+        PlayerSettings.level = 0;
     }
     public void SavePlayerSettings(string worldname)
     {
@@ -453,7 +453,7 @@ public class BaseFunc : MonoBehaviour
         data.life = PlayerSettings.life;
         data.sport  = PlayerSettings.sport;
         data.hunger = PlayerSettings.hunger;
-       
+        data.level = PlayerSettings.level;
       
         bf.Serialize(file, data);
         file.Close();
@@ -471,7 +471,7 @@ public class BaseFunc : MonoBehaviour
             PlayerSettings.hunger = data.hunger;
          
             PlayerSettings.sport = data.sport;
-            
+            PlayerSettings.level = data.level;
             file.Close();
           
             
@@ -654,7 +654,7 @@ class PlayerData
     public float life;
     public float hunger;
     public float sport;
-    
+    public int level;
 }
 public class LevelData
 {
