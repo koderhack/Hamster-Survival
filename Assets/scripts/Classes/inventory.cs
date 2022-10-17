@@ -67,6 +67,7 @@ public static class inventory
     {
         return itemList.Find(cc => cc.itemtile == tile); 
     }
+ 
     public static void DeleteItem(int id)
     {
         Item item = GetItem(id);
