@@ -10,9 +10,12 @@ public class LevelObjectives : MonoBehaviour
     public Text loretopic;
     // Start is called before the first frame update
 
-
+    public void Start()
+    {
+        StartCoroutine(StartObjectives());
+    }
     // Update is called once per frame
-    IEnumerator Update()
+    IEnumerator StartObjectives()
     {
 
         yield return new WaitForSeconds(10);
@@ -56,5 +59,18 @@ public class LevelObjectives : MonoBehaviour
                 loretopic.text = "The bookcase is key!";
                 break;
         }
+    }
+    public void Update()
+    {
+
+        if ()
+        {
+        
+        }
+        else if ()
+        {
+
+        }
+        else if ()
     }
 }
