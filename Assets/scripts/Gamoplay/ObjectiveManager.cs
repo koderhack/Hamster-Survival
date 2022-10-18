@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ObjectiveManager : MonoBehaviour
 {
+    
+ 
     // Start is called before the first frame update
     void Start()
     {
+        
+           
+        
+        
         
     }
 
@@ -14,5 +21,14 @@ public class ObjectiveManager : MonoBehaviour
     void Update()
     {
         
+        if(PlayerSettings.level == 0 && )
+        {
+            PlayerSettings.level = 1;
+        }
+        /*
+        else if (PlayerSettings.level == 1 && )
+        {
+
+        }*/
     }
 }

@@ -2,21 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Tilemaps;
+
 
 public class LevelObjectives : MonoBehaviour
 {
     public GameObject panel;
     public Text objectivetext;
     public Text loretopic;
-    public TileBase tileszklo;
-    public Item szko;
+  
     // Start is called before the first frame update
 
     public void Start()
     {
         StartCoroutine(StartObjectives());
-        szko = inventory.GetItem(tileszklo);
+        
     }
     // Update is called once per frame
     IEnumerator StartObjectives()
@@ -64,8 +63,5 @@ public class LevelObjectives : MonoBehaviour
                 break;
         }
     }
-    public void Update()
-    {
-      
-    }
+
 }

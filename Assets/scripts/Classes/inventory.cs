@@ -65,7 +65,15 @@ public static class inventory
     }
     public static Item GetItem(TileBase tile)
     {
-        return itemList.Find(cc => cc.itemtile == tile); 
+        foreach (var item in itemList)
+        {
+            if(tile == item.itemtile)
+            {
+                return item;
+            }
+          
+        }
+        return null;
     }
  
     public static void DeleteItem(int id)
