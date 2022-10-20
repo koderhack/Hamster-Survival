@@ -75,7 +75,18 @@ public static class inventory
         }
         return null;
     }
- 
+    public static Item GetItem(string itemtilename)
+    {
+        foreach (var item in itemList)
+        {
+            if (itemtilename == item.itemtile.name)
+            {
+                return item;
+            }
+
+        }
+        return null;
+    }
     public static void DeleteItem(int id)
     {
         Item item = GetItem(id);

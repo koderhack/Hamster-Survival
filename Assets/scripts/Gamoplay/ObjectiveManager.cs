@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class ObjectiveManager : MonoBehaviour
 {
-    
- 
+
+    private Item szko;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +21,22 @@ public class ObjectiveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(PlayerSettings.level == 0 && )
+        foreach (var item in inventory.itemList)
         {
-            PlayerSettings.level = 1;
+            if(item.itemtile.name == "szko")
+            {
+                szko = item;
+            }
+            
         }
+        if(szko != null)
+        {
+            if(PlayerSettings.level == 0 && szko.amount >= 2)
+            {
+            PlayerSettings.level = 1;
+            }
+        }
+        
         /*
         else if (PlayerSettings.level == 1 && )
         {
