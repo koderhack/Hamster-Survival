@@ -34,6 +34,14 @@ public class ObjectiveManager : MonoBehaviour
             if(PlayerSettings.level == 0 && szko.amount >= 2)
             {
             PlayerSettings.level = 1;
+               
+               
+            }
+            if (PlayerSettings.level == 1 && Enemy.killedEnemies == 10)
+            {
+                PlayerSettings.level = 2;
+
+
             }
         }
         

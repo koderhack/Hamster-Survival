@@ -12,16 +12,9 @@ public class LevelObjectives : MonoBehaviour
   
     // Start is called before the first frame update
 
-    public void Start()
-    {
-        StartCoroutine(StartObjectives());
-        
-    }
     // Update is called once per frame
-    IEnumerator StartObjectives()
+    public void Update()
     {
-
-        yield return new WaitForSeconds(10);
         switch (PlayerSettings.level)
         {
 
@@ -30,8 +23,8 @@ public class LevelObjectives : MonoBehaviour
                 loretopic.text = "Get Out to survive!";
                 break;
             case 1:
-                objectivetext.text = "Objective: Kill 10 enemies";
-                loretopic.text = "They can't stop you!";
+                objectivetext.text = $"Objective: Kill 10 enemies {Enemy.killedEnemies}/10";
+                loretopic.text = $"They can't stop you!";
                 break;
             case 2:
                 objectivetext.text = "Objective: Find and craft food";
@@ -63,5 +56,8 @@ public class LevelObjectives : MonoBehaviour
                 break;
         }
     }
+      
+       
+    }
 
-}
+

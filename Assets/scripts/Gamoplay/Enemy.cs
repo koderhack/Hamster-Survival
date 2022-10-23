@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     private Vector3 LocalScale;
     public float jumpforce;
     public Collider2D collider;
-    
+    public static int killedEnemies;
     public GameObject player;
     int hp = 3;
 
@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
         if (hp <= 0)
         {
             Destroy(this.gameObject);
+            killedEnemies++;
         }
 
     }
