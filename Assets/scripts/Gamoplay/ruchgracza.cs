@@ -449,15 +449,19 @@ public class ruchgracza : MonoBehaviour
                                 }
                                 else
                                 {
-                                    if (tilemain.GetTile(mouseTileCoords) != currentile)
+                                    if (lastTile == null || lastTile2 == null)
                                     {
-                                        tilemain.SetTile(mouseTileCoords, currentile);
+                                        if (tiletwo.GetTile(mouseTileCoords) != currentile)
+                                        {
+                                            tiletwo.SetTile(mouseTileCoords, currentile);
 
-                                        inventory.DeleteItem(currentile);
+                                            inventory.DeleteItem(currentile);
 
 
-                                        uiInventory.RefreshInventoryItems();
+                                            uiInventory.RefreshInventoryItems();
+                                        }
                                     }
+
                                 }
                             }
 

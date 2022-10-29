@@ -34,7 +34,8 @@ public class WorldOptions : MonoBehaviour
     public GameObject diepanel;
     public GameObject survipanel;
     public GameObject craftpanel;
-   
+    public GameObject objectivespanel;
+
 
     public Text debug;
     bool craftingopened;
@@ -45,9 +46,11 @@ public class WorldOptions : MonoBehaviour
     {
        
         survipanel.SetActive(false);
+        objectivespanel.SetActive(false);
         if (WorldSettings.creative == false)
         {
             survipanel.SetActive(true);
+            objectivespanel.SetActive(true);
         }
 
         fovslider.value = PlayerPrefs.GetFloat("FOV", fovslidervalue);

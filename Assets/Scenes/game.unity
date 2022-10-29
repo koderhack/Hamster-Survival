@@ -37384,6 +37384,7 @@ MonoBehaviour:
   diepanel: {fileID: 607686894}
   survipanel: {fileID: 253677087}
   craftpanel: {fileID: 1328916800}
+  objectivespanel: {fileID: 646526988}
   debug: {fileID: 1710664799}
   grid: {fileID: 837324866}
 --- !u!4 &894567233
@@ -39646,9 +39647,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fdf53454fc778814da7bcce71f937cf1, type: 2}
   - {fileID: 11400000, guid: 47bb8bcf28888c84db7f5ed62749311a, type: 2}
   - {fileID: 11400000, guid: 92193b4e0ac831745af4c5e293be798a, type: 2}
+  - {fileID: 11400000, guid: 7e0d2b3c161ed5949bc5195445891a31, type: 2}
   - {fileID: 11400000, guid: 47368cc8bea05f34c8809edf13daf2b1, type: 2}
   - {fileID: 11400000, guid: a14ab164d223bbe46be9257383140885, type: 2}
-  - {fileID: 11400000, guid: 7e0d2b3c161ed5949bc5195445891a31, type: 2}
+  - {fileID: 11400000, guid: 88ca59e6b1be6334590c7796c00d82d3, type: 2}
   tilenotdestroy:
   - {fileID: 11400000, guid: 0f1007faee4fc8a4db8d4e6db1a20549, type: 2}
   - {fileID: 11400000, guid: e1bfe75e358d52e469bc18df632ffbdb, type: 2}
@@ -39677,6 +39679,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2cc64145876c5a94282497e30cdd2d85, type: 3}
   - {fileID: 21300000, guid: 5f8ea5fe14dc44f46acb0b8ab377f20d, type: 3}
   - {fileID: 21300000, guid: 5433b6851754b1b438bc81df48a3652e, type: 3}
+  - {fileID: 21300000, guid: e016803e03a4dda4695094af8056ba66, type: 3}
+  - {fileID: 21300000, guid: 2b514fc752a71b542a4245e7167ab097, type: 3}
+  - {fileID: 21300000, guid: 3f67d8950c7552645bfd54b04bccedbe, type: 3}
+  - {fileID: 21300000, guid: efcd1ff0f37482c43858c18c9c22eed2, type: 3}
   currentid: 0
   buttonsimggameobject:
   - {fileID: 246459614}
@@ -39701,6 +39707,7 @@ MonoBehaviour:
   groundcheck: {fileID: 2090911080}
   waiterrunning: 0
   hungertext: {fileID: 1163297561}
+  interval: 2
 --- !u!212 &1464513139
 SpriteRenderer:
   m_ObjectHideFlags: 0
