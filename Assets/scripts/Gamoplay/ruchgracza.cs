@@ -69,7 +69,11 @@ public class ruchgracza : MonoBehaviour
     public Text lifetxt;
     public GameObject groundcheck;
     public bool waiterrunning;
-
+    public Text hungertext;
+    public float interval = 2;
+    float timer;
+    Vector3 lastPos;
+    bool ismoving;
 
     private void Awake()
     {
@@ -118,11 +122,25 @@ public class ruchgracza : MonoBehaviour
     void Update()
     {
 
-     
+     if(PlayerSettings.hunger == 0)
+     {
+            StartCoroutine(HungerKill());
+
+     }
+    if (transform.position != lastPos)
+     {
+            ismoving = true;
+     }
+     else
+     {
+            ismoving = false;
+     }
+
+        lastPos = transform.position;
 
         textlayer.GetComponent<Text>().text = layerindex.ToString();
         clones = GameObject.FindGameObjectsWithTag("LampLight");
-
+        
 
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int mouseTileCoords = grid.WorldToCell(mouseWorldPos);
@@ -166,7 +184,7 @@ public class ruchgracza : MonoBehaviour
             {
                 if (buildAllowed == true)
                 {
-           
+                
 
                 //sp_highlight.transform.position = mouseTileWorldPos;
               
@@ -548,7 +566,8 @@ public class ruchgracza : MonoBehaviour
             musicplay.Stop();
         }
         lifetxt.text = $"{PlayerSettings.life}%";
-      
+        hungertext.text = $"{PlayerSettings.hunger}%";
+
         var cellPos = tilemain.WorldToCell(groundcheck.transform.position);
         var tile1 = tilemain.GetTile(cellPos);
         if (tile1 != null)
@@ -562,8 +581,26 @@ public class ruchgracza : MonoBehaviour
 
 
 
+     if (ismoving)
+     {
+            timer += Time.deltaTime;
+            if (timer >= interval)
+            {
+                PlayerSettings.hunger--;
+
+
+                timer -= interval;
+            }
+
+        }
+     else
+     {
+         
+     }
+ 
+ 
     }
-     IEnumerator Sleep()
+    IEnumerator Sleep()
     {
        
         if(cykldniainocy.isday)
@@ -583,6 +620,22 @@ public class ruchgracza : MonoBehaviour
       
        
 
+    }
+    IEnumerator HungerKill()
+    {
+        if(PlayerSettings.hunger <= 0)
+        {
+            while (PlayerSettings.life != 0)
+            {
+                PlayerSettings.hunger--;
+                yield return new WaitForSeconds(5);
+                PlayerSettings.hunger--;
+            }
+            
+
+        }
+        
+        
     }
     
     void FixedUpdate()
@@ -839,30 +892,32 @@ public class ruchgracza : MonoBehaviour
             }
 
         }
-      /* public void OnCrouch()
-        {
-        BoundsInt bounds = tilemain.cellBounds;
+    /* public void OnCrouch()
+      {
+      BoundsInt bounds = tilemain.cellBounds;
 
-        //create a new leveldata
-        
+      //create a new leveldata
 
-        //loop trougth the bounds of the tilemap
-        for (int x = bounds.min.x; x < bounds.max.x; x++)
-        {
-            for (int y = bounds.min.y; y < bounds.max.y; y++)
-            {
-                //get the tile on the position
-                if(transform.position == new Vector3Int(x, y, 0))
-                {
-                    tilemain.SetTile(new Vector3Int(x, y, 0),null);
-                }
-                
-                //find the temp tile in the custom tiles list
-               
-            }
-        }
-    }*/
-    }
+
+      //loop trougth the bounds of the tilemap
+      for (int x = bounds.min.x; x < bounds.max.x; x++)
+      {
+          for (int y = bounds.min.y; y < bounds.max.y; y++)
+          {
+              //get the tile on the position
+              if(transform.position == new Vector3Int(x, y, 0))
+              {
+                  tilemain.SetTile(new Vector3Int(x, y, 0),null);
+              }
+
+              //find the temp tile in the custom tiles list
+
+          }
+      }
+  }*/
+    
+}
+
 
 
 

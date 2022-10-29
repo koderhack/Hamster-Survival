@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,6 +24,7 @@ public class CharacterController2D : MonoBehaviour
 	private bool istouching;
 	[Header("Events")]
 	[Space]
+	
 
 	public UnityEvent OnLandEvent;
 
@@ -76,6 +78,7 @@ public class CharacterController2D : MonoBehaviour
 
     public void Move(float move, bool crouch, bool jump)
 	{
+		
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
 		{
@@ -123,7 +126,9 @@ public class CharacterController2D : MonoBehaviour
 			}
 
 			// Move the character by finding the target velocity
+			
 			Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+		
 			// And then smoothing it out and applying it to the character
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
@@ -162,4 +167,5 @@ public class CharacterController2D : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
 }

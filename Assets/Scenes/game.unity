@@ -35602,7 +35602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abce9ad80e61c4c4495c9637a744a5cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileszklo: {fileID: 11400000, guid: 7177484104ae5d24a8f1c16399680df0, type: 2}
 --- !u!114 &472204835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39647,6 +39646,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fdf53454fc778814da7bcce71f937cf1, type: 2}
   - {fileID: 11400000, guid: 47bb8bcf28888c84db7f5ed62749311a, type: 2}
   - {fileID: 11400000, guid: 92193b4e0ac831745af4c5e293be798a, type: 2}
+  - {fileID: 11400000, guid: 47368cc8bea05f34c8809edf13daf2b1, type: 2}
+  - {fileID: 11400000, guid: a14ab164d223bbe46be9257383140885, type: 2}
+  - {fileID: 11400000, guid: 7e0d2b3c161ed5949bc5195445891a31, type: 2}
   tilenotdestroy:
   - {fileID: 11400000, guid: 0f1007faee4fc8a4db8d4e6db1a20549, type: 2}
   - {fileID: 11400000, guid: e1bfe75e358d52e469bc18df632ffbdb, type: 2}
@@ -39698,6 +39700,7 @@ MonoBehaviour:
   lifetxt: {fileID: 1498609913}
   groundcheck: {fileID: 2090911080}
   waiterrunning: 0
+  hungertext: {fileID: 1163297561}
 --- !u!212 &1464513139
 SpriteRenderer:
   m_ObjectHideFlags: 0
