@@ -206,6 +206,7 @@ public class WorldOptions : MonoBehaviour
         diepanel.SetActive(false);
        
         PlayerSettings.life = 100;
+        PlayerSettings.hunger = 100;
     }
     public void Update()
     {

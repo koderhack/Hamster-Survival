@@ -57,7 +57,7 @@ public class ruchgracza : MonoBehaviour
     public int layerindex;
     public GameObject chomik;
     public GameObject textlayer;
-   
+
     private TileBase currentile;
     public Text alerttext;
     private bool isinvenntoryfull;
@@ -77,8 +77,8 @@ public class ruchgracza : MonoBehaviour
 
     private void Awake()
     {
-      
-       
+
+
     }
 
     // Start is called before the first frame update
@@ -87,13 +87,13 @@ public class ruchgracza : MonoBehaviour
         currentitem = null;
         layerindex = 1;
         alerttext.text = "";
-       
+
         //dzia³anie efektu
 
         textkolowrotek.text = "";
         buildAllowed = true;
         lampbuildingallowed = true;
-        if(WorldSettings.creative == true)
+        if (WorldSettings.creative == true)
         {
             PokazObrazki(0);
         }
@@ -101,12 +101,12 @@ public class ruchgracza : MonoBehaviour
         {
 
         }
-      
+
         textlayer.GetComponent<Text>().text = layerindex.ToString();
-        
+
     }
-  
-    
+
+
     public void OnMouseOver()
     {
         buildAllowed = false;
@@ -117,34 +117,53 @@ public class ruchgracza : MonoBehaviour
         buildAllowed = true;
     }
 
-   
+
     // Update is called once per frame
     void Update()
     {
+        if(PlayerSettings.hunger >= 100)
+        {
+            PlayerSettings.hunger = 100;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            foreach (var item in inventory.GetItemList().ToArray())
+            {
+                if (item.itemtile == currentile)
+                {
+                    if (item.itemusetype == Item.ItemUseType.Food)
+                    {
+                        PlayerSettings.hunger += item.HungerPoints();
+                        inventory.DeleteItem(item);
+                        uiInventory.RefreshInventoryItems();
 
-     if(PlayerSettings.hunger == 0)
-     {
+                    }
+                }
+            }
+        }
+        if (PlayerSettings.hunger == 0)
+        {
             StartCoroutine(HungerKill());
 
-     }
-    if (transform.position != lastPos)
-     {
+        }
+        if (transform.position != lastPos)
+        {
             ismoving = true;
-     }
-     else
-     {
+        }
+        else
+        {
             ismoving = false;
-     }
+        }
 
         lastPos = transform.position;
 
         textlayer.GetComponent<Text>().text = layerindex.ToString();
         clones = GameObject.FindGameObjectsWithTag("LampLight");
-        
+
 
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int mouseTileCoords = grid.WorldToCell(mouseWorldPos);
-       
+
         //sp_highlight.transform.position = mouseTileWorldPos;
         hightlist.SetTile(mouseTileCoords, tilehigh);
 
@@ -156,7 +175,7 @@ public class ruchgracza : MonoBehaviour
 
         }
 
-       
+
 
         // Debug.Log("mouseWorldPos: " + mouseWorldPos + " | mouseTileCoords: " + mouseTileCoords + " | mouseTileWorldPos: " + mouseTileWorldPos);
         if (clones.Length == 1000)
@@ -169,28 +188,30 @@ public class ruchgracza : MonoBehaviour
         {
             jump = true;
         }
-        if (Input.GetButtonDown("Crouch"))
+        
+        if (Input.GetButton("Crouch"))
         {
             crouch = true;
 
         }
-        else if (Input.GetButtonUp("Crouch"))
+        else
         {
             crouch = false;
         }
+       
         //destroy
-        
-         if (Input.GetKey(KeyCode.Mouse0))
+
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            if (buildAllowed == true)
             {
-                if (buildAllowed == true)
-                {
-                
+
 
                 //sp_highlight.transform.position = mouseTileWorldPos;
-              
-               
+
+
                 foreach (var tile in tilenotdestroy)
-                    {
+                {
                     if (tilenotdestroy.Contains(tilemain.GetTile(mouseTileCoords)))
                     {
 
@@ -219,7 +240,7 @@ public class ruchgracza : MonoBehaviour
                             }
 
                         }
-                      
+
                         SoundEffects(mouseTileCoords);
                         if (WorldSettings.creative == false)
                         {
@@ -228,6 +249,18 @@ public class ruchgracza : MonoBehaviour
                                 Item itemtoadd = new Item();
                                 itemtoadd.itemtile = tilemain.GetTile(mouseTileCoords);
                                 itemtoadd.itemtype = Item.ItemType.Block;
+                                if (tilemain.GetTile(mouseTileCoords) != null)
+                                {
+                                    if (itemtoadd.itemtile.name == "apple" || itemtoadd.itemtile.name == "gruszka" || itemtoadd.itemtile.name == "dynia")
+                                    {
+                                        itemtoadd.itemusetype = Item.ItemUseType.Food;
+                                    }
+                                    else
+                                    {
+                                        itemtoadd.itemusetype = Item.ItemUseType.Block;
+                                    }
+                                }
+
 
 
                                 foreach (var img in imgblocks)
@@ -240,27 +273,27 @@ public class ruchgracza : MonoBehaviour
 
                                             if (isinvenntoryfull == false)
                                             {
-                                                
+
                                                 currentitem = itemtoadd;
                                                 // if (tilemain.GetTile(mouseTileCoords).name != "fire")
-                                              if (waiterrunning == false)
+                                                if (waiterrunning == false)
                                                 {
                                                     StartCoroutine(Waiter(itemtoadd.damagesec(), itemtoadd, mouseTileCoords));
                                                 }
-                                               
+
                                                 //}
-                                               /* else
-                                                {
-                                                    tilemain.SetTile(mouseTileCoords, null);
-                                                    tiletwo.SetTile(mouseTileCoords, null);
-                                               }*/
-                                                
-                                                
-                                               
-                                               
+                                                /* else
+                                                 {
+                                                     tilemain.SetTile(mouseTileCoords, null);
+                                                     tiletwo.SetTile(mouseTileCoords, null);
+                                                }*/
+
+
+
+
 
                                             }
-                                           
+
                                         }
                                     }
 
@@ -293,21 +326,21 @@ public class ruchgracza : MonoBehaviour
                                                     StartCoroutine(Waiter(itemtoadd.damagesec(), itemtoadd, mouseTileCoords));
                                                 }
 
-                                               // }
+                                                // }
                                                 //else
                                                 /*{
                                                     tilemain.SetTile(mouseTileCoords, null);
                                                     tiletwo.SetTile(mouseTileCoords, null);
                                                 }*/
                                             }
-                                           
-                                           
+
+
                                         }
                                     }
                                 }
 
                             }
-                          
+
 
 
                         }
@@ -316,26 +349,26 @@ public class ruchgracza : MonoBehaviour
                             tilemain.SetTile(mouseTileCoords, null);
                             tiletwo.SetTile(mouseTileCoords, null);
                         }
-                       
-                       
+
+
 
 
 
 
 
                     }
-                    }
-
                 }
-
-
-
 
             }
 
+
+
+
+        }
+
         foreach (var item in inventory.GetItemList())
         {
-            if (inventory.GetItemList().ToArray().Length <= 5 )
+            if (inventory.GetItemList().ToArray().Length <= 5)
             {
                 isinvenntoryfull = false;
                 alerttext.text = "";
@@ -348,23 +381,23 @@ public class ruchgracza : MonoBehaviour
             }
         }
 
-        if(WorldSettings.creative == false)
+        if (WorldSettings.creative == false)
         {
             if (Input.GetKeyDown(KeyCode.H))
             {
-            StartCoroutine(Sleep());
+                StartCoroutine(Sleep());
             }
 
         }
-       
-       
+
+
         //build
         if (Input.GetKey(KeyCode.Mouse1))
         {
 
             if (buildAllowed == true)
             {
-                
+
 
                 foreach (var tile in tilenotdestroy)
                 {
@@ -396,7 +429,7 @@ public class ruchgracza : MonoBehaviour
                                 }
                             }
                         }
-                        
+
                         if (tilebuild[id] != tilebuild[6] || currentile != tilebuild[6])
                         {
 
@@ -409,37 +442,37 @@ public class ruchgracza : MonoBehaviour
                                 }
                                 else
                                 {
-                                    if(lastTile == null || lastTile2 == null)
+                                    if (lastTile == null || lastTile2 == null)
                                     {
                                         if (inventory.GetItem(currentile) != null)
                                         {
                                             if (tilemain.GetTile(mouseTileCoords) != currentile)
                                             {
-                                            tilemain.SetTile(mouseTileCoords, currentile);
-                                         
-                                            inventory.DeleteItem(currentile);
-                                           
-                                           
-                                            uiInventory.RefreshInventoryItems();
+                                                tilemain.SetTile(mouseTileCoords, currentile);
+
+                                                inventory.DeleteItem(currentile);
+
+
+                                                uiInventory.RefreshInventoryItems();
                                             }
-                                                
+
                                         }
                                     }
-                                   
-                                  
-                                        
-
-                                    
 
 
-                                   
-                                   
-                                      
-                                    
-                                   
+
+
+
+
+
+
+
+
+
+
 
                                 }
-                               
+
                             }
                             else
                             {
@@ -530,7 +563,7 @@ public class ruchgracza : MonoBehaviour
 
 
         }
-    
+
 
 
         if (Input.mouseScrollDelta == Vector2.down)
@@ -552,20 +585,20 @@ public class ruchgracza : MonoBehaviour
         }
         if (Input.mouseScrollDelta == Vector2.up)
         {
-            if(WorldSettings.creative == true)
+            if (WorldSettings.creative == true)
             {
                 imageindex += 5;
-                 if (imageindex > imgblocks.Length)
+                if (imageindex > imgblocks.Length)
                 {
-                imageindex = 0;
+                    imageindex = 0;
                 }
 
                 PokazObrazki(imageindex);
             }
-           
+
         }
 
-     if(Input.GetMouseButton(0) && Input.GetMouseButton(1))
+        if (Input.GetMouseButton(0) && Input.GetMouseButton(1))
         {
             musicplay.Stop();
         }
@@ -585,8 +618,8 @@ public class ruchgracza : MonoBehaviour
 
 
 
-     if (ismoving)
-     {
+        if (ismoving)
+        {
             timer += Time.deltaTime;
             if (timer >= interval)
             {
@@ -597,19 +630,19 @@ public class ruchgracza : MonoBehaviour
             }
 
         }
-     else
-     {
-         
-     }
- 
- 
+        else
+        {
+
+        }
+
+
     }
     IEnumerator Sleep()
     {
-       
-        if(cykldniainocy.isday)
+
+        if (cykldniainocy.isday)
         {
-            
+
             animatorplayer.SetBool("isSleeping", true);
             yield return new WaitForSeconds(5);
             cykldniainocy.sleepcontrolleractive = true;
@@ -617,17 +650,17 @@ public class ruchgracza : MonoBehaviour
 
             animatorplayer.SetBool("isSleeping", false);
 
-             cykldniainocy.timer = 600;
+            cykldniainocy.timer = 600;
         }
-           
-           
-      
-       
+
+
+
+
 
     }
     IEnumerator HungerKill()
     {
-        if(PlayerSettings.hunger <= 0)
+        if (PlayerSettings.hunger <= 0)
         {
             while (PlayerSettings.life != 0)
             {
@@ -635,13 +668,13 @@ public class ruchgracza : MonoBehaviour
                 yield return new WaitForSeconds(5);
                 PlayerSettings.hunger--;
             }
-            
+
 
         }
-        
-        
+
+
     }
-    
+
     void FixedUpdate()
     {
 
@@ -650,51 +683,51 @@ public class ruchgracza : MonoBehaviour
 
 
     }
-   
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
-       
-        if(collision.tag == "enemy")
+
+        if (collision.tag == "enemy")
         {
             crouch = false;
         }
-       /* if (collision.tag == "Wheel")
-        {
+        /* if (collision.tag == "Wheel")
+         {
 
-            textkolowrotek.text = "Press U to Use";
-            if (Input.GetKeyDown(KeyCode.U))
-            {
-                if (!Input.GetKeyDown(KeyCode.Escape))
-                {
-                    animator.Play(animationwheel);
-                    AnimatorStateInfo animState = animator.GetCurrentAnimatorStateInfo(0);
-                    float currentTime = animState.normalizedTime % 1;
-                    if (currentTime == 63)
-                    {
-                        animator.Play(animationwheel);
-                    }
+             textkolowrotek.text = "Press U to Use";
+             if (Input.GetKeyDown(KeyCode.U))
+             {
+                 if (!Input.GetKeyDown(KeyCode.Escape))
+                 {
+                     animator.Play(animationwheel);
+                     AnimatorStateInfo animState = animator.GetCurrentAnimatorStateInfo(0);
+                     float currentTime = animState.normalizedTime % 1;
+                     if (currentTime == 63)
+                     {
+                         animator.Play(animationwheel);
+                     }
 
 
-                }
+                 }
 
-            }
+             }
 
-        }
-       */
+         }
+        */
 
     }
-    IEnumerator Waiter(float sek, Item item,Vector3Int mousepos)
+    IEnumerator Waiter(float sek, Item item, Vector3Int mousepos)
     {
         waiterrunning = true;
         buildAllowed = false;
         tilemapdestroy.SetTile(mousepos, tiledestroy);
         yield return new WaitForSeconds(sek);
-        tilemapdestroy.SetTile(mousepos, null);   
+        tilemapdestroy.SetTile(mousepos, null);
         tilemain.SetTile(mousepos, null);
         tiletwo.SetTile(mousepos, null);
         inventory.AddItem(item);
         uiInventory.RefreshInventoryItems();
-  
+
         buildAllowed = true;
 
 
@@ -706,29 +739,29 @@ public class ruchgracza : MonoBehaviour
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
-      /*  if (collision.tag == "Wheel")
-        {
-            textkolowrotek.text = "";
+        /*  if (collision.tag == "Wheel")
+          {
+              textkolowrotek.text = "";
 
-        }
-      */
+          }
+        */
     }
     public void OnTriggerStay2D(Collider2D collision)
     {
-       /* if (collision.tag == "Wheel")
-        {
-            textkolowrotek.text = "Press U to Use";
-            if (Input.GetKeyDown(KeyCode.U))
-            {
-                if (!Input.GetKeyDown(KeyCode.Escape))
-                {
-                    animator.Play(animationwheel);
-                    AnimatorStateInfo animState = animator.GetCurrentAnimatorStateInfo(0);
-                    float currentTime = animState.normalizedTime % 1;
-                    if (currentTime == 63)
-                    {
-                        animator.Play(animationwheel);
-                    }
+        /* if (collision.tag == "Wheel")
+         {
+             textkolowrotek.text = "Press U to Use";
+             if (Input.GetKeyDown(KeyCode.U))
+             {
+                 if (!Input.GetKeyDown(KeyCode.Escape))
+                 {
+                     animator.Play(animationwheel);
+                     AnimatorStateInfo animState = animator.GetCurrentAnimatorStateInfo(0);
+                     float currentTime = animState.normalizedTime % 1;
+                     if (currentTime == 63)
+                     {
+                         animator.Play(animationwheel);
+                     }
 
 
 
@@ -736,13 +769,13 @@ public class ruchgracza : MonoBehaviour
 
 
 
-                }
+                 }
 
-            }*/
-            crouch = false;
-        }
+             }*/
+        crouch = false;
+    }
 
-    
+
     public static void EnterMenu()
     {
         buildAllowed = false;
@@ -751,9 +784,9 @@ public class ruchgracza : MonoBehaviour
     {
         buildAllowed = true;
     }
-  public void layerbtnclicked()
+    public void layerbtnclicked()
     {
-        if(layerindex == 1)
+        if (layerindex == 1)
         {
             layerindex = 2;
             textlayer.GetComponent<Text>().text = layerindex.ToString();
@@ -773,45 +806,45 @@ public class ruchgracza : MonoBehaviour
     public void SoundEffects(Vector3Int mouseTileCoords1)
     {
 
-        
 
-     
-        
-            if (tilemain.GetTile(mouseTileCoords1) == tilebuild[0] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[0])
-            {
+
+
+
+        if (tilemain.GetTile(mouseTileCoords1) == tilebuild[0] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[0])
+        {
             //musicplay.PlayOneShot(musicclips[0]);
             musicplay.clip = musicclips[0];
             musicplay.Play();
-            }
-            else if (tilemain.GetTile(mouseTileCoords1) == tilebuild[1] || tilemain.GetTile(mouseTileCoords1) == tilebuild[4] || tilemain.GetTile(mouseTileCoords1) == tilebuild[6] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[1] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[4] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[6])
-            {
+        }
+        else if (tilemain.GetTile(mouseTileCoords1) == tilebuild[1] || tilemain.GetTile(mouseTileCoords1) == tilebuild[4] || tilemain.GetTile(mouseTileCoords1) == tilebuild[6] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[1] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[4] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[6])
+        {
             // musicplay.PlayOneShot(musicclips[1]);
             musicplay.clip = musicclips[1];
             musicplay.Play();
         }
-            else if (tilemain.GetTile(mouseTileCoords1) == tilebuild[2] || tilemain.GetTile(mouseTileCoords1) == tilebuild[3] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[2] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[3])
-            {
+        else if (tilemain.GetTile(mouseTileCoords1) == tilebuild[2] || tilemain.GetTile(mouseTileCoords1) == tilebuild[3] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[2] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[3])
+        {
             // musicplay.PlayOneShot(musicclips[2]);
             musicplay.clip = musicclips[2];
             musicplay.Play();
         }
 
-            else if (tilemain.GetTile(mouseTileCoords1) == tilebuild[5] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[5])
-            {
+        else if (tilemain.GetTile(mouseTileCoords1) == tilebuild[5] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[5])
+        {
             // musicplay.PlayOneShot(musicclips[3]);
             musicplay.clip = musicclips[3];
             musicplay.Play();
         }
 
-            else if (tilemain.GetTile(mouseTileCoords1) == tilebuild[7] || tilemain.GetTile(mouseTileCoords1) == tilebuild[8] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[7] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[8] )
-            {
+        else if (tilemain.GetTile(mouseTileCoords1) == tilebuild[7] || tilemain.GetTile(mouseTileCoords1) == tilebuild[8] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[7] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[8])
+        {
             //musicplay.PlayOneShot(musicclips[4]);
             musicplay.clip = musicclips[4];
             musicplay.Play();
         }
 
-        
-  
+
+
 
 
 
@@ -828,16 +861,16 @@ public class ruchgracza : MonoBehaviour
 
     public void BtnClicked(Image image)
     {
-        
-       
-        if(WorldSettings.creative == false)
+
+
+        if (WorldSettings.creative == false)
         {
             foreach (var item in inventory.GetItemList())
-             {
-                if(item.sprite == image.sprite)
+            {
+                if (item.sprite == image.sprite)
                 {
                     currentile = item.itemtile;
-                    
+                    alerttext.text = "Press E to eat";
                 }
             }
         }
@@ -845,57 +878,57 @@ public class ruchgracza : MonoBehaviour
         {
             for (int i = 0; i < imgblocks.Length; i++)
             {
-               if(image.sprite == imgblocks[i])
+                if (image.sprite == imgblocks[i])
                 {
                     id = i;
                     Debug.Log(id);
                 }
-                
-                
+
+
             }
-               
-            
-             
-            
+
+
+
+
         }
         //for each object in the array..
-       
-            
-        
-       
-       
+
+
+
+
+
     }
 
 
-       
-        private void PokazObrazki(int index)
+
+    private void PokazObrazki(int index)
+    {
+        for (int i = 0; i < buttonsimggameobject.Length; i++)
         {
-            for (int i = 0; i < buttonsimggameobject.Length; i++)
-            {
-                Image image = buttonsimggameobject[i].GetComponent<Image>();
+            Image image = buttonsimggameobject[i].GetComponent<Image>();
             buttonsimggameobject[i].gameObject.GetComponentInParent<Button>().interactable = true;
-                if (i + index < imgblocks.Length && i + index >= 0) 
-                { 
+            if (i + index < imgblocks.Length && i + index >= 0)
+            {
                 image.sprite = imgblocks[i + index];
-                image.color =pustykolor;
-                
-                 }
-                else
-                {
-                    image.sprite = null;
-                image.color = greencolor;
-                buttonsimggameobject[i].gameObject.GetComponentInParent<Button>().interactable = false;
-                }
-
-
-
-
-
-
+                image.color = pustykolor;
 
             }
+            else
+            {
+                image.sprite = null;
+                image.color = greencolor;
+                buttonsimggameobject[i].gameObject.GetComponentInParent<Button>().interactable = false;
+            }
+
+
+
+
+
+
 
         }
+
+    }
     /* public void OnCrouch()
       {
       BoundsInt bounds = tilemain.cellBounds;
@@ -919,7 +952,7 @@ public class ruchgracza : MonoBehaviour
           }
       }
   }*/
-    
+
 }
 
 

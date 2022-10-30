@@ -551,7 +551,7 @@ public class BaseFunc : MonoBehaviour
                     item.itemtile = Resources.Load<TileBase>(itemsave.tilepath);
                     item.sprite = Resources.Load<Sprite>(itemsave.spritepath);
                     inventory.AddItem(item);
-                Debug.Log(item.itemtile.name);
+                
                 uiinventory.RefreshInventoryItems();
                 
             }

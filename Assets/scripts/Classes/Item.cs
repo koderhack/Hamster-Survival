@@ -17,9 +17,46 @@ public class Item
         
 
     }
+    public enum ItemUseType
+    {
+       Block,
+       Food,
+       RadiationSuit,
+
+
+
+    }
+    public int HungerPoints()
+    {
+        if(itemusetype == ItemUseType.Food)
+        {
+            if(sprite.name == "apple")
+            {
+                return 20;
+            }
+            else if(sprite.name == "gruszka")
+            {
+                return 50;
+            }
+            else if (sprite.name == "dynia")
+            {
+                return 30;
+            }
+            else
+            {
+                return 30;
+            }
+        }
+        else
+        {
+            return 0;
+        }
+    }
     public ItemType itemtype;
+    public ItemUseType itemusetype;
     public int amount = 1;
-    [SerializeField] public Sprite sprite;
+    [SerializeField] public Sprite sprite; 
+    
     public float damagesec()
     {
         if(sprite.name == "ziemia")
@@ -51,6 +88,7 @@ public class Item
 
     }
    
+
 
 
 }
