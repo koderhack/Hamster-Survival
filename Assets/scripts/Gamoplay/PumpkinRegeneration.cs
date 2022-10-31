@@ -10,6 +10,7 @@ public class PumpkinRegeneration : MonoBehaviour
     public GameObject player;
     float timer;
     public float interval = 2;
+    int pumpkinlife = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,7 @@ public class PumpkinRegeneration : MonoBehaviour
             if (timer >= interval)
             {
                 PlayerSettings.life++;
-
+                pumpkinlife--;
 
                 timer -= interval;
             }

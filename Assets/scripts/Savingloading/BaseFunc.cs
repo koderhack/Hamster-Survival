@@ -121,7 +121,7 @@ public class BaseFunc : MonoBehaviour
         //debug
         // Debug.Log("Level was saved");
     }
-    public void LoadLevel(Tilemap mapa, TileBase tilelight, GameObject lightoryginal,string worldname)
+    public void LoadLevel(Tilemap mapa, TileBase tilelight, TileBase pumpkinlight, GameObject lightoryginal,GameObject pumpkinlightoryginal, string worldname)
     {
         string path = Path.Combine(Application.persistentDataPath, SecurityCheck(worldname));
         path = Path.Combine(path, "Base");
@@ -146,13 +146,18 @@ public class BaseFunc : MonoBehaviour
                 {
                     Instantiate(lightoryginal, new Vector3Int(data.poses_x[i], data.poses_y[i], 0), Quaternion.identity);
                 }
+                if(tile1 == pumpkinlight)
+                {
+                    Instantiate(pumpkinlightoryginal, new Vector3Int(data.poses_x[i], data.poses_y[i], 0), Quaternion.identity);
+                }
+            
             }
 
             //debug
            // Debug.Log("Level was loaded");
         }
     }
-    public void LoadLevel2(Tilemap mapa, TileBase tilelight1, GameObject lightoryginal1, string worldname)
+    public void LoadLevel2(Tilemap mapa, TileBase tilelight1,TileBase pumpkinlight1, GameObject lightoryginal1,GameObject pumpkinlightoryginal1, string worldname)
     {
         string path = Path.Combine(Application.persistentDataPath, SecurityCheck(worldname));
         path = Path.Combine(path, "Base");
@@ -176,6 +181,10 @@ public class BaseFunc : MonoBehaviour
                 if (tile1 == tilelight1)
                 {
                     Instantiate(lightoryginal1, new Vector3Int(data.poses_x[i], data.poses_y[i], 0), Quaternion.identity);
+                }
+                if(tile1 == pumpkinlight1)
+                {
+                    Instantiate(pumpkinlightoryginal1, new Vector3Int(data.poses_x[i], data.poses_y[i], 0), Quaternion.identity);
                 }
             }
 
@@ -596,13 +605,13 @@ public class BaseFunc : MonoBehaviour
         Savelevel(mapa,worldname);
         Savelevel2(mapa2, worldname);
     }
-    public void LoadWorld(Tilemap mapa,Tilemap mapa2, TileBase tilelight, GameObject lightoryginal,string worldname,UI_inventory uiinventory)
+    public void LoadWorld(Tilemap mapa,Tilemap mapa2, TileBase tilelight,TileBase pumpkinlight, GameObject lightoryginal,GameObject pumpkinlightoryginal,string worldname,UI_inventory uiinventory)
     {
         LoadSettings(worldname);
         LoadPlayerSettings(worldname);
         LoadInventory(worldname,uiinventory);
-        LoadLevel(mapa, tilelight, lightoryginal,worldname);
-        LoadLevel2(mapa2, tilelight, lightoryginal, worldname);
+        LoadLevel(mapa, tilelight,pumpkinlight, lightoryginal,pumpkinlightoryginal,worldname);
+        LoadLevel2(mapa2, tilelight,pumpkinlight, lightoryginal,pumpkinlightoryginal, worldname);
     }
     public void CreateWorld(string worldname, bool creative,bool[] settings)
     {

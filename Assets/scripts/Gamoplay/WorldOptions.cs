@@ -35,7 +35,8 @@ public class WorldOptions : MonoBehaviour
     public GameObject survipanel;
     public GameObject craftpanel;
     public GameObject objectivespanel;
-
+    public GameObject pumpkinlightoryginal;
+    public TileBase pumpkinlight;
 
     public Text debug;
     bool craftingopened;
@@ -78,7 +79,7 @@ public class WorldOptions : MonoBehaviour
             PlayerPrefs.SetInt("KeyLoad", 0);
             PlayerPrefs.Save();
 
-            BaseFunc.Instance.LoadWorld(mapa, mapa2, tilelight, lightoryginal, WorldSettings.worldname, inventoryui);
+            BaseFunc.Instance.LoadWorld(mapa, mapa2, tilelight,pumpkinlight, lightoryginal,pumpkinlightoryginal, WorldSettings.worldname, inventoryui);
 
 
 

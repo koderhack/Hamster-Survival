@@ -37644,6 +37644,8 @@ MonoBehaviour:
   survipanel: {fileID: 253677087}
   craftpanel: {fileID: 1328916800}
   objectivespanel: {fileID: 646526988}
+  pumpkinlightoryginal: {fileID: 1299049101278316925, guid: 34e71b62895c0ce40ad901aa9f14e7cf, type: 3}
+  pumpkinlight: {fileID: 11400000, guid: 5b82a6073e0cf4540855c5f6fe6c9848, type: 2}
   debug: {fileID: 1710664799}
   grid: {fileID: 837324866}
 --- !u!4 &894567233
