@@ -10,6 +10,7 @@ TagManager:
   - tilemap2
   - inventory
   - enemy
+  - LanternLight
   layers:
   - Default
   - TransparentFX

@@ -35,8 +35,11 @@ public class ruchgracza : MonoBehaviour
     public Dropdown dropdownitem;
     public static bool buildAllowed;
     public GameObject lightorginal;
+    public GameObject lanternlight;
+
     public bool lampbuildingallowed;
     GameObject[] clones;
+    GameObject[] lanternclones;
     GameObject light1;
     public AudioSource musicplay;
 
@@ -159,7 +162,7 @@ public class ruchgracza : MonoBehaviour
 
         textlayer.GetComponent<Text>().text = layerindex.ToString();
         clones = GameObject.FindGameObjectsWithTag("LampLight");
-
+        lanternclones = GameObject.FindGameObjectsWithTag("LanternLight");
 
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int mouseTileCoords = grid.WorldToCell(mouseWorldPos);
@@ -221,6 +224,28 @@ public class ruchgracza : MonoBehaviour
                         if (tilemain.GetTile(mouseTileCoords) == tilebuild[6])
                         {
                             foreach (var clone2 in clones)
+                            {
+                                if (clone2.transform.position == mouseTileCoords)
+                                {
+                                    Destroy(clone2);
+                                }
+                            }
+
+                        }
+                        if (tilemain.GetTile(mouseTileCoords) == tilebuild[18])
+                        {
+                            foreach (var clone2 in lanternclones)
+                            {
+                                if (clone2.transform.position == mouseTileCoords)
+                                {
+                                    Destroy(clone2);
+                                }
+                            }
+
+                        }
+                        if (tiletwo.GetTile(mouseTileCoords) == tilebuild[18])
+                        {
+                            foreach (var clone2 in lanternclones)
                             {
                                 if (clone2.transform.position == mouseTileCoords)
                                 {
@@ -418,6 +443,16 @@ public class ruchgracza : MonoBehaviour
                                 }
                             }
                         }
+                        if (lastTile == tilebuild[18])
+                        {
+                            foreach (var clone2 in lanternclones)
+                            {
+                                if (clone2.transform.position == mouseTileCoords)
+                                {
+                                    Destroy(clone2);
+                                }
+                            }
+                        }
                         TileBase lastTile2 = tiletwo.GetTile(mouseTileCoords);
                         if (lastTile2 == tilebuild[6])
                         {
@@ -429,8 +464,18 @@ public class ruchgracza : MonoBehaviour
                                 }
                             }
                         }
+                        if (lastTile2 == tilebuild[18])
+                        {
+                            foreach (var clone2 in lanternclones)
+                            {
+                                if (clone2.transform.position == mouseTileCoords)
+                                {
+                                    Destroy(clone2);
+                                }
+                            }
+                        }
 
-                        if (tilebuild[id] != tilebuild[6] || currentile != tilebuild[6])
+                        if (tilebuild[id] != tilebuild[6] || currentile != tilebuild[6] || tilebuild[id] != tilebuild[18])
                         {
 
                             // tilemain.SetTile(mouseTileCoords, tilebuild[id]);
@@ -484,14 +529,17 @@ public class ruchgracza : MonoBehaviour
                                 {
                                     if (lastTile == null || lastTile2 == null)
                                     {
-                                        if (tiletwo.GetTile(mouseTileCoords) != currentile)
+                                        if (inventory.GetItem(currentile) != null)
                                         {
-                                            tiletwo.SetTile(mouseTileCoords, currentile);
+                                            if (tiletwo.GetTile(mouseTileCoords) != currentile)
+                                            {
+                                                tiletwo.SetTile(mouseTileCoords, currentile);
 
-                                            inventory.DeleteItem(currentile);
+                                                inventory.DeleteItem(currentile);
 
 
-                                            uiInventory.RefreshInventoryItems();
+                                                uiInventory.RefreshInventoryItems();
+                                            }
                                         }
                                     }
 
@@ -499,6 +547,7 @@ public class ruchgracza : MonoBehaviour
                             }
 
                         }
+                        //tilebuild[6]
                         if (tilebuild[id] == tilebuild[6] || currentile == tilebuild[6] && lampbuildingallowed == true)
                         {
 
@@ -513,12 +562,16 @@ public class ruchgracza : MonoBehaviour
                                 {
                                     if (tilemain.GetTile(mouseTileCoords) != currentile)
                                     {
-                                        tilemain.SetTile(mouseTileCoords, currentile);
+                                        if(tilemain.GetTile(mouseTileCoords) != null)
+                                        {
+                                            tilemain.SetTile(mouseTileCoords, currentile);
 
-                                        inventory.DeleteItem(currentile);
+                                            inventory.DeleteItem(currentile);
 
 
-                                        uiInventory.RefreshInventoryItems();
+                                             uiInventory.RefreshInventoryItems();
+                                        }
+                                       
                                     }
                                 }
 
@@ -531,32 +584,105 @@ public class ruchgracza : MonoBehaviour
                                 }
                                 else
                                 {
-                                    if (tilemain.GetTile(mouseTileCoords) != currentile)
+                                    if (tiletwo.GetTile(mouseTileCoords) != currentile)
                                     {
-                                        tilemain.SetTile(mouseTileCoords, currentile);
+                                        if (tiletwo.GetTile(mouseTileCoords) != null)
+                                        {
+                                            tiletwo.SetTile(mouseTileCoords, currentile);
 
-                                        inventory.DeleteItem(currentile);
+                                            inventory.DeleteItem(currentile);
 
 
-                                        uiInventory.RefreshInventoryItems();
+                                            uiInventory.RefreshInventoryItems();
+                                        }
+
                                     }
                                 }
                             }
-
-                            var clone = Instantiate(lightorginal, mouseTileCoords, Quaternion.identity);
-
-                            foreach (var clone1 in clones)
+                            if(tiletwo.GetTile(mouseTileCoords) == tilebuild[6] || tilemain.GetTile(mouseTileCoords) ==  tilebuild[6])
                             {
-                                if (clone1.transform.position == clone.transform.position)
+                                var clone = Instantiate(lightorginal, mouseTileCoords, Quaternion.identity);
+
+                                foreach (var clone1 in clones)
                                 {
-                                    Destroy(clone1);
+                                    if (clone1.transform.position == clone.transform.position)
+                                    {
+                                        Destroy(clone1);
+                                    }
                                 }
                             }
+                            
 
                             // Destroy(clone);
 
                         }
+                        if (tilebuild[id] == tilebuild[18] || currentile == tilebuild[18] && lampbuildingallowed == true)
+                        {
 
+                            // tilemain.SetTile(mouseTileCoords, tilebuild[id]);
+                            if (layerindex == 1)
+                            {
+                                if (WorldSettings.creative == true)
+                                {
+                                    tilemain.SetTile(mouseTileCoords, tilebuild[id]);
+                                }
+                                else
+                                {
+                                    if (inventory.GetItem(currentile) != null)
+                                    {
+                                        if (tilemain.GetTile(mouseTileCoords) != currentile)
+                                        {
+                                            tilemain.SetTile(mouseTileCoords, currentile);
+
+                                            inventory.DeleteItem(currentile);
+
+
+                                            uiInventory.RefreshInventoryItems();
+                                        }
+                                    }
+                                }
+
+                            }
+                            else
+                            {
+                                if (WorldSettings.creative == true)
+                                {
+                                    tiletwo.SetTile(mouseTileCoords, tilebuild[id]);
+                                }
+                                else
+                                {
+                                    if (inventory.GetItem(currentile) != null)
+                                    {
+                                        if (tiletwo.GetTile(mouseTileCoords) != null)
+                                        {
+                                            if (tiletwo.GetTile(mouseTileCoords) != currentile)
+                                            {
+                                                tiletwo.SetTile(mouseTileCoords, currentile);
+
+                                                inventory.DeleteItem(currentile);
+
+
+                                                uiInventory.RefreshInventoryItems();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            if (tiletwo.GetTile(mouseTileCoords) == tilebuild[18] || tilemain.GetTile(mouseTileCoords) == tilebuild[18])
+                            {
+                                var clone = Instantiate(lanternlight, mouseTileCoords, Quaternion.identity);
+
+                                foreach (var clone1 in lanternclones)
+                                {
+                                    if (clone1.transform.position == clone.transform.position)
+                                    {
+                                        Destroy(clone1);
+                                    }
+                                }
+                            }
+                            // Destroy(clone);
+
+                        }
                     }
                 }
             }
