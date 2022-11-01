@@ -452,6 +452,11 @@ public class BaseFunc : MonoBehaviour
         PlayerSettings.sport = 100;
         PlayerSettings.level = 0;
     }
+    public void WriteAdditionalSettings()
+    {
+        AdditionalSettings.pozycjagracza = new Vector3(-10.3733997f, 1.1336f, 0);
+        AdditionalSettings.killedmobs = 0;
+    }
     public void SavePlayerSettings(string worldname)
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -464,6 +469,21 @@ public class BaseFunc : MonoBehaviour
         data.hunger = PlayerSettings.hunger;
         data.level = PlayerSettings.level;
       
+        bf.Serialize(file, data);
+        file.Close();
+    }
+    public void SaveAdditionalSettings(string worldname)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        string path = Path.Combine(Application.persistentDataPath, SecurityCheck(worldname));
+        path = Path.Combine(path, "addsettings.dat");
+        FileStream file = File.Create(path);
+        AdditionalData data = new AdditionalData();
+        data.pozycjax = AdditionalSettings.pozycjagracza.x;
+        data.pozycjay = AdditionalSettings.pozycjagracza.y;
+        
+        data.killedmobs = AdditionalSettings.killedmobs;
+
         bf.Serialize(file, data);
         file.Close();
     }
@@ -493,10 +513,39 @@ public class BaseFunc : MonoBehaviour
 
 
     }
+    public void LoadAdditionalSettings(string worldname)
+    {
+        string path = Path.Combine(Application.persistentDataPath, SecurityCheck(worldname));
+        path = Path.Combine(path, "addsettings.dat");
+        if (File.Exists(path))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(path, FileMode.Open);
+            AdditionalData data = (AdditionalData)bf.Deserialize(file);
+            AdditionalSettings.pozycjagracza = new Vector3(data.pozycjax, data.pozycjay, 0);
+            AdditionalSettings.killedmobs = data.killedmobs;
+            file.Close();
+
+
+            // Debug.Log("Settings loaded!");
+        }
+        else
+        {
+            // Debug.LogError("There is no save data!");
+        }
+
+
+    }
     public void DeletePlayerSettings(string worldname)
     {
         string path = Path.Combine(Application.persistentDataPath, SecurityCheck(worldname));
         path = Path.Combine(path, "playersettings.dat");
+        File.Delete(path);
+    }
+    public void DeleteAdditionalSettings(string worldname)
+    {
+        string path = Path.Combine(Application.persistentDataPath, SecurityCheck(worldname));
+        path = Path.Combine(path, "addsettings.dat");
         File.Delete(path);
     }
     public void SaveInventory(string worldname)
@@ -601,17 +650,21 @@ public class BaseFunc : MonoBehaviour
     {
         SaveSettings(worldname);
         SavePlayerSettings(worldname);
+        SaveAdditionalSettings(worldname);
         SaveInventory(worldname);
         Savelevel(mapa,worldname);
         Savelevel2(mapa2, worldname);
+       
     }
     public void LoadWorld(Tilemap mapa,Tilemap mapa2, TileBase tilelight,TileBase pumpkinlight, GameObject lightoryginal,GameObject pumpkinlightoryginal,string worldname,UI_inventory uiinventory)
     {
         LoadSettings(worldname);
         LoadPlayerSettings(worldname);
+        LoadAdditionalSettings(worldname);
         LoadInventory(worldname,uiinventory);
         LoadLevel(mapa, tilelight,pumpkinlight, lightoryginal,pumpkinlightoryginal,worldname);
         LoadLevel2(mapa2, tilelight,pumpkinlight, lightoryginal,pumpkinlightoryginal, worldname);
+       
     }
     public void CreateWorld(string worldname, bool creative,bool[] settings)
     {
@@ -625,7 +678,8 @@ public class BaseFunc : MonoBehaviour
         LoadStartLevel2();
             WriteSettings(worldname, creative, settings);
         WritePlayerSettings();
-  
+        WriteAdditionalSettings();
+ 
         
         
     }
@@ -635,6 +689,7 @@ public class BaseFunc : MonoBehaviour
         DeleteLevel2(worldname);
         DeleteSettings(worldname);
         DeletePlayerSettings(worldname);
+        DeleteAdditionalSettings(worldname);
         DeleteInventory(worldname);
         DeleteWorldStructure(worldname);
     }
@@ -679,6 +734,15 @@ public class InventoryDataSave
 
 
 }
+
+[Serializable]
+class AdditionalData
+{
+    public float pozycjax;
+    public float pozycjay;
+    public int killedmobs;
+}
+
 [Serializable]
 public class ItemSave
 {

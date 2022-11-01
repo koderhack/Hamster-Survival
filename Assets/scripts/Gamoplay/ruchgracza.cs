@@ -87,6 +87,8 @@ public class ruchgracza : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.position = AdditionalSettings.pozycjagracza;
+
         currentitem = null;
         layerindex = 1;
         alerttext.text = "";
@@ -106,7 +108,7 @@ public class ruchgracza : MonoBehaviour
         }
 
         textlayer.GetComponent<Text>().text = layerindex.ToString();
-
+        
     }
 
 
@@ -124,6 +126,7 @@ public class ruchgracza : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        AdditionalSettings.pozycjagracza = transform.position;
         if(PlayerSettings.hunger >= 100)
         {
             PlayerSettings.hunger = 100;

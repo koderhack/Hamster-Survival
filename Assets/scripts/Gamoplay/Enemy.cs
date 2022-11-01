@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Enemy.killedEnemies = AdditionalSettings.killedmobs;
         rb = GetComponent<Rigidbody2D>();
         
         LocalScale = transform.localScale;
@@ -27,11 +28,13 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         MoveEnemy();
         if (hp <= 0)
         {
             Destroy(this.gameObject);
             killedEnemies++;
+            AdditionalSettings.killedmobs = killedEnemies;
         }
 
     }
