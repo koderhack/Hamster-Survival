@@ -6,7 +6,9 @@ using UnityEngine;
 public class ObjectiveManager : MonoBehaviour
 {
 
-    private Item szko;
+    Item szko;
+    Item lantern;
+    Item food;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,10 @@ public class ObjectiveManager : MonoBehaviour
             {
                 szko = item;
             }
+            else if (item.itemtile.name == "jackolantern")
+            {
+                lantern = item;
+            }
             
         }
         if(szko != null)
@@ -37,12 +43,20 @@ public class ObjectiveManager : MonoBehaviour
                
                
             }
-            if (PlayerSettings.level == 1 && Enemy.killedEnemies == 10)
+            else if (PlayerSettings.level == 1 && Enemy.killedEnemies == 10)
             {
                 PlayerSettings.level = 2;
 
 
             }
+            //food
+            else if (PlayerSettings.level == 2 && )
+            {
+                PlayerSettings.level = 3;
+
+
+            }
+
         }
         
         /*

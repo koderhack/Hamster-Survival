@@ -28,13 +28,13 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        AdditionalSettings.killedmobs = killedEnemies;
         MoveEnemy();
         if (hp <= 0)
         {
             Destroy(this.gameObject);
             killedEnemies++;
-            AdditionalSettings.killedmobs = killedEnemies;
+            
         }
 
     }
