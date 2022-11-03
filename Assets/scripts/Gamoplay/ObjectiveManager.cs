@@ -33,7 +33,13 @@ public class ObjectiveManager : MonoBehaviour
             {
                 lantern = item;
             }
-            
+            else if(item.itemtile.name == "apple" || item.itemtile.name == "gruszka")
+            {
+                food = item;
+
+            }
+
+
         }
         if(szko != null)
         {
@@ -50,9 +56,15 @@ public class ObjectiveManager : MonoBehaviour
 
             }
             //food
-            else if (PlayerSettings.level == 2 && )
+            else if (PlayerSettings.level == 2 && food != null)
             {
                 PlayerSettings.level = 3;
+
+
+            }
+            else if (PlayerSettings.level == 3 && lantern != null)
+            {
+                PlayerSettings.level = 4;
 
 
             }
