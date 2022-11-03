@@ -18,12 +18,11 @@ public class cykldniainocy : MonoBehaviour
     private float DayValue;
     private float NightValue;
     public static float timer = 0;
-    public bool testcontrolleractive;
-    public bool testcontrollerday;
+ 
     public static bool sleepcontrolleractive;
     public static bool isday;
     public Text wskaznik;
-
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -42,21 +41,11 @@ public class cykldniainocy : MonoBehaviour
         
         if(WorldSettings.creative == false)
         {
-            if (testcontrolleractive == true || sleepcontrolleractive == true)
-            {
-                 if (testcontrollerday == true)
-                 {
-                timer = 0;
-                }
-                else
-                {
-                timer = 600;
-                }
-            }
-            else
-            {
+            
+              
+           
                 timer = Time.deltaTime;
-            }
+            
            
             
             if (timer >= dayStart)
