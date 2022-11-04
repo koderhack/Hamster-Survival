@@ -29,8 +29,8 @@ public class cykldniainocy : MonoBehaviour
         dayLength = 1200;
         dayStart = 0;
         nightStart = 600;
-
-       // timer = AdditionalSettings.timer;
+       
+        timer = AdditionalSettings.timer;
        
 
 
