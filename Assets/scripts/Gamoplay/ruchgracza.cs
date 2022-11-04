@@ -779,7 +779,7 @@ public class ruchgracza : MonoBehaviour
 
             animatorplayer.SetBool("isSleeping", false);
 
-            cykldniainocy.timer = 600;
+            AdditionalSettings.daycontroller = false;
         }
 
 

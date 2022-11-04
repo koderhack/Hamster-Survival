@@ -19,7 +19,8 @@ public class cykldniainocy : MonoBehaviour
     private float NightValue;
     public static float timer = 0;
     public static bool isday;
-   
+    public static bool daycontroller;
+
    
     public Text wskaznik;
    
@@ -30,7 +31,7 @@ public class cykldniainocy : MonoBehaviour
         dayStart = 0;
         nightStart = 600;
        
-        timer = AdditionalSettings.timer;
+       
        
 
 
@@ -44,10 +45,20 @@ public class cykldniainocy : MonoBehaviour
 
         if (WorldSettings.creative == false)
         {
+            daycontroller = AdditionalSettings.daycontroller;
            
+                 if (daycontroller == true)
+                {
+                    timer = 0;
+                }
+                else
+                {
+                    timer = 600;
+                }
+            
+      
 
-
-            timer = Time.deltaTime;
+          
 
            
 
@@ -57,14 +68,15 @@ public class cykldniainocy : MonoBehaviour
                 isday = true;
                 MonstersSpawn.active = true;
                 wskaznik.text = "Day";
-               
-               
+                AdditionalSettings.daycontroller = isday;
+
             }
             if (timer >= nightStart)
             {
                 MonstersSpawn.active = false;
                 //dzieñ nie (noc)
                 isday = false;
+                AdditionalSettings.daycontroller = isday;
                 wskaznik.text = "Night";
             }
             if (timer >= dayLength)
