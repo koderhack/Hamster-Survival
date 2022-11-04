@@ -14,13 +14,13 @@ public class cykldniainocy : MonoBehaviour
     private int nightStart;    
     private float currentTime;
     
-    private bool isDay;
+    
     private float DayValue;
     private float NightValue;
     public static float timer = 0;
- 
-    public static bool sleepcontrolleractive;
     public static bool isday;
+   
+   
     public Text wskaznik;
    
     // Start is called before the first frame update
@@ -29,32 +29,35 @@ public class cykldniainocy : MonoBehaviour
         dayLength = 1200;
         dayStart = 0;
         nightStart = 600;
-        
+
+       // timer = AdditionalSettings.timer;
        
-        
-        
+
 
     }
 
     void Update()
     {
-        
-        if(WorldSettings.creative == false)
+
+
+        Debug.Log(timer);
+
+        if (WorldSettings.creative == false)
         {
-            
-              
            
-                timer = Time.deltaTime;
-            
+
+
+            timer = Time.deltaTime;
+
            
-            
+
             if (timer >= dayStart)
             {
                 //dzieñ tak
-          
+                isday = true;
                 MonstersSpawn.active = true;
                 wskaznik.text = "Day";
-                isday = true;
+               
                
             }
             if (timer >= nightStart)

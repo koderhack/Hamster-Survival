@@ -774,7 +774,7 @@ public class ruchgracza : MonoBehaviour
 
             animatorplayer.SetBool("isSleeping", true);
             yield return new WaitForSeconds(5);
-            cykldniainocy.sleepcontrolleractive = true;
+            
             PlayerSettings.life = 100;
 
             animatorplayer.SetBool("isSleeping", false);
@@ -784,7 +784,7 @@ public class ruchgracza : MonoBehaviour
 
 
 
-
+        
 
     }
     IEnumerator HungerKill()

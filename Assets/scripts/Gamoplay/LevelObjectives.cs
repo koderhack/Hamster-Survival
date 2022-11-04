@@ -36,7 +36,8 @@ public class LevelObjectives : MonoBehaviour
                 loretopic.text = $"You will find out in the future";
                 break;
             case 4:
-                objectivetext.text = "Objective: Sleep through the first day";
+                objectivetext.text = "Objective:" 
+                   + "through the first day";
                 loretopic.text = "Zzzzz..., Zzzzz...";
                 break;
             case 5:

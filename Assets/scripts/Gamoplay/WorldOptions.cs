@@ -234,7 +234,7 @@ public class WorldOptions : MonoBehaviour
             debug.text = $"Player Position: {player.transform.position}\n" +
                 $"MousePosition:{mouseWorldPos}\n" +
                 $"Mouse Tile Position: {mouseTileCoords}\n" +
-                $"Is Day: {cykldniainocy.isday}\n" +
+                $"Time: {cykldniainocy.timer}\n" +
                 $"Creative: {WorldSettings.creative}\n" +
                 $"Monsters:{numbermonsters}\n";
         }
