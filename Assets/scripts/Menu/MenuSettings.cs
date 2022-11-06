@@ -31,7 +31,9 @@ public class MenuSettings : MonoBehaviour
     public GameObject panelinfo;
     private GameObject buttonclicked;
     private GameObject deletebuttonclicked;
+    public GameObject slash;
     bool creative;
+    bool[] settingslist;
     public GameObject modebtn;
 
     public void Start()
@@ -47,7 +49,7 @@ public class MenuSettings : MonoBehaviour
         btncreate.SetActive(true);
         panelcredits.SetActive(false);
         creative = true;
-
+        settingslist[1] = false;
 
     }
 
@@ -180,6 +182,19 @@ public class MenuSettings : MonoBehaviour
         }
 
     }
+    public void HCBtnClicked()
+    {
+        if(settingslist[1] == true)
+        {
+            settingslist[1] = false;
+            slash.SetActive(true);
+        }
+        else
+        {
+            settingslist[1] = true;
+            slash.SetActive(false);
+        }
+    }
     public void CreativeBtnClicked()
     {
         if(creative == true)
@@ -207,7 +222,7 @@ public class MenuSettings : MonoBehaviour
 
         WorldSettings.worldname = nameinput.text;
         WorldSettings.creative = creative;
-        bool[] settings = { true, true, true };
+        bool[] settings = settingslist;
         WorldSettings.settings = settings;
         PlayerPrefs.SetInt("Key", 1);
         PlayerPrefs.Save();

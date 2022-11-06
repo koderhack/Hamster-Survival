@@ -77,6 +77,7 @@ public class ruchgracza : MonoBehaviour
     float timer;
     Vector3 lastPos;
     bool ismoving;
+    GameObject[] graves;
 
     private void Awake()
     {
@@ -126,6 +127,7 @@ public class ruchgracza : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        graves = GameObject.FindGameObjectsWithTag("grave");
         AdditionalSettings.pozycjagracza = transform.position;
         if(PlayerSettings.hunger >= 100)
         {
@@ -205,6 +207,15 @@ public class ruchgracza : MonoBehaviour
             crouch = false;
         }
        
+        if(graves != null)
+        {
+            buildAllowed = false;
+            alerttext.text = "To start building or destroying find a grave";
+        }
+        else
+        {
+            buildAllowed = true;
+        }
         //destroy
 
         if (Input.GetKey(KeyCode.Mouse0))

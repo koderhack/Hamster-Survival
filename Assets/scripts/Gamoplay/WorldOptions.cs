@@ -37,7 +37,7 @@ public class WorldOptions : MonoBehaviour
     public GameObject objectivespanel;
     public GameObject pumpkinlightoryginal;
     public TileBase pumpkinlight;
-
+    public GameObject grave;
     public Text debug;
     bool craftingopened;
     bool debugopened;
@@ -208,6 +208,8 @@ public class WorldOptions : MonoBehaviour
        
         PlayerSettings.life = 100;
         PlayerSettings.hunger = 100;
+        Instantiate(grave, player.transform.position, Quaternion.identity);
+        player.transform.position = new Vector3(-10.3733997f, 1.1336f, 0);
     }
     public void Update()
     {
@@ -234,9 +236,10 @@ public class WorldOptions : MonoBehaviour
             debug.text = $"Player Position: {player.transform.position}\n" +
                 $"MousePosition:{mouseWorldPos}\n" +
                 $"Mouse Tile Position: {mouseTileCoords}\n" +
-                $"Time: {cykldniainocy.timer}\n" +
+                $"IsDay: {cykldniainocy.isday}\n" +
                 $"Creative: {WorldSettings.creative}\n" +
-                $"Monsters:{numbermonsters}\n";
+                $"Monsters:{numbermonsters}\n" +
+                $"If the grave in not accesible,press G when the debug is enabled\n";
         }
         else
         {
@@ -262,6 +265,18 @@ public class WorldOptions : MonoBehaviour
        
 
             }
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                if (debugopened)
+                {
+                    inventoryui.RefreshInventoryItems();
+                }
+
+                
+
+            }
+
+
         }
        
 
@@ -271,7 +286,10 @@ public class WorldOptions : MonoBehaviour
             {
                 PlayerSettings.life = 0;
                 diepanel.SetActive(true);
-               
+                inventoryui.GraphicDeleteInventoryItems();
+                
+
+
             }
             if (PlayerSettings.life > 100)
             {

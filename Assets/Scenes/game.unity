@@ -231,8 +231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49abf007586f25a4f9d503669b368102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testcontrolleractive: 0
-  testcontrollerday: 0
   wskaznik: {fileID: 12784473}
 --- !u!4 &20604168
 Transform:
@@ -37646,6 +37644,7 @@ MonoBehaviour:
   objectivespanel: {fileID: 646526988}
   pumpkinlightoryginal: {fileID: 1299049101278316925, guid: 34e71b62895c0ce40ad901aa9f14e7cf, type: 3}
   pumpkinlight: {fileID: 11400000, guid: 5b82a6073e0cf4540855c5f6fe6c9848, type: 2}
+  grave: {fileID: 7668492998037718366, guid: ab3c28cd9fd290e4bb7fbe5e0ab5ca26, type: 3}
   debug: {fileID: 1710664799}
   grid: {fileID: 837324866}
 --- !u!4 &894567233

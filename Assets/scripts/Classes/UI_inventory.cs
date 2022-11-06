@@ -58,8 +58,26 @@ public class UI_inventory : MonoBehaviour
 
 
     }
+    public void GraphicDeleteInventoryItems()
+    {
+        for (int i = 0; i < images.Length; i++)
+        {
+            Image image = images[i].GetComponent<Image>();
+            image.sprite = null;
+            image.color = color;
+        }
+        for (int i = 0; i < images.Length; i++)
+        {
 
+            Text text = images[i].transform.parent.GetComponentInChildren<Text>();
+            text.text = "";
+        }
+        
+       
 
     }
+
+
+}
    
 

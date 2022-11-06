@@ -11,6 +11,7 @@ TagManager:
   - inventory
   - enemy
   - LanternLight
+  - grave
   layers:
   - Default
   - TransparentFX
