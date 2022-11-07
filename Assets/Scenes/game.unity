@@ -37647,6 +37647,7 @@ MonoBehaviour:
   grave: {fileID: 7668492998037718366, guid: ab3c28cd9fd290e4bb7fbe5e0ab5ca26, type: 3}
   debug: {fileID: 1710664799}
   grid: {fileID: 837324866}
+  respawnbtn: {fileID: 1564038128}
 --- !u!4 &894567233
 Transform:
   m_ObjectHideFlags: 0
@@ -45074,8 +45075,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -708.62384, y: 5.8822}
-  m_SizeDelta: {x: 593.2476, y: 82.2355}
+  m_AnchoredPosition: {x: -958.336, y: 1.5244}
+  m_SizeDelta: {x: 1099.705, y: 119.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2102505434
 MonoBehaviour:

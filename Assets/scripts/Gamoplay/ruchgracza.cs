@@ -127,7 +127,7 @@ public class ruchgracza : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        graves = GameObject.FindGameObjectsWithTag("grave");
+        
         AdditionalSettings.pozycjagracza = transform.position;
         if(PlayerSettings.hunger >= 100)
         {
@@ -206,16 +206,21 @@ public class ruchgracza : MonoBehaviour
         {
             crouch = false;
         }
-       
-        if(graves != null)
-        {
-            buildAllowed = false;
+      
+            if (WorldOptions.gravemode == true)
+            {
             alerttext.text = "To start building or destroying find a grave";
-        }
-        else
-        {
+
+            buildAllowed = false;
+                
+            }
+            else
+            {
+            alerttext.text = "";
             buildAllowed = true;
-        }
+            }
+        
+        
         //destroy
 
         if (Input.GetKey(KeyCode.Mouse0))

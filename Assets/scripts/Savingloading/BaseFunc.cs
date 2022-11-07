@@ -364,7 +364,7 @@ public class BaseFunc : MonoBehaviour
         SaveData data = new SaveData();
         data.worldnamesave = WorldSettings.worldname;
         data.creativesave = WorldSettings.creative;
-        data.settingssave = WorldSettings.settings;
+        data.hardcoresave = WorldSettings.hardcore;
         bf.Serialize(file, data);
         file.Close();
        // Debug.Log("Settings Saved!");
@@ -381,7 +381,7 @@ public class BaseFunc : MonoBehaviour
             file.Close();
             WorldSettings.worldname = data.worldnamesave;
             WorldSettings.creative = data.creativesave;
-            WorldSettings.settings = data.settingssave;
+            WorldSettings.hardcore = data.hardcoresave;
            // Debug.Log("Settings loaded!");
         }
         else
@@ -410,7 +410,7 @@ public class BaseFunc : MonoBehaviour
             
             WorldInfo.worldname = data.worldnamesave;
             WorldInfo.creative = data.creativesave;
-            WorldInfo.settings = data.settingssave;
+            WorldInfo.hardcore = data.hardcoresave;
            // Debug.Log("Settings loaded!");
            
         }
@@ -421,11 +421,11 @@ public class BaseFunc : MonoBehaviour
 
 
     }
-    public void WriteSettings(string worldname, bool creative, bool[] settings)
+    public void WriteSettings(string worldname, bool creative, bool hardcore)
     {
         WorldSettings.worldname = worldname;
         WorldSettings.creative = creative;
-        WorldSettings.settings = settings;
+        WorldSettings.hardcore = hardcore;
     }
     public string SecurityCheck(string worldname)
     {
@@ -670,7 +670,7 @@ public class BaseFunc : MonoBehaviour
         LoadLevel2(mapa2, tilelight,pumpkinlight, lightoryginal,pumpkinlightoryginal, worldname);
        
     }
-    public void CreateWorld(string worldname, bool creative,bool[] settings)
+    public void CreateWorld(string worldname, bool creative,bool hardcore)
     {
          mapa = GameObject.FindGameObjectWithTag("tilemap").GetComponent<Tilemap>();
         mapa2 = GameObject.FindGameObjectWithTag("tilemap2").GetComponent<Tilemap>(); 
@@ -680,7 +680,7 @@ public class BaseFunc : MonoBehaviour
         GenerateWorldStructure(worldname);
             LoadStartLevel();
         LoadStartLevel2();
-            WriteSettings(worldname, creative, settings);
+            WriteSettings(worldname, creative, hardcore);
         WritePlayerSettings();
         WriteAdditionalSettings();
  
@@ -714,7 +714,7 @@ class SaveData
 {
   public string worldnamesave;
   public bool creativesave;
-  public bool[] settingssave;
+    public bool hardcoresave;
 }
 [Serializable]
 class PlayerData

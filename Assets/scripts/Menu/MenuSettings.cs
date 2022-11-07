@@ -15,9 +15,11 @@ public class MenuSettings : MonoBehaviour
     public GameObject[] namegameobject;
     public GameObject[] modegameobject;
     public GameObject[] deletegameobject;
+    public GameObject[] hardcoregameobject;
     public GameObject paneldelete;
     public InputField nameinput;
     public GameObject btncreate;
+    public Button btncreate2;
     public Text worldname;
     public int worldindex;
     string name;
@@ -33,9 +35,9 @@ public class MenuSettings : MonoBehaviour
     private GameObject deletebuttonclicked;
     public GameObject slash;
     bool creative;
-    bool[] settingslist;
+    bool hardcore;
     public GameObject modebtn;
-
+    public Button hcbtn;
     public void Start()
     {
         panelworlds.SetActive(false);
@@ -49,7 +51,8 @@ public class MenuSettings : MonoBehaviour
         btncreate.SetActive(true);
         panelcredits.SetActive(false);
         creative = true;
-        settingslist[1] = false;
+        hardcore = false;
+        hcbtn.interactable = false;
 
     }
 
@@ -184,15 +187,15 @@ public class MenuSettings : MonoBehaviour
     }
     public void HCBtnClicked()
     {
-        if(settingslist[1] == true)
+        if(hardcore == true)
         {
-            settingslist[1] = false;
-            slash.SetActive(true);
+            hardcore = false;
+            slash.SetActive(false);
         }
         else
         {
-            settingslist[1] = true;
-            slash.SetActive(false);
+            hardcore = true;
+            slash.SetActive(true);
         }
     }
     public void CreativeBtnClicked()
@@ -201,11 +204,14 @@ public class MenuSettings : MonoBehaviour
         {
             creative = false;
             modebtn.GetComponentInChildren<Text>().text = "Survival";
+            hcbtn.interactable = true;
+
         }
         else
         {
             creative = true;
             modebtn.GetComponentInChildren<Text>().text = "Creative";
+            hcbtn.interactable = false;
         }
     }
     public void Create2()
@@ -219,17 +225,21 @@ public class MenuSettings : MonoBehaviour
 
 
 
+        if(nameinput.text != null)
+        {
+            WorldSettings.worldname = nameinput.text;
+            WorldSettings.creative = creative;
 
-        WorldSettings.worldname = nameinput.text;
-        WorldSettings.creative = creative;
-        bool[] settings = settingslist;
-        WorldSettings.settings = settings;
-        PlayerPrefs.SetInt("Key", 1);
-        PlayerPrefs.Save();
+            WorldSettings.hardcore = hardcore;
+            PlayerPrefs.SetInt("Key", 1);
+            PlayerPrefs.Save();
+
+        }
 
 
 
     }
+    
     public void PokazSwiaty(int startvalue)
     {
         foreach (var text in namegameobject)
@@ -296,6 +306,22 @@ public class MenuSettings : MonoBehaviour
                     }
 
                 }
+                for (int m = 0; m < hardcoregameobject.Length; m++)
+                {
+                    Text hc = hardcoregameobject[m].GetComponentInChildren<Text>();
+                    if (m == directorynumber)
+                    {
+                        if (WorldInfo.hardcore == true)
+                        {
+                            hc.text = "/";
+                        }
+                        else
+                        {
+                            hc.text = "HC";
+                        }
+                    }
+
+                }
                 for (int l = 0; l < deletegameobject.Length; l++)
                 {
                     Button button = deletegameobject[l].GetComponent<Button>();
@@ -330,6 +356,15 @@ public class MenuSettings : MonoBehaviour
                     if (k == directorynumber)
                     {
                         mode.text = "";
+                    }
+
+                }
+                for (int m = 0; m < hardcoregameobject.Length; m++)
+                {
+                    Text hc = hardcoregameobject[m].GetComponentInChildren<Text>();
+                    if (m == directorynumber)
+                    {
+                        hc.text = "";
                     }
 
                 }
@@ -389,6 +424,14 @@ public class MenuSettings : MonoBehaviour
         {
             worldname.text = nameinput.text;
             var directories = Directory.GetDirectories(Application.persistentDataPath);
+        if (nameinput.text == "")
+        {
+            btncreate2.interactable = false;
+        }
+        else
+        {
+            btncreate2.interactable = true;
+        }
 
         /* if (startvalue + 3 > directories.Length || startvalue + 3 < 0)
          {

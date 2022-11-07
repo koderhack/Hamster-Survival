@@ -42,6 +42,8 @@ public class WorldOptions : MonoBehaviour
     bool craftingopened;
     bool debugopened;
     public Grid grid;
+    public Button respawnbtn;
+    public static bool gravemode;
 
     public void Start()
     {
@@ -52,6 +54,14 @@ public class WorldOptions : MonoBehaviour
         {
             survipanel.SetActive(true);
             objectivespanel.SetActive(true);
+            if (WorldSettings.hardcore == true)
+            {
+                respawnbtn.interactable = true;
+            }
+            else
+            {
+                respawnbtn.interactable = false;
+            }
         }
 
         fovslider.value = PlayerPrefs.GetFloat("FOV", fovslidervalue);
@@ -65,14 +75,14 @@ public class WorldOptions : MonoBehaviour
         volumeslider.minValue = 0;
         volumeslider.maxValue = 1;
         craftpanel.SetActive(false);
-      
 
+       
 
         if (PlayerPrefs.HasKey("Key"))
         {
             PlayerPrefs.SetInt("Key", 0);
             PlayerPrefs.Save();
-            BaseFunc.Instance.CreateWorld(WorldSettings.worldname, WorldSettings.creative, WorldSettings.settings);
+            BaseFunc.Instance.CreateWorld(WorldSettings.worldname, WorldSettings.creative, WorldSettings.hardcore);
         }
         else if (PlayerPrefs.HasKey("KeyLoad"))
         {
@@ -85,10 +95,10 @@ public class WorldOptions : MonoBehaviour
 
         }
         Time.timeScale = 1;
+      
 
 
 
-        
 
 
     }
@@ -205,14 +215,16 @@ public class WorldOptions : MonoBehaviour
     public void RespawnBtn()
     {
         diepanel.SetActive(false);
-       
+        Time.timeScale = 1;
         PlayerSettings.life = 100;
         PlayerSettings.hunger = 100;
         Instantiate(grave, player.transform.position, Quaternion.identity);
         player.transform.position = new Vector3(-10.3733997f, 1.1336f, 0);
+        gravemode = true;
     }
     public void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.F6))
         {
             if (debugopened == true)
@@ -270,6 +282,7 @@ public class WorldOptions : MonoBehaviour
                 if (debugopened)
                 {
                     inventoryui.RefreshInventoryItems();
+                    
                 }
 
                 
@@ -286,6 +299,7 @@ public class WorldOptions : MonoBehaviour
             {
                 PlayerSettings.life = 0;
                 diepanel.SetActive(true);
+                Time.timeScale = 0;
                 inventoryui.GraphicDeleteInventoryItems();
                 
 

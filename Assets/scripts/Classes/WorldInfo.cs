@@ -6,6 +6,6 @@ public static class WorldInfo
 {
     public static string worldname;
     public static bool creative;
-    public static bool[] settings;
+    public static bool hardcore;
 
 }

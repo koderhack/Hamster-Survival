@@ -17,7 +17,8 @@ public class GraveInventoryManager : MonoBehaviour
         {
             if(inventory.itemList != null)
             {
-                 inventoryui.RefreshInventoryItems();  
+                 inventoryui.RefreshInventoryItems();
+                WorldOptions.gravemode = false;
                 Destroy(this.gameObject);
             }
          
