@@ -47,7 +47,7 @@ public class WorldOptions : MonoBehaviour
 
     public void Start()
     {
-       
+        gravemode = false;
         survipanel.SetActive(false);
         objectivespanel.SetActive(false);
         if (WorldSettings.creative == false)
@@ -63,6 +63,7 @@ public class WorldOptions : MonoBehaviour
                 respawnbtn.interactable = false;
             }
         }
+        
 
         fovslider.value = PlayerPrefs.GetFloat("FOV", fovslidervalue);
         Camera.main.orthographicSize = fovslider.value;

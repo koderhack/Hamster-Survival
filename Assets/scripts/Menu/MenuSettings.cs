@@ -53,6 +53,7 @@ public class MenuSettings : MonoBehaviour
         creative = true;
         hardcore = false;
         hcbtn.interactable = false;
+        slash.SetActive(true);
 
     }
 
