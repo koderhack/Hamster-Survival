@@ -8,10 +8,21 @@ public class MonstersSpawn : MonoBehaviour
     // Start is called before the first frame update
     public static bool active;
     public GameObject oryginal;
+    public GameObject iceoryginal;
     public GameObject player;
     public float interval = 25;
     float timer;
     public Tilemap tilemain;
+    public void Start()
+    {
+        
+            Vector3 position = new Vector3(263, 8, 0);
+            Instantiate(iceoryginal, position, Quaternion.identity);
+        Vector3 position1 = new Vector3(263, 10, 0);
+        Instantiate(iceoryginal, position, Quaternion.identity);
+        Vector3 position2 = new Vector3(263, 20, 0);
+        Instantiate(iceoryginal, position, Quaternion.identity);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -44,8 +55,14 @@ public class MonstersSpawn : MonoBehaviour
                         
                        
                     }
-                    
 
+                   
+
+
+                        
+
+
+                    
                     timer -= interval;
                 }
             }
@@ -57,6 +74,7 @@ public class MonstersSpawn : MonoBehaviour
                     Destroy(clone);
                 }
             }
+
         }
     }
 

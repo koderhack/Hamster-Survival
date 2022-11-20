@@ -12,6 +12,7 @@ TagManager:
   - enemy
   - LanternLight
   - grave
+  - icecube
   layers:
   - Default
   - TransparentFX

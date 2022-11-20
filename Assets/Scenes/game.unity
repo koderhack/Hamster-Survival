@@ -36135,7 +36135,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -253.96698, y: -237.76001}
+  m_AnchoredPosition: {x: -253.96704, y: -237.76001}
   m_SizeDelta: {x: 449.306, y: 171.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &646526990
@@ -36855,7 +36855,7 @@ MonoBehaviour:
   m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 63
+    m_Bits: 127
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
@@ -42321,6 +42321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oryginal: {fileID: 5078726692799254071, guid: b9e123ef597a78e49bfdd659ee9b270d, type: 3}
+  iceoryginal: {fileID: 5078726692799254071, guid: a3d365c3525afab45846796e53da72dc, type: 3}
   player: {fileID: 1464513137}
   interval: 5
   tilemain: {fileID: 423416109}
@@ -42647,7 +42648,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 55.2, y: -74.102}
+  m_AnchoredPosition: {x: 55.199997, y: -74.102}
   m_SizeDelta: {x: 97.3, y: 51.797}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1750547705
