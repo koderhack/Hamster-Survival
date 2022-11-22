@@ -191,12 +191,12 @@ public class MenuSettings : MonoBehaviour
         if(hardcore == true)
         {
             hardcore = false;
-            slash.SetActive(false);
+            slash.SetActive(true);
         }
         else
         {
             hardcore = true;
-            slash.SetActive(true);
+            slash.SetActive(false);
         }
     }
     public void CreativeBtnClicked()

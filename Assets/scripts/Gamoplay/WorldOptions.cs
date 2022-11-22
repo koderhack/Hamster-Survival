@@ -44,26 +44,28 @@ public class WorldOptions : MonoBehaviour
     public Grid grid;
     public Button respawnbtn;
     public static bool gravemode;
-
+    public static int killedEnemies;
     public void Start()
     {
+        killedEnemies = AdditionalSettings.killedmobs;
         gravemode = false;
         survipanel.SetActive(false);
         objectivespanel.SetActive(false);
+        respawnbtn.interactable = true;
         if (WorldSettings.creative == false)
         {
             survipanel.SetActive(true);
             objectivespanel.SetActive(true);
             if (WorldSettings.hardcore == true)
             {
-                respawnbtn.interactable = true;
+                respawnbtn.interactable = false;
             }
             else
             {
-                respawnbtn.interactable = false;
+                respawnbtn.interactable = true;
             }
         }
-        
+
 
         fovslider.value = PlayerPrefs.GetFloat("FOV", fovslidervalue);
         Camera.main.orthographicSize = fovslider.value;
@@ -225,7 +227,10 @@ public class WorldOptions : MonoBehaviour
     }
     public void Update()
     {
-        
+        int numbermonsters = GameObject.FindGameObjectsWithTag("enemy").Length;
+     
+        AdditionalSettings.killedmobs = killedEnemies;
+       
         if (Input.GetKeyDown(KeyCode.F6))
         {
             if (debugopened == true)
@@ -245,8 +250,8 @@ public class WorldOptions : MonoBehaviour
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             Vector3Int mouseTileCoords = grid.WorldToCell(mouseWorldPos);
-            int numbermonsters = GameObject.FindGameObjectsWithTag("enemy").Length;
-            debug.text = $"Player Position: {player.transform.position}\n" +
+           
+                debug.text = $"Player Position: {player.transform.position}\n" +
                 $"MousePosition:{mouseWorldPos}\n" +
                 $"Mouse Tile Position: {mouseTileCoords}\n" +
                 $"IsDay: {cykldniainocy.isday}\n" +

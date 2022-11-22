@@ -49,7 +49,7 @@ public class ObjectiveManager : MonoBehaviour
                
                
             }
-            else if (PlayerSettings.level == 1 && Enemy.killedEnemies == 10)
+            else if (PlayerSettings.level == 1 && WorldOptions.killedEnemies == 10)
             {
                 PlayerSettings.level = 2;
 

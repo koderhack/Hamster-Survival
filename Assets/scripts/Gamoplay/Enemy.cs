@@ -11,14 +11,14 @@ public class Enemy : MonoBehaviour
     private Vector3 LocalScale;
     public float jumpforce;
     public Collider2D collider;
-    public static int killedEnemies;
+  
     public GameObject player;
     int hp = 3;
 
     // Start is called before the first frame update
     void Start()
     {
-        Enemy.killedEnemies = AdditionalSettings.killedmobs;
+      
         rb = GetComponent<Rigidbody2D>();
         
         LocalScale = transform.localScale;
@@ -28,12 +28,12 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        AdditionalSettings.killedmobs = killedEnemies;
+        
         MoveEnemy();
         if (hp <= 0)
         {
             Destroy(this.gameObject);
-            killedEnemies++;
+            WorldOptions.killedEnemies++;
             
         }
 
