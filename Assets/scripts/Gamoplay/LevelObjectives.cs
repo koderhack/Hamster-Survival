@@ -26,40 +26,44 @@ public class LevelObjectives : MonoBehaviour
                 objectivetext.text = $"Objective: Kill 10 enemies {WorldOptions.killedEnemies}/10";
                 loretopic.text = $"They can't stop you!";
                 break;
-            
             case 2:
+                objectivetext.text = "Objective:"
+                + "Sleep through the first day";
+                loretopic.text = "Zzzzz..., Zzzzz...";
+                break;
+            case 3:
                 objectivetext.text = "Objective: Find and craft food";
                 loretopic.text = "You must eat to live!";
                 break;
-            case 3:
+            case 4:
                 objectivetext.text = $"Objective: Craft a Jack-o'-lantern";
                 loretopic.text = $"You will find out in the future";
                 break;
-            case 4:
+            /*case 5:
                 objectivetext.text = "Objective:" 
                    + "through the first day";
                 loretopic.text = "Zzzzz..., Zzzzz...";
                 break;
-            case 5:
+            case 6:
                 objectivetext.text = "Objective: Run in wheel";
                 loretopic.text = "Movement is health!";
                 break;
-            case 6:
+            case 7:
                 objectivetext.text = "Objective: Kill infected cat boss";
                 loretopic.text = "Time to face the biggest predator!";
                 break;
-            case 7:
+            case 8:
                 objectivetext.text = "Objective: Craft an anti-radiation suit";
                 loretopic.text = "The outside world is dangerous!";
-                break;
-            case 8:
-                objectivetext.text = "Objective: Get out of the home";
-                loretopic.text = "The bookcase is key!";
                 break;
             case 9:
                 objectivetext.text = "Objective: Get out of the home";
                 loretopic.text = "The bookcase is key!";
                 break;
+            case 10:
+                objectivetext.text = "Objective: Get out of the home";
+                loretopic.text = "The bookcase is key!";
+                break;*/
         }
     }
       
