@@ -42,15 +42,20 @@ public class icemonstercontroller : MonoBehaviour
     }
     public void Update()
     {
-        Timer -= Time.deltaTime;
-        if (Timer <= 0f)
+
+        if (player.transform.position.x + 5 >= transform.position.x)
         {
-            directiontotheplayer = (player.transform.position - transform.position).normalized;
+            Timer -= Time.deltaTime;
 
-            Vector3 pozycja = new Vector3(transform.position.x, transform.position.y, 0);
+            if (Timer <= 0f)
+            {
+                directiontotheplayer = (player.transform.position - transform.position).normalized;
 
-            Instantiate(icecube, pozycja, Quaternion.identity);
-            Timer = 10f;
+                Vector3 pozycja = new Vector3(transform.position.x, transform.position.y, 0);
+
+                Instantiate(icecube, pozycja, Quaternion.identity);
+                Timer = 10f;
+            }
         }
     }
     private void LateUpdate()

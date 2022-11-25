@@ -13,16 +13,17 @@ public class MonstersSpawn : MonoBehaviour
     public float interval = 25;
     float timer;
     public Tilemap tilemain;
-    public void Start()
+    public void Awake()
     {
-        
-            Vector3 position = new Vector3(263, 8, 0);
-            Instantiate(iceoryginal, position, Quaternion.identity);
+
+        Vector3 position = new Vector3(263, 8, 0);
+        Instantiate(iceoryginal, position, Quaternion.identity);
         Vector3 position1 = new Vector3(263, 10, 0);
         Instantiate(iceoryginal, position, Quaternion.identity);
         Vector3 position2 = new Vector3(263, 20, 0);
         Instantiate(iceoryginal, position, Quaternion.identity);
     }
+   
     // Update is called once per frame
     void Update()
     {
