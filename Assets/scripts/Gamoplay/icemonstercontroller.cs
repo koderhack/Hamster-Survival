@@ -12,7 +12,7 @@ public class icemonstercontroller : MonoBehaviour
     private Vector3 LocalScale;
     public float jumpforce;
     public static int killedEnemies;
-    int hp = 5;
+    int hp = 7;
     public GameObject icecube;
     public float Timer;
     // Start is called before the first frame update

@@ -62,6 +62,7 @@ public class ruchgracza : MonoBehaviour
     public GameObject textlayer;
 
     private TileBase currentile;
+   
     public Text alerttext;
     private bool isinvenntoryfull;
     public TileBase tiledestroy;
@@ -291,6 +292,7 @@ public class ruchgracza : MonoBehaviour
                             if (layerindex == 1)
                             {
                                 Item itemtoadd = new Item();
+                              
                                 itemtoadd.itemtile = tilemain.GetTile(mouseTileCoords);
                                 itemtoadd.itemtype = Item.ItemType.Block;
                                 if (tilemain.GetTile(mouseTileCoords) != null)
@@ -304,8 +306,14 @@ public class ruchgracza : MonoBehaviour
                                         itemtoadd.itemusetype = Item.ItemUseType.Block;
                                     }
                                 }
+                                if (tilemain.GetTile(mouseTileCoords) == tilebuild[18])
+                                {
+                                    itemtoadd.itemtile = tilebuild[19];
+                                    itemtoadd.itemtype = Item.ItemType.Block;
+                                    itemtoadd.itemusetype = Item.ItemUseType.Block;
 
-
+                                }
+                                //a space for other if to the future :)
 
                                 foreach (var img in imgblocks)
                                 {

@@ -117,16 +117,24 @@ public class WorldOptions : MonoBehaviour
         List<Item> inventory1 = inventory.GetItemList();
         foreach (var item in inventory1.ToList())
         {
-          if(item.sprite.name == itemcraftable.name)
+             for (int i = 0; i < itemcraftable.count; i++)
+            {
+              inventory.DeleteItem(item);
+              inventoryui.RefreshInventoryItems();
+
+
+            }
+             for (int i = 0; i < itemcraftable.count2; i++)
+               {
+                   inventory.DeleteItem(item);
+                   inventoryui.RefreshInventoryItems();
+
+
+               }
+            if (item.sprite.name == itemcraftable.name)
             {
                 
-              for (int i = 0; i < itemcraftable.count; i++)
-              {
-                inventory.DeleteItem(item);
-                inventoryui.RefreshInventoryItems();
-                       
-
-              }
+       
              Item itemtoadd = new Item();
              itemtoadd.sprite = itemcraftable.newsprite;
              itemtoadd.itemtile = itemcraftable.newtile;
@@ -143,13 +151,7 @@ public class WorldOptions : MonoBehaviour
             }
             else if(item.sprite.name == itemcraftable.name2)
             {
-                for (int i = 0; i < itemcraftable.count2; i++)
-                {
-                    inventory.DeleteItem(item);
-                    inventoryui.RefreshInventoryItems();
-
-
-                }
+               
                 Item itemtoadd = new Item();
                 itemtoadd.sprite = itemcraftable.newsprite;
                 itemtoadd.itemtile = itemcraftable.newtile;

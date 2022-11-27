@@ -58,7 +58,7 @@ public class LevelObjectives : MonoBehaviour
                 break;
             case 9:
                 objectivetext.text = "Objective: Get out of the home";
-                loretopic.text = "The bookcase is key!";
+                loretopic.text = "The bookcase is a key!";
                 break;
             case 10:
                 objectivetext.text = "Objective: Get out of the home";
