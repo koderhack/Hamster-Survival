@@ -93,7 +93,6 @@ public class WorldOptions : MonoBehaviour
             PlayerPrefs.SetInt("KeyLoad", 0);
             PlayerPrefs.Save();
 
-            BaseFunc.Instance.LoadWorld(mapa, mapa2, tilelight,pumpkinlight, lightoryginal,pumpkinlightoryginal, WorldSettings.worldname, inventoryui);
             BaseFunc.Instance.LoadWorld(mapa, mapa2, tilelight, pumpkinlight, lightoryginal, pumpkinlightoryginal, WorldSettings.worldname, inventoryui);
 
 
