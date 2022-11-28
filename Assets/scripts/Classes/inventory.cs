@@ -75,18 +75,20 @@ public static class inventory
         }
         return null;
     }
-    public static Item GetItem(string itemtilename)
+    public static Item GetItem(string itemname)
     {
         foreach (var item in itemList)
         {
-            if (itemtilename == item.itemtile.name)
+            if (itemname == item.itemtile.name)
             {
                 return item;
             }
+            
 
         }
         return null;
     }
+    
     public static void DeleteItem(int id)
     {
         Item item = GetItem(id);
@@ -138,6 +140,36 @@ public static class inventory
           
 
         
+    }
+    public static void DeleteItem(string tilename)
+    {
+        Item item = GetItem(tilename);
+
+
+
+        if (item.Stackable() == true)
+        {
+            if (item.amount > 0)
+            {
+                item.amount--;
+            }
+
+            if (item.amount <= 0 && item != null)
+            {
+                itemList.Remove(item);
+
+            }
+
+
+        }
+        else
+        {
+            itemList.Remove(item);
+
+        }
+
+
+
     }
     public static void DeleteItem(Item item)
     {

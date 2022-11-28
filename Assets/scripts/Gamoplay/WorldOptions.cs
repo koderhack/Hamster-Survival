@@ -45,6 +45,7 @@ public class WorldOptions : MonoBehaviour
     public Button respawnbtn;
     public static bool gravemode;
     public static int killedEnemies;
+    public bool cancraft;
     public void Start()
     {
         killedEnemies = AdditionalSettings.killedmobs;
@@ -79,7 +80,7 @@ public class WorldOptions : MonoBehaviour
         volumeslider.maxValue = 1;
         craftpanel.SetActive(false);
 
-       
+
 
         if (PlayerPrefs.HasKey("Key"))
         {
@@ -93,12 +94,13 @@ public class WorldOptions : MonoBehaviour
             PlayerPrefs.Save();
 
             BaseFunc.Instance.LoadWorld(mapa, mapa2, tilelight,pumpkinlight, lightoryginal,pumpkinlightoryginal, WorldSettings.worldname, inventoryui);
+            BaseFunc.Instance.LoadWorld(mapa, mapa2, tilelight, pumpkinlight, lightoryginal, pumpkinlightoryginal, WorldSettings.worldname, inventoryui);
 
 
 
         }
         Time.timeScale = 1;
-      
+
 
 
 
@@ -115,43 +117,83 @@ public class WorldOptions : MonoBehaviour
     public void CraftItem(CraftableItem itemcraftable)
     {
         List<Item> inventory1 = inventory.GetItemList();
-        foreach (var item in inventory1.ToList())
-        {
-             for (int i = 0; i < itemcraftable.count; i++)
-            {
-              inventory.DeleteItem(item);
-              inventoryui.RefreshInventoryItems();
-
-
-            }
-             for (int i = 0; i < itemcraftable.count2; i++)
-               {
-                   inventory.DeleteItem(item);
-                   inventoryui.RefreshInventoryItems();
-
-
-               }
-            if (item.sprite.name == itemcraftable.name)
-            {
-                
        
-             Item itemtoadd = new Item();
-             itemtoadd.sprite = itemcraftable.newsprite;
-             itemtoadd.itemtile = itemcraftable.newtile;
-             itemtoadd.itemtype = Item.ItemType.Block;
-             itemtoadd.amount = 1;
+        int itemcount = 0;
 
-             inventory.AddItem(itemtoadd);
-             inventoryui.RefreshInventoryItems();
-             Debug.Log("crafted item");
+        int craftsystem = 1;
+        if (itemcraftable.name2 == null)
+        {
+            craftsystem = 1;
+        }
+        else
+        {
+            craftsystem = 2;
+        }
 
-               
+        //iteration trought the items in inventory
+        foreach (Item item in inventory1.ToList())
+        {
 
+
+
+            if (craftsystem == 1)
+            {
+                if (item.sprite.name == itemcraftable.name)
+                {
+                    if (item != null && item.amount >= itemcraftable.count)
+                    {
+                        for (int i = 0; i < itemcraftable.count; i++)
+                        {
+                            inventory.DeleteItem(item);
+                            inventoryui.RefreshInventoryItems();
+                            cancraft = true;
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("cannot craft");
+                        cancraft = false;
+                    }
+
+                }
+            }
+            else
+            {
+                if (item.sprite.name == itemcraftable.name)
+                {
+                    for (int i = 0; i < itemcraftable.count; i++)
+                    {
+                        inventory.DeleteItem(item);
+                        inventoryui.RefreshInventoryItems();
+
+                    }
+                }
+                if (item.sprite.name == itemcraftable.name2)
+                {
+                    for (int i = 0; i < itemcraftable.count2; i++)
+                    {
+                        inventory.DeleteItem(item);
+                        inventoryui.RefreshInventoryItems();
+
+                    }
+                }
+
+                if (item == null)
+                {
+                    itemcount += 1;
+                }
+
+                if (itemcount == 2)
+                {
+                    cancraft = true;
+                    itemcount = 1;
+
+
+                }
 
             }
-            else if(item.sprite.name == itemcraftable.name2)
+            if (cancraft == true)
             {
-               
                 Item itemtoadd = new Item();
                 itemtoadd.sprite = itemcraftable.newsprite;
                 itemtoadd.itemtile = itemcraftable.newtile;
@@ -162,25 +204,20 @@ public class WorldOptions : MonoBehaviour
                 inventoryui.RefreshInventoryItems();
                 Debug.Log("crafted item");
             }
-            else
-           {
-            Debug.Log("Cannot craft item");
-           }
-          
+
         }
-         
-           
-               
-            
-         
-          
 
-        
 
-    
-    
 
-       
+
+
+
+
+
+
+
+
+
 
 
 

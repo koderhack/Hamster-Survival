@@ -41,7 +41,7 @@ public class cykldniainocy : MonoBehaviour
     {
 
 
-        Debug.Log(timer);
+    
 
         if (WorldSettings.creative == false)
         {

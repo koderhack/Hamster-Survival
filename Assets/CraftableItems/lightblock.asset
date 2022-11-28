@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: fire
   count: 1
-  name2: glass
+  name2: szko
   count2: 1
   newsprite: {fileID: 21300000, guid: 1c8327399a7e2e24db3644f7e8e9ed4c, type: 3}
   newtile: {fileID: 11400000, guid: 712d40cd4721c4342808ac85a43b752b, type: 2}
