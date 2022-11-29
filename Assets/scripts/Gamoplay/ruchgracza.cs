@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 using System;
 using System.Runtime;
 using UnityEngine.Events;
+using static UnityEditor.Progress;
 
 public class ruchgracza : MonoBehaviour
 {
@@ -306,18 +307,12 @@ public class ruchgracza : MonoBehaviour
                                         itemtoadd.itemusetype = Item.ItemUseType.Block;
                                     }
                                 }
-                                if (tilemain.GetTile(mouseTileCoords) == tilebuild[18])
-                                {
-                                    itemtoadd.itemtile = tilebuild[19];
-                                    itemtoadd.itemtype = Item.ItemType.Block;
-                                    itemtoadd.itemusetype = Item.ItemUseType.Block;
-
-                                }
+                               
                                 //a space for other if to the future :)
 
                                 foreach (var img in imgblocks)
                                 {
-                                    if (tilemain.GetTile(mouseTileCoords) != null)
+                                    if (tilemain.GetTile(mouseTileCoords) != null && tilemain.GetTile(mouseTileCoords))
                                     {
                                         if (img.name == tilemain.GetTile(mouseTileCoords).name)
                                         {

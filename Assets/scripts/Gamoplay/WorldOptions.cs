@@ -45,7 +45,7 @@ public class WorldOptions : MonoBehaviour
     public Button respawnbtn;
     public static bool gravemode;
     public static int killedEnemies;
-    public bool cancraft;
+
     public void Start()
     {
         killedEnemies = AdditionalSettings.killedmobs;
@@ -116,11 +116,11 @@ public class WorldOptions : MonoBehaviour
     public void CraftItem(CraftableItem itemcraftable)
     {
         List<Item> inventory1 = inventory.GetItemList();
-       
-        int itemcount = 0;
 
+
+        
         int craftsystem = 1;
-        if (itemcraftable.name2 == null)
+        if (itemcraftable.name2 == "")
         {
             craftsystem = 1;
         }
@@ -132,7 +132,7 @@ public class WorldOptions : MonoBehaviour
         //iteration trought the items in inventory
         foreach (Item item in inventory1.ToList())
         {
-
+            int itemcount = 0;
 
 
             if (craftsystem == 1)
@@ -145,54 +145,50 @@ public class WorldOptions : MonoBehaviour
                         {
                             inventory.DeleteItem(item);
                             inventoryui.RefreshInventoryItems();
-                            cancraft = true;
+
                         }
+                        Item itemtoadd = new Item();
+                        itemtoadd.sprite = itemcraftable.newsprite;
+                        itemtoadd.itemtile = itemcraftable.newtile;
+                        itemtoadd.itemtype = Item.ItemType.Block;
+                        itemtoadd.amount = 1;
+
+                        inventory.AddItem(itemtoadd);
+                        inventoryui.RefreshInventoryItems();
+                        Debug.Log("crafted item");
                     }
                     else
                     {
                         Debug.Log("cannot craft");
-                        cancraft = false;
+
                     }
 
                 }
             }
-            else
+
+
+
+
+
+
+
+        }
+        if (craftsystem == 2)
+        {
+            if(inventory.GetItem(itemcraftable.name) != null && inventory.GetItem(itemcraftable.name2) != null)
             {
-                if (item.sprite.name == itemcraftable.name)
+             
+
+                for (int i = 0; i < itemcraftable.count; i++)
                 {
-                    for (int i = 0; i < itemcraftable.count; i++)
-                    {
-                        inventory.DeleteItem(item);
-                        inventoryui.RefreshInventoryItems();
-
-                    }
+                    inventory.DeleteItem(itemcraftable.name);
+                    inventoryui.RefreshInventoryItems();
                 }
-                if (item.sprite.name == itemcraftable.name2)
+                for (int i = 0; i < itemcraftable.count2; i++)
                 {
-                    for (int i = 0; i < itemcraftable.count2; i++)
-                    {
-                        inventory.DeleteItem(item);
-                        inventoryui.RefreshInventoryItems();
-
-                    }
+                    inventory.DeleteItem(itemcraftable.name2);
+                    inventoryui.RefreshInventoryItems();
                 }
-
-                if (item == null)
-                {
-                    itemcount += 1;
-                }
-
-                if (itemcount == 2)
-                {
-                    cancraft = true;
-                    itemcount = 1;
-
-
-                }
-
-            }
-            if (cancraft == true)
-            {
                 Item itemtoadd = new Item();
                 itemtoadd.sprite = itemcraftable.newsprite;
                 itemtoadd.itemtile = itemcraftable.newtile;
@@ -203,28 +199,33 @@ public class WorldOptions : MonoBehaviour
                 inventoryui.RefreshInventoryItems();
                 Debug.Log("crafted item");
             }
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+           
+           
+       }
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -326,6 +327,7 @@ public class WorldOptions : MonoBehaviour
                 if (debugopened)
                 {
                     inventoryui.RefreshInventoryItems();
+                    gravemode = false;
                     
                 }
 
