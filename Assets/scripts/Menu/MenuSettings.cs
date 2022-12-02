@@ -230,7 +230,7 @@ public class MenuSettings : MonoBehaviour
         {
             WorldSettings.worldname = nameinput.text;
             WorldSettings.creative = creative;
-
+            
             WorldSettings.hardcore = hardcore;
             PlayerPrefs.SetInt("Key", 1);
             PlayerPrefs.Save();
