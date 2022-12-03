@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6630703524881735001}
   - component: {fileID: 4625342503043918364}
+  - component: {fileID: 3497113725596682215}
   m_Layer: 0
   m_Name: light
   m_TagString: LampLight
@@ -72,3 +73,15 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &3497113725596682215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488696140096032372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95fff0168013434eacef010ac440144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

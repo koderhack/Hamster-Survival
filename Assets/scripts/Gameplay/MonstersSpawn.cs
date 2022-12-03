@@ -13,6 +13,8 @@ public class MonstersSpawn : MonoBehaviour
     public float interval = 25;
     float timer;
     public Tilemap tilemain;
+    public TileBase lantern;
+
     public void Awake()
     {
 
@@ -48,7 +50,7 @@ public class MonstersSpawn : MonoBehaviour
                 {
                     Vector3 position = new Vector3(Random.RandomRange(0, 20), Random.RandomRange(0, 20), 20);
                     Vector3Int positiontilemap = new Vector3Int((int)position.x,(int)position.y,0);
-                    if (tilemain.GetTile(positiontilemap) == null)
+                    if (tilemain.GetTile(positiontilemap) == null || tilemain.GetTile(positiontilemap) != lantern)
                     {
                         
                            

@@ -9,6 +9,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using UnityEngine.Events;
+using TMPro;
 
 public class WorldOptions : MonoBehaviour
 {
@@ -45,9 +46,15 @@ public class WorldOptions : MonoBehaviour
     public Button respawnbtn;
     public static bool gravemode;
     public static int killedEnemies;
-
+    public GameObject panelanim;
+   public TextMeshProUGUI textanimstart;
+    public GameObject panelanimtext;
+    public AudioClip effect;
+    public AudioSource musicplay;
     public void Start()
     {
+        panelanim.SetActive(false);
+        panelanimtext.SetActive(false);
         killedEnemies = AdditionalSettings.killedmobs;
         gravemode = false;
         survipanel.SetActive(false);
@@ -87,6 +94,13 @@ public class WorldOptions : MonoBehaviour
             PlayerPrefs.SetInt("Key", 0);
             PlayerPrefs.Save();
             BaseFunc.Instance.CreateWorld(WorldSettings.worldname, WorldSettings.creative, WorldSettings.hardcore);
+            if (WorldSettings.creative == false)
+            {
+                MonstersSpawn.active = false;
+                StartCoroutine(animacja());
+                StartCoroutine(textanim());
+                MonstersSpawn.active = true;
+            }
         }
         else if (PlayerPrefs.HasKey("KeyLoad"))
         {
@@ -94,7 +108,7 @@ public class WorldOptions : MonoBehaviour
             PlayerPrefs.Save();
 
             BaseFunc.Instance.LoadWorld(mapa, mapa2, tilelight, pumpkinlight, lightoryginal, pumpkinlightoryginal, WorldSettings.worldname, inventoryui);
-
+         
 
 
         }
@@ -246,7 +260,33 @@ public class WorldOptions : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-
+    public IEnumerator animacja()
+    {
+        panelanim.SetActive(true);
+        yield return new WaitForSeconds(20);
+        panelanim.SetActive(false);
+    }
+    public IEnumerator textanim()
+    {
+      
+        musicplay.clip = effect;
+        musicplay.Play();
+        panelanimtext.SetActive(true);
+        textanimstart.text = "It was a beautiful day. Harry is riding in his wheel";
+        yield return new WaitForSeconds(5);
+        textanimstart.text = "But suddenly everything changed.";
+        yield return new WaitForSeconds(5);
+        textanimstart.text = "After a while the asteroid hits earth";
+        yield return new WaitForSeconds(5);
+        textanimstart.text = "And there was nothing for hamster who survived";
+        yield return new WaitForSeconds(5);
+        textanimstart.text = "Now the hamster must survive in an evil world. Will he succeed in doing so?";
+        yield return new WaitForSeconds(5);
+        textanimstart.text = "";
+        panelanimtext.SetActive(false);
+       
+       
+    }
     public void SettingsBtn()
     {
 
