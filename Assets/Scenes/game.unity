@@ -35651,6 +35651,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abce9ad80e61c4c4495c9637a744a5cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exitobject: {fileID: 0}
+  player: {fileID: 1464513137}
 --- !u!114 &472204835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40129,6 +40131,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e18673b60ed61694c819c09822dc0bee, type: 2}
   - {fileID: 11400000, guid: 5b82a6073e0cf4540855c5f6fe6c9848, type: 2}
   - {fileID: 11400000, guid: 19cc863a9117567459978b0e6a6f28ac, type: 2}
+  - {fileID: 11400000, guid: 75068f23ba21eb5498ccbd9878898818, type: 2}
+  - {fileID: 11400000, guid: 870a77cbb1e0ffb46bf87952005340db, type: 2}
   tilenotdestroy:
   - {fileID: 11400000, guid: 0f1007faee4fc8a4db8d4e6db1a20549, type: 2}
   - {fileID: 11400000, guid: e1bfe75e358d52e469bc18df632ffbdb, type: 2}
@@ -40165,6 +40169,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a698959492d008c469cea672e1aad5c5, type: 3}
   - {fileID: 21300000, guid: 11854bde5979b9944959a6e941d72a70, type: 3}
   - {fileID: 21300000, guid: 4fce5970b81d5004fbf9b3b9c2e5f26c, type: 3}
+  - {fileID: 21300000, guid: e433c0dba76347844a2992dd6e3457ee, type: 3}
+  - {fileID: 21300000, guid: ebef2918bc9ae5e49a7cf5668ca40ed1, type: 3}
   currentid: 0
   buttonsimggameobject:
   - {fileID: 246459614}

@@ -11,6 +11,7 @@ public class ObjectiveManager : MonoBehaviour
     Item lantern;
     Item food;
     Item radiationsuit;
+    Item destroyedwall;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +43,10 @@ public class ObjectiveManager : MonoBehaviour
             else if (item.itemtile.name == "antiradiationsuit")
             {
                 radiationsuit = item;
+            }
+            else if(item.itemtile.name == "destroyedwall")
+            {
+                destroyedwall = item;
             }
 
 
@@ -82,6 +87,10 @@ public class ObjectiveManager : MonoBehaviour
             else if (PlayerSettings.level == 5 && radiationsuit != null)
             {
                 PlayerSettings.level = 6;
+            }
+            else if (PlayerSettings.level == 6 && destroyedwall != null)
+            {
+                PlayerSettings.level = 7;
             }
 
         }

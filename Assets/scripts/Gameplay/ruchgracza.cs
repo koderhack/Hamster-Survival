@@ -331,13 +331,9 @@ public class ruchgracza : MonoBehaviour
                                     {
                                         itemtoadd.itemusetype = Item.ItemUseType.Food;
                                     }
-                                    else if(itemtoadd.itemtile.name == "antiradiationsuit")
+                                    else
                                     {
-                                         itemtoadd.itemusetype = Item.ItemUseType.RadiationSuit; 
-                                    }
-                                   else
-                                    {
-                                      
+
                                         itemtoadd.itemusetype = Item.ItemUseType.Block;
                                     }
                                 }

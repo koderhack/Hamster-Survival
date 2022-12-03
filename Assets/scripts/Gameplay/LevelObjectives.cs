@@ -48,6 +48,10 @@ public class LevelObjectives : MonoBehaviour
                 objectivetext.text = "Objective: Get out of the home";
                 loretopic.text = "The bookcase is a key!";
                 break;
+            case 7:
+                loretopic.text = "The end";
+                objectivetext.text = "Congratulations! You went to the outside world!";
+                break;
            
         }
     }
