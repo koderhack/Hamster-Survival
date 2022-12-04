@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using System;
 using System.Runtime;
 using UnityEngine.Events;
-using static UnityEditor.Progress;
+
 
 public class ruchgracza : MonoBehaviour
 {
@@ -310,7 +310,7 @@ public class ruchgracza : MonoBehaviour
 
                         }
 
-                        SoundEffects(mouseTileCoords);
+                        
                         if (WorldSettings.creative == false)
                         {
                             if (layerindex == 1)
@@ -918,6 +918,7 @@ public class ruchgracza : MonoBehaviour
     }
     IEnumerator Waiter(float sek, Item item, Vector3Int mousepos)
     {
+        SoundEffects(mousepos);
         waiterrunning = true;
         buildAllowed = false;
         tilemapdestroy.SetTile(mousepos, tiledestroy);
@@ -1015,9 +1016,10 @@ public class ruchgracza : MonoBehaviour
             //musicplay.PlayOneShot(musicclips[0]);
             musicplay.clip = musicclips[0];
             musicplay.Play();
-        }
+        }                                                                                                                                                                      
         else if (tilemain.GetTile(mouseTileCoords1) == tilebuild[1] || tilemain.GetTile(mouseTileCoords1) == tilebuild[4] || tilemain.GetTile(mouseTileCoords1) == tilebuild[6] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[1] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[4] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[6])
         {
+            //glass effect
             // musicplay.PlayOneShot(musicclips[1]);
             musicplay.clip = musicclips[1];
             musicplay.Play();
@@ -1036,7 +1038,7 @@ public class ruchgracza : MonoBehaviour
             musicplay.Play();
         }
 
-        else if (tilemain.GetTile(mouseTileCoords1) == tilebuild[7] || tilemain.GetTile(mouseTileCoords1) == tilebuild[8] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[7] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[8])
+        else if (tilemain.GetTile(mouseTileCoords1) == tilebuild[7] || tilemain.GetTile(mouseTileCoords1) == tilebuild[8] || tilemain.GetTile(mouseTileCoords1) == tilebuild[13] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[7] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[8] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[13])
         {
             //musicplay.PlayOneShot(musicclips[4]);
             musicplay.clip = musicclips[4];

@@ -272,7 +272,7 @@ public class WorldOptions : MonoBehaviour
         musicplay.clip = effect;
         musicplay.Play();
         panelanimtext.SetActive(true);
-        textanimstart.text = "It was a beautiful day. Harry is riding in his wheel";
+        textanimstart.text = "It was a beautiful day. Harry was riding in his wheel";
         yield return new WaitForSeconds(5);
         textanimstart.text = "But suddenly everything changed.";
         yield return new WaitForSeconds(5);

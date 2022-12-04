@@ -38000,7 +38000,7 @@ MonoBehaviour:
   panelanim: {fileID: 641403937}
   textanimstart: {fileID: 1844044030}
   panelanimtext: {fileID: 324925672}
-  effect: {fileID: 8300000, guid: a28ea73876ed79c45bfc2bc6ab21bf1d, type: 3}
+  effect: {fileID: 8300000, guid: 7423148a6c8723145a3397d397c71b56, type: 3}
   musicplay: {fileID: 864318189}
 --- !u!4 &894567233
 Transform:
