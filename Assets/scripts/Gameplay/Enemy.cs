@@ -11,14 +11,15 @@ public class Enemy : MonoBehaviour
     private Vector3 LocalScale;
     public float jumpforce;
     public Collider2D collider;
-  
+    AudioSource source;
+    public AudioClip zombieroar;
     public GameObject player;
     int hp = 3;
 
     // Start is called before the first frame update
     void Start()
     {
-      
+        source = GameObject.FindGameObjectWithTag("source").GetComponent<AudioSource>();    
         rb = GetComponent<Rigidbody2D>();
         
         LocalScale = transform.localScale;
@@ -45,6 +46,12 @@ public class Enemy : MonoBehaviour
         if (player.transform.position.x + 5 >= transform.position.x || player.transform.position.y + 5 >= transform.position.y)
         {
             rb.velocity = new Vector2(directiontotheplayer.x, 0) * moveSpeed;
+            if (source.isPlaying == false)
+            {
+            source.clip = zombieroar;
+            source.Play();
+            }
+          
         }
        
         

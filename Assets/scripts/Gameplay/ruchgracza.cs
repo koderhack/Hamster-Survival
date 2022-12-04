@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 using System;
 using System.Runtime;
 using UnityEngine.Events;
+using UnityEngine.Networking.Types;
 
 
 public class ruchgracza : MonoBehaviour
@@ -1014,8 +1015,11 @@ public class ruchgracza : MonoBehaviour
         if (tilemain.GetTile(mouseTileCoords1) == tilebuild[0] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[0])
         {
             //musicplay.PlayOneShot(musicclips[0]);
-            musicplay.clip = musicclips[0];
-            musicplay.Play();
+          
+            
+                musicplay.clip = musicclips[0];
+                musicplay.Play();
+            
         }                                                                                                                                                                      
         else if (tilemain.GetTile(mouseTileCoords1) == tilebuild[1] || tilemain.GetTile(mouseTileCoords1) == tilebuild[4] || tilemain.GetTile(mouseTileCoords1) == tilebuild[6] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[1] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[4] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[6])
         {

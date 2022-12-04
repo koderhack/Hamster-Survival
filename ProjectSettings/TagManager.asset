@@ -13,6 +13,7 @@ TagManager:
   - LanternLight
   - grave
   - icecube
+  - source
   layers:
   - Default
   - TransparentFX

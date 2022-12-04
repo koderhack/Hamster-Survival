@@ -132,6 +132,8 @@ MonoBehaviour:
   moveSpeed: 20
   jumpforce: 2
   collider: {fileID: 5078726692799254068}
+  source: {fileID: 0}
+  zombieroar: {fileID: 8300000, guid: 5663ad033524f0146a5e2df19fb35259, type: 3}
   player: {fileID: 0}
 --- !u!50 &5078726692799254069
 Rigidbody2D:
