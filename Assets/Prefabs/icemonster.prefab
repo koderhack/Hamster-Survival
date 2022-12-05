@@ -71,6 +71,8 @@ MonoBehaviour:
   player: {fileID: 0}
   moveSpeed: 20
   jumpforce: 0
+  monsterroar: {fileID: 8300000, guid: 972ccbefab651144a8c5643b5e706a6d, type: 3}
+  shottingice: {fileID: 8300000, guid: bfa3c4a3ffe0b4d4984f9d3bcc1d3079, type: 3}
   icecube: {fileID: 118561000054079713, guid: 99ae81162608c7b49bb15d700965abd6, type: 3}
   Timer: 0
 --- !u!61 &8352620015262260481

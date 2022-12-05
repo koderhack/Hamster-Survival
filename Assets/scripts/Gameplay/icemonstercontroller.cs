@@ -13,6 +13,9 @@ public class icemonstercontroller : MonoBehaviour
     public float jumpforce;
     public static int killedEnemies;
     int hp = 7;
+    AudioSource source;
+    public AudioClip monsterroar;
+    public AudioClip shottingice;
     public GameObject icecube;
     public float Timer;
     // Start is called before the first frame update
@@ -24,7 +27,7 @@ public class icemonstercontroller : MonoBehaviour
 
         LocalScale = transform.localScale;
         player = GameObject.FindGameObjectWithTag("Player");
-      
+        source = GameObject.FindGameObjectWithTag("source").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -54,6 +57,9 @@ public class icemonstercontroller : MonoBehaviour
                 Vector3 pozycja = new Vector3(transform.position.x, transform.position.y, 0);
 
                 Instantiate(icecube, pozycja, Quaternion.identity);
+                //dŸwiêk kuli
+                source.clip = shottingice;
+                source.Play();
                 Timer = 10f;
             }
         }
@@ -76,6 +82,11 @@ public class icemonstercontroller : MonoBehaviour
         if (player.transform.position.x + 5 >= transform.position.x)
         {
             rb.velocity = new Vector2(directiontotheplayer.x, 0) * moveSpeed;
+            if (source.isPlaying == false)
+            {
+                source.clip =  monsterroar;
+                source.Play();
+            }
         }
 
 

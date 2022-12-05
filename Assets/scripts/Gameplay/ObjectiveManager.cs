@@ -65,6 +65,11 @@ public class ObjectiveManager : MonoBehaviour
 
 
             }
+            else if (PlayerSettings.level == 1 && Input.GetKeyDown(KeyCode.H))
+            {
+                PlayerSettings.level = 3;
+            }
+            
             //food
             else if (PlayerSettings.level == 2 && Input.GetKeyDown(KeyCode.H))
             {

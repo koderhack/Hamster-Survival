@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.Tilemaps;
 
 public class Enemy : MonoBehaviour
 {
@@ -15,7 +19,8 @@ public class Enemy : MonoBehaviour
     public AudioClip zombieroar;
     public GameObject player;
     int hp = 3;
-
+    float timer;
+    float interval = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +36,7 @@ public class Enemy : MonoBehaviour
     {
         
         MoveEnemy();
+
         if (hp <= 0)
         {
             Destroy(this.gameObject);
@@ -46,12 +52,27 @@ public class Enemy : MonoBehaviour
         if (player.transform.position.x + 5 >= transform.position.x || player.transform.position.y + 5 >= transform.position.y)
         {
             rb.velocity = new Vector2(directiontotheplayer.x, 0) * moveSpeed;
-            if (source.isPlaying == false)
+            timer += Time.deltaTime;
+            if (timer >= interval)
             {
-            source.clip = zombieroar;
-            source.Play();
+            
+
+                if (source.isPlaying == false)
+                {
+                source.clip = zombieroar;
+                source.Play();
+                }
+
+
+
+
+
+
+                timer -= interval;
+                interval = UnityEngine.Random.Range(2, 5);
             }
           
+
         }
        
         
@@ -59,8 +80,8 @@ public class Enemy : MonoBehaviour
        
     }
 
-   
 
+ 
     // Update is called once per frame
     private void LateUpdate()
     {
@@ -101,6 +122,11 @@ public class Enemy : MonoBehaviour
     {
         this.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.red;
         hp--;
+        if (source.isPlaying == false)
+        {
+            source.clip = zombieroar;
+            source.Play();
+        }
         yield return new WaitForSeconds(1);
         this.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.white;
     }
