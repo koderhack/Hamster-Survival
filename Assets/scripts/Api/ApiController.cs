@@ -11,7 +11,7 @@ using System.IO;
 public class ApiController : MonoBehaviour
 {
    public Text cytat;
-    public GameObject updatepanel;
+   
     
 
     private readonly string ApiUrl = "https://api.quotable.io/random?tags=motivational";
@@ -19,12 +19,12 @@ public class ApiController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        updatepanel.SetActive(false);
+       
       
         cytat.text = "Loading...";
         
         StartCoroutine(SendRequest(ApiUrl));
-        StartCoroutine(SendRequestUpdate(ApiUrl2));
+        
     }
 
     IEnumerator SendRequest(string url)
@@ -66,50 +66,12 @@ public class ApiController : MonoBehaviour
         }
       
     }
-    IEnumerator SendRequestUpdate(string url1)
-    {
-        var list = new List<string>();
-        string[] lines;
-        UnityWebRequest request = UnityWebRequest.Get(url1);
-        yield return request.SendWebRequest();
-
-        if (request.isNetworkError || request.isHttpError)
-        {
-            Debug.Log("error");
-        }
-
-        else
-        {
-            // Response can be accessed through: request.downloadHandler.text
-
-            JSONNode info1 = JSON.Parse(request.downloadHandler.text);
-            string version = info1["latest"];
-            string versionunity = Application.version;
-            if(version != null)
-            {
-                if(version != versionunity)
-                {
-                updatepanel.SetActive(true);
-                }
-            }
-            
-
-
-        }
-
-    }
+ 
     // Update is called once per frame
     void Update()
     {
         
     }
-    public void UpdatebtnClicked()
-    {
-        Application.OpenURL("https://koder123456.itch.io/hamstersurvival");
-    }
-    public void OtherbtnClicked()
-    {
-        updatepanel.SetActive(false);
-    }
+ 
 }
 

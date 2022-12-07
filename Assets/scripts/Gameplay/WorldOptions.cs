@@ -51,6 +51,10 @@ public class WorldOptions : MonoBehaviour
     public GameObject panelanimtext;
     public AudioClip effect;
     public AudioSource musicplay;
+    public Tilemap tilemap1;
+    public Tilemap tilemap2;
+    public AudioSource source;
+    public AudioClip death;
     public void Start()
     {
         panelanim.SetActive(false);
@@ -311,9 +315,16 @@ public class WorldOptions : MonoBehaviour
     public void Update()
     {
         int numbermonsters = GameObject.FindGameObjectsWithTag("enemy").Length;
-     
-        AdditionalSettings.killedmobs = killedEnemies;
-       
+    
+          if(diepanel.active == true)
+        {
+            
+            source.PlayOneShot(death);
+           
+        }
+                
+            
+        
         if (Input.GetKeyDown(KeyCode.F6))
         {
             if (debugopened == true)
@@ -387,6 +398,7 @@ public class WorldOptions : MonoBehaviour
         {
             if (PlayerSettings.life <= 0)
             {
+               
                 PlayerSettings.life = 0;
                 diepanel.SetActive(true);
                 Time.timeScale = 0;

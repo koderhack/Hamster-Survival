@@ -38002,6 +38002,10 @@ MonoBehaviour:
   panelanimtext: {fileID: 324925672}
   effect: {fileID: 8300000, guid: 7423148a6c8723145a3397d397c71b56, type: 3}
   musicplay: {fileID: 864318189}
+  tilemap1: {fileID: 423416109}
+  tilemap2: {fileID: 1996252302}
+  source: {fileID: 864318189}
+  death: {fileID: 8300000, guid: c7a1e4e99a7e40147a85a2fb249baaf2, type: 3}
 --- !u!4 &894567233
 Transform:
   m_ObjectHideFlags: 0
