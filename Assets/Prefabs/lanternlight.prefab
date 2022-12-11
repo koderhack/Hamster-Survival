@@ -87,3 +87,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   interval: 2
+  pumpkinhealing: {fileID: 8300000, guid: 1eb054768426c93489f30a30d4b14856, type: 3}

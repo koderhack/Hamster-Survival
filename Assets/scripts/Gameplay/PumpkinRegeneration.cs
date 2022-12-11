@@ -14,6 +14,8 @@ public class PumpkinRegeneration : MonoBehaviour
     int pumpkinlife = 20;
     Tilemap mapa;
     Tilemap mapa2;
+    AudioSource source;
+    public AudioClip pumpkinhealing;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,7 @@ public class PumpkinRegeneration : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         mapa = GameObject.FindGameObjectWithTag("tilemap").GetComponent<Tilemap>();
         mapa2 = GameObject.FindGameObjectWithTag("tilemap2").GetComponent<Tilemap>();
+        source = GameObject.FindGameObjectWithTag("source").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,7 +42,8 @@ public class PumpkinRegeneration : MonoBehaviour
                 {
                     PlayerSettings.life++;
                     pumpkinlife--;
-
+                    source.clip = pumpkinhealing;
+                    source.Play();
                     timer -= interval;
                 }
             }

@@ -813,6 +813,7 @@ public class ruchgracza : MonoBehaviour
             if (tile1 == tilebuild[12])
             {
                 PlayerSettings.life--;
+              
             }
         }
 
@@ -1010,9 +1011,7 @@ public class ruchgracza : MonoBehaviour
 
 
 
-
-
-        if (tilemain.GetTile(mouseTileCoords1) == tilebuild[0] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[0])
+            if (tilemain.GetTile(mouseTileCoords1) == tilebuild[0] || tiletwo.GetTile(mouseTileCoords1) == tilebuild[0])
         {
             //musicplay.PlayOneShot(musicclips[0]);
           

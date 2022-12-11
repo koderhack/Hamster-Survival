@@ -1049,6 +1049,7 @@ GameObject:
   - component: {fileID: 169017354}
   - component: {fileID: 169017353}
   - component: {fileID: 169017352}
+  - component: {fileID: 169017355}
   m_Layer: 5
   m_Name: glasscraft
   m_TagString: Untagged
@@ -1171,6 +1172,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169017350}
   m_CullTransparentMesh: 1
+--- !u!114 &169017355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169017350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 894567232}
+          m_TargetAssemblyTypeName: WorldOptions, Assembly-CSharp
+          m_MethodName: GetInformationAbutCraft
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 950fe4fcf7c060a429fbc2ea6ff00668, type: 2}
+            m_ObjectArgumentAssemblyTypeName: CraftableItem, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &207493424
 GameObject:
   m_ObjectHideFlags: 0
@@ -35901,7 +35931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 77.07974}
+  m_AnchoredPosition: {x: 0, y: 77.079834}
   m_SizeDelta: {x: 1036.6001, y: 154.1595}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &560354162
@@ -36177,8 +36207,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 48.65, y: -73.296}
-  m_SizeDelta: {x: 97.3, y: 51.797}
+  m_AnchoredPosition: {x: 51.932022, y: -72.49996}
+  m_SizeDelta: {x: 96.136, y: 28.3672}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &608525918
 MonoBehaviour:
@@ -36200,7 +36230,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fire + glass
+  m_text: Lamp
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
   m_sharedMaterial: {fileID: 6131425898468057253, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
@@ -36235,7 +36265,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -36263,7 +36293,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -0.000072404175, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -36484,7 +36514,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -253.96704, y: -237.76001}
+  m_AnchoredPosition: {x: -253.9668, y: -237.76001}
   m_SizeDelta: {x: 449.306, y: 171.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &646526990
@@ -36687,7 +36717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3x Planks
+  m_text: Bookshelf
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
   m_sharedMaterial: {fileID: 6131425898468057253, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
@@ -36714,8 +36744,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.5
-  m_fontSizeBase: 18.5
+  m_fontSize: 16.4
+  m_fontSizeBase: 16.4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -37243,6 +37273,7 @@ GameObject:
   - component: {fileID: 788639365}
   - component: {fileID: 788639364}
   - component: {fileID: 788639363}
+  - component: {fileID: 788639366}
   m_Layer: 5
   m_Name: drownedpumpkincraft
   m_TagString: Untagged
@@ -37365,6 +37396,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788639361}
   m_CullTransparentMesh: 1
+--- !u!114 &788639366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788639361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 894567232}
+          m_TargetAssemblyTypeName: WorldOptions, Assembly-CSharp
+          m_MethodName: GetInformationAbutCraft
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: b90e385366607044293cf00c9c274e71, type: 2}
+            m_ObjectArgumentAssemblyTypeName: CraftableItem, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &791413613
 GameObject:
   m_ObjectHideFlags: 0
@@ -37815,7 +37875,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.495
+  m_Volume: 0.518
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -38000,12 +38060,14 @@ MonoBehaviour:
   panelanim: {fileID: 641403937}
   textanimstart: {fileID: 1844044030}
   panelanimtext: {fileID: 324925672}
-  effect: {fileID: 8300000, guid: 7423148a6c8723145a3397d397c71b56, type: 3}
-  musicplay: {fileID: 864318189}
+  effect: {fileID: 8300000, guid: 43c06fff2342ce740b9f6ae758cd6eed, type: 3}
+  crafteffect: {fileID: 8300000, guid: 9a9de0fae01bf0948ad39ce924672015, type: 3}
   tilemap1: {fileID: 423416109}
   tilemap2: {fileID: 1996252302}
   source: {fileID: 864318189}
   death: {fileID: 8300000, guid: c7a1e4e99a7e40147a85a2fb249baaf2, type: 3}
+  musicmain: {fileID: 2126439966}
+  textcraftinfo: {fileID: 1925502032}
 --- !u!4 &894567233
 Transform:
   m_ObjectHideFlags: 0
@@ -38333,7 +38395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -79.90845, y: 1.5253}
+  m_AnchoredPosition: {x: -79.9082, y: 1.5253}
   m_SizeDelta: {x: 123.2095, y: 119.3836}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1088922658
@@ -38707,6 +38769,7 @@ GameObject:
   - component: {fileID: 1178800048}
   - component: {fileID: 1178800047}
   - component: {fileID: 1178800046}
+  - component: {fileID: 1178800049}
   m_Layer: 5
   m_Name: lampcraft
   m_TagString: Untagged
@@ -38829,6 +38892,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178800044}
   m_CullTransparentMesh: 1
+--- !u!114 &1178800049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178800044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 894567232}
+          m_TargetAssemblyTypeName: WorldOptions, Assembly-CSharp
+          m_MethodName: GetInformationAbutCraft
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: aa7aa56bf85339d4f80ff5c0e8bb014e, type: 2}
+            m_ObjectArgumentAssemblyTypeName: CraftableItem, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1190524576
 GameObject:
   m_ObjectHideFlags: 0
@@ -38938,8 +39030,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -74.102}
-  m_SizeDelta: {x: 97.3, y: 51.797}
+  m_AnchoredPosition: {x: 51.164364, y: -77.12778}
+  m_SizeDelta: {x: 94.9714, y: 45.7455}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1247498942
 MonoBehaviour:
@@ -38961,7 +39053,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2x Ceramic
+  m_text: Glass
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
   m_sharedMaterial: {fileID: 6131425898468057253, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
@@ -38988,8 +39080,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.5
-  m_fontSizeBase: 18.5
+  m_fontSize: 23.5
+  m_fontSizeBase: 23.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -39208,6 +39300,7 @@ GameObject:
   - component: {fileID: 1262540019}
   - component: {fileID: 1262540018}
   - component: {fileID: 1262540017}
+  - component: {fileID: 1262540020}
   m_Layer: 5
   m_Name: PlanksCraft
   m_TagString: Untagged
@@ -39330,6 +39423,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262540015}
   m_CullTransparentMesh: 1
+--- !u!114 &1262540020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262540015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 894567232}
+          m_TargetAssemblyTypeName: WorldOptions, Assembly-CSharp
+          m_MethodName: GetInformationAbutCraft
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: c7383412429d4bf44ad48127ea35a0a5, type: 2}
+            m_ObjectArgumentAssemblyTypeName: CraftableItem, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1302354840
 GameObject:
   m_ObjectHideFlags: 0
@@ -39520,6 +39642,7 @@ RectTransform:
   - {fileID: 2032422267}
   - {fileID: 1257380780}
   - {fileID: 1370600992}
+  - {fileID: 1938870944}
   m_Father: {fileID: 1998753727}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39623,6 +39746,7 @@ GameObject:
   - component: {fileID: 1366136153}
   - component: {fileID: 1366136152}
   - component: {fileID: 1366136151}
+  - component: {fileID: 1366136154}
   m_Layer: 5
   m_Name: radiationsuitcraft
   m_TagString: Untagged
@@ -39745,6 +39869,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366136149}
   m_CullTransparentMesh: 1
+--- !u!114 &1366136154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366136149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 894567232}
+          m_TargetAssemblyTypeName: WorldOptions, Assembly-CSharp
+          m_MethodName: GetInformationAbutCraft
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 6ef257a58325a8b49b34eb12de010f6f, type: 2}
+            m_ObjectArgumentAssemblyTypeName: CraftableItem, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1370600991
 GameObject:
   m_ObjectHideFlags: 0
@@ -41523,7 +41676,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pumpkin
+  m_text: ' Carved Pumpkin'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
   m_sharedMaterial: {fileID: 6131425898468057253, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
@@ -41865,7 +42018,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "carved pumpkin + \nlamp"
+  m_text: Jack o'lantern
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
   m_sharedMaterial: {fileID: 6131425898468057253, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
@@ -41892,8 +42045,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 11.53
-  m_fontSizeBase: 11.53
+  m_fontSize: 14.77
+  m_fontSizeBase: 14.77
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -42416,6 +42569,7 @@ GameObject:
   - component: {fileID: 1661264037}
   - component: {fileID: 1661264036}
   - component: {fileID: 1661264035}
+  - component: {fileID: 1661264038}
   m_Layer: 5
   m_Name: bookscraft
   m_TagString: Untagged
@@ -42538,6 +42692,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661264033}
   m_CullTransparentMesh: 1
+--- !u!114 &1661264038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661264033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 894567232}
+          m_TargetAssemblyTypeName: WorldOptions, Assembly-CSharp
+          m_MethodName: GetInformationAbutCraft
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 57b9184e29e4ce44cb1c406c129dc123, type: 2}
+            m_ObjectArgumentAssemblyTypeName: CraftableItem, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1678469107
 GameObject:
   m_ObjectHideFlags: 0
@@ -42919,7 +43102,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2x Wood
+  m_text: Planks
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
   m_sharedMaterial: {fileID: 6131425898468057253, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
@@ -42953,7 +43136,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -43922,6 +44105,140 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905980517}
   m_CullTransparentMesh: 1
+--- !u!1 &1925502030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1925502031}
+  - component: {fileID: 1925502033}
+  - component: {fileID: 1925502032}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1925502031
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925502030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1938870944}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5.8692, y: 4.311102}
+  m_SizeDelta: {x: 886.02, y: 138.9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1925502032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925502030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
+  m_sharedMaterial: {fileID: 6131425898468057253, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4286089236
+  m_fontColor: {r: 0.078431375, g: 0.53333336, b: 0.47058827, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 31.7
+  m_fontSizeBase: 31.7
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: -2.006836}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1925502033
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925502030}
+  m_CullTransparentMesh: 1
 --- !u!1 &1926860291
 GameObject:
   m_ObjectHideFlags: 0
@@ -43996,6 +44313,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926860291}
+  m_CullTransparentMesh: 1
+--- !u!1 &1938870943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1938870944}
+  - component: {fileID: 1938870946}
+  - component: {fileID: 1938870945}
+  m_Layer: 5
+  m_Name: howtocraft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1938870944
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938870943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1925502031}
+  m_Father: {fileID: 1328916801}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 5.329529, y: -304.67}
+  m_SizeDelta: {x: -280.6832, y: -609.33}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1938870945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938870943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.64705884, g: 0.9450981, b: 0.7058824, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c24f261c04d9b644e8324e959b1cc340, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1938870946
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938870943}
   m_CullTransparentMesh: 1
 --- !u!1 &1959129787
 GameObject:
@@ -44608,6 +45001,7 @@ GameObject:
   - component: {fileID: 2005300669}
   - component: {fileID: 2005300668}
   - component: {fileID: 2005300667}
+  - component: {fileID: 2005300670}
   m_Layer: 5
   m_Name: lanterncraft
   m_TagString: Untagged
@@ -44730,6 +45124,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005300665}
   m_CullTransparentMesh: 1
+--- !u!114 &2005300670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005300665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 894567232}
+          m_TargetAssemblyTypeName: WorldOptions, Assembly-CSharp
+          m_MethodName: GetInformationAbutCraft
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 7fba1342533680249be42ef9ac3624a6, type: 2}
+            m_ObjectArgumentAssemblyTypeName: CraftableItem, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2008008996
 GameObject:
   m_ObjectHideFlags: 0
@@ -45275,7 +45698,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2x destroyed pumpkin
+  m_text: Anti-radiation suit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
   m_sharedMaterial: {fileID: 6131425898468057253, guid: 8ea2d9288e85a4f479f295f94be99052, type: 2}
@@ -45917,7 +46340,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 16e17bf212f849d42825a06e54083d17, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.196
   m_Pitch: 1

@@ -12,6 +12,8 @@ public class ObjectiveManager : MonoBehaviour
     Item food;
     Item radiationsuit;
     Item destroyedwall;
+    AudioSource music;
+    AudioClip musicclip;
     // Start is called before the first frame update
     void Start()
     {
@@ -96,6 +98,7 @@ public class ObjectiveManager : MonoBehaviour
             else if (PlayerSettings.level == 6 && destroyedwall != null)
             {
                 PlayerSettings.level = 7;
+                music.clip = musicclip;
             }
 
         }

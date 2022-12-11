@@ -50,11 +50,13 @@ public class WorldOptions : MonoBehaviour
    public TextMeshProUGUI textanimstart;
     public GameObject panelanimtext;
     public AudioClip effect;
-    public AudioSource musicplay;
+    public AudioClip crafteffect;
     public Tilemap tilemap1;
     public Tilemap tilemap2;
     public AudioSource source;
     public AudioClip death;
+    public AudioSource musicmain;
+    public TextMeshProUGUI textcraftinfo;
     public void Start()
     {
         panelanim.SetActive(false);
@@ -178,10 +180,13 @@ public class WorldOptions : MonoBehaviour
                         inventory.AddItem(itemtoadd);
                         inventoryui.RefreshInventoryItems();
                         Debug.Log("crafted item");
+                        source.clip = crafteffect;
+                        source.Play();
                     }
                     else
                     {
                         Debug.Log("cannot craft");
+                        textcraftinfo.text = $"Cannot craft {itemcraftable.newsprite.name}, because you don't have enought resources";
 
                     }
 
@@ -220,6 +225,12 @@ public class WorldOptions : MonoBehaviour
                 inventory.AddItem(itemtoadd);
                 inventoryui.RefreshInventoryItems();
                 Debug.Log("crafted item");
+                source.clip = crafteffect;
+                source.Play();
+            }
+            else
+            {
+                textcraftinfo.text = $"Cannot craft {itemcraftable.newsprite.name}, because you don't have enought resources";
             }
            
            
@@ -272,9 +283,10 @@ public class WorldOptions : MonoBehaviour
     }
     public IEnumerator textanim()
     {
-      
-        musicplay.clip = effect;
-        musicplay.Play();
+        gravemode = true;
+      musicmain.Stop();
+        source.clip = effect;
+        source.Play();
         panelanimtext.SetActive(true);
         textanimstart.text = "It was a beautiful day. Harry was riding in his wheel";
         yield return new WaitForSeconds(5);
@@ -288,7 +300,20 @@ public class WorldOptions : MonoBehaviour
         yield return new WaitForSeconds(5);
         textanimstart.text = "";
         panelanimtext.SetActive(false);
+        musicmain.Play();
+        gravemode = false;
        
+    }
+    public void GetInformationAbutCraft(CraftableItem item)
+    {
+        if(item.name2 == "")
+        {
+            textcraftinfo.text = $"To craft this item you need {item.count} x {item.name}. ";
+        }
+        else {
+
+            textcraftinfo.text = $"To craft this item you need {item.count} x {item.name} and {item.count2} x {item.name2}. ";
+        }
        
     }
     public void SettingsBtn()
@@ -319,7 +344,7 @@ public class WorldOptions : MonoBehaviour
           if(diepanel.active == true)
         {
             
-            source.PlayOneShot(death);
+           
            
         }
                 

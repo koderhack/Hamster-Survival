@@ -8,33 +8,33 @@ using UnityEngine.Tilemaps;
 
 public class Item
 {
-    
+
 
     public enum ItemType
     {
         Block,
         Weapon,
-        
+
 
     }
     public enum ItemUseType
     {
-       Block,
-       Food,
-       RadiationSuit,
+        Block,
+        Food,
+        RadiationSuit,
 
 
 
     }
     public int HungerPoints()
     {
-        if(itemusetype == ItemUseType.Food)
+        if (itemusetype == ItemUseType.Food)
         {
-            if(sprite.name == "apple")
+            if (sprite.name == "apple")
             {
                 return 20;
             }
-            else if(sprite.name == "gruszka")
+            else if (sprite.name == "gruszka")
             {
                 return 50;
             }
@@ -55,17 +55,18 @@ public class Item
     public ItemType itemtype;
     public ItemUseType itemusetype;
     public int amount = 1;
-    [SerializeField] public Sprite sprite; 
-    
+    [SerializeField] public Sprite sprite;
+    [SerializeField] public TileBase itemtile;
     public float damagesec()
     {
-        if(sprite.name == "ziemia")
+        if (sprite.name == "ziemia" || sprite.name == "leavs" || sprite.name == "liany")
         {
             return 0.2f;
         }
-        else if(sprite.name == "deski")
+        else if (sprite.name == "deski")
         {
             return 1;
+
         }
         else
         {
@@ -73,10 +74,11 @@ public class Item
         }
     }
 
-   [SerializeField] public TileBase itemtile;
+
+
     public bool Stackable()
     {
-      
+
         if (itemtype == ItemType.Block)
         {
             return true;
@@ -87,10 +89,10 @@ public class Item
         }
 
     }
-   
-
-
 
 }
+
+
+    
    
 
