@@ -26,11 +26,13 @@ public class WorldOptions : MonoBehaviour
     private bool gamePaused = false;
     public GameObject settingspanel;
     public Slider fovslider;
-    public Slider volumeslider;
+    public Slider effectsvolumeslider;
+    public Slider musicvolumeslider;
     public AudioSource music;
     public AudioSource effects;
     public float fovslidervalue;
-    public float volumeslidervalue;
+    public float effectsvolumeslidervalue;
+    public float musicvolumeslidervalue;
     public UI_inventory inventoryui;
     public GameObject diepanel;
     public GameObject survipanel;
@@ -57,8 +59,18 @@ public class WorldOptions : MonoBehaviour
     public AudioClip death;
     public AudioSource musicmain;
     public TextMeshProUGUI textcraftinfo;
+    public GameObject generaltab;
+    public GameObject audiotab;
+    public GameObject videotab;
+    public Dropdown quality;
+    public int fullscreenvalue;
+    public Toggle fullscreentooggle;
     public void Start()
     {
+       
+        generaltab.SetActive(true);
+        audiotab .SetActive(false);
+        videotab.SetActive(false);
         panelanim.SetActive(false);
         panelanimtext.SetActive(false);
         killedEnemies = AdditionalSettings.killedmobs;
@@ -80,17 +92,33 @@ public class WorldOptions : MonoBehaviour
             }
         }
 
+        if (PlayerPrefs.GetInt("full") == 1)
+        {
+           fullscreentooggle.isOn = true;
+            
+        }
+        else
+        {
+           fullscreentooggle.isOn = false;
+        }
 
         fovslider.value = PlayerPrefs.GetFloat("FOV", fovslidervalue);
+        if (PlayerPrefs.HasKey("qualityindex"))
+        {
+            quality.value =  PlayerPrefs.GetInt("qualityindex", 0);
+        }
+        
         Camera.main.orthographicSize = fovslider.value;
         diepanel.SetActive(false);
-        volumeslider.value = PlayerPrefs.GetFloat("Volume", volumeslidervalue);
-        AudioListener.volume = volumeslider.value;
+        effectsvolumeslider.value = PlayerPrefs.GetFloat("VolumeEffects", effectsvolumeslidervalue);
+        musicvolumeslider.value = PlayerPrefs.GetFloat("VolumeMusic", musicvolumeslidervalue);
         settingspanel.SetActive(false);
         mapa2 = GameObject.FindGameObjectWithTag("tilemap2").GetComponent<Tilemap>();
         escpanel.SetActive(false);
-        volumeslider.minValue = 0;
-        volumeslider.maxValue = 1;
+        effectsvolumeslider.minValue = 0;
+        effectsvolumeslider.maxValue = 1;
+        musicvolumeslider.minValue = 0;
+        musicvolumeslider.maxValue = 1;
         craftpanel.SetActive(false);
 
 
@@ -125,6 +153,37 @@ public class WorldOptions : MonoBehaviour
 
 
 
+    }
+    /*
+     *   effectsvolumeslidervalue = effectsvolumeslider.value;
+        PlayerPrefs.SetFloat("VolumeEffects", effectsvolumeslidervalue);
+        PlayerPrefs.Save();
+        source.volume = effectsvolumeslidervalue;
+     * 
+     */
+    public void SetQuality(int index)
+    {   
+     
+        PlayerPrefs.SetInt("qualityindex", quality.value);
+        PlayerPrefs.Save();
+        QualitySettings.SetQualityLevel(index);
+     
+        
+    }
+    public void SetFullScreen(bool fullscreen)
+    {
+        if(fullscreen == true)
+        {
+        PlayerPrefs.SetInt("full", 1);
+        PlayerPrefs.Save();
+        }
+        else
+        {
+            PlayerPrefs.SetInt("full", 0);
+            PlayerPrefs.Save();
+        }
+      
+        Screen.fullScreen = fullscreen;
     }
     public void ChangeFOVSlider(float value)
     {
@@ -262,19 +321,26 @@ public class WorldOptions : MonoBehaviour
 
 
 
-    public void ChangeVolumeSlider(float value)
+    public void ChangeEffectsVolumeSlider()
     {
-        volumeslidervalue = value;
-        PlayerPrefs.SetFloat("Volume", volumeslidervalue);
+        effectsvolumeslidervalue = effectsvolumeslider.value;
+        PlayerPrefs.SetFloat("VolumeEffects", effectsvolumeslidervalue);
         PlayerPrefs.Save();
-        AudioListener.volume = volumeslidervalue;
+        source.volume = effectsvolumeslidervalue;
+    }
+    public void ChangeMusicVolumeSlider()
+    {
+        musicvolumeslidervalue = musicvolumeslider.value;
+        PlayerPrefs.SetFloat("VolumeMusic", musicvolumeslidervalue);
+        PlayerPrefs.Save();
+        musicmain.volume = musicvolumeslidervalue;
     }
     public void SaveButton()
     {
         BaseFunc.Instance.SaveWorld(mapa, mapa2, WorldSettings.worldname);
         PlayerPrefs.Save();
     }
-
+    
     public IEnumerator animacja()
     {
         panelanim.SetActive(true);
@@ -326,7 +392,25 @@ public class WorldOptions : MonoBehaviour
         settingspanel.SetActive(false);
 
     }
-
+    public void GeneralTabBtn()
+    {
+        generaltab.SetActive(true);
+        audiotab.SetActive(false);
+        videotab.SetActive(false);
+    }
+    public void AudioTabBtn()
+    {
+      
+        audiotab.SetActive(true);
+        videotab.SetActive(false); 
+        generaltab.SetActive(false);
+    }
+    public void VideoTabBtn()
+    {
+        videotab.SetActive(true);
+        audiotab.SetActive(false);
+        generaltab.SetActive(false);
+    }
     public void RespawnBtn()
     {
         diepanel.SetActive(false);
