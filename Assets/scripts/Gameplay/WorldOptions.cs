@@ -65,9 +65,29 @@ public class WorldOptions : MonoBehaviour
     public Dropdown quality;
     public int fullscreenvalue;
     public Toggle fullscreentooggle;
+    Resolution[] resolutions;
+    public Dropdown resolutionDropdown;
+
     public void Start()
     {
-       
+        resolutions = Screen.resolutions;
+        resolutionDropdown.ClearOptions();
+        List<string> options = new List<string>();
+        int currentResolutionIndex = 0;
+
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height) 
+            { 
+
+                currentResolutionIndex = i;
+            }
+        }
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = currentResolutionIndex;
+        resolutionDropdown.RefreshShownValue();
         generaltab.SetActive(true);
         audiotab .SetActive(false);
         videotab.SetActive(false);
@@ -161,6 +181,11 @@ public class WorldOptions : MonoBehaviour
         source.volume = effectsvolumeslidervalue;
      * 
      */
+    public void SetResolution(int resolutionindex)
+    {
+        Resolution resolution = resolutions[resolutionindex];
+        Screen.SetResolution(resolution.width, resolution.height,Screen.fullScreen);
+    }
     public void SetQuality(int index)
     {   
      
@@ -370,6 +395,7 @@ public class WorldOptions : MonoBehaviour
         gravemode = false;
        
     }
+   
     public void GetInformationAbutCraft(CraftableItem item)
     {
         if(item.name2 == "")

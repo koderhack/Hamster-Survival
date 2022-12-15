@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class ObjectiveManager : MonoBehaviour
 {
@@ -12,16 +10,18 @@ public class ObjectiveManager : MonoBehaviour
     Item food;
     Item radiationsuit;
     Item destroyedwall;
-    AudioSource music;
-    AudioClip musicclip;
+    public AudioSource music;
+    public Tilemap mapa;
+    public Tilemap mapa2;
+
     // Start is called before the first frame update
     void Start()
     {
-        
-           
-        
-        
-        
+
+
+
+
+
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class ObjectiveManager : MonoBehaviour
     {
         foreach (var item in inventory.itemList)
         {
-            if(item.itemtile.name == "szko")
+            if (item.itemtile.name == "szko")
             {
                 szko = item;
             }
@@ -37,7 +37,7 @@ public class ObjectiveManager : MonoBehaviour
             {
                 lantern = item;
             }
-            else if(item.itemtile.name == "apple" || item.itemtile.name == "gruszka")
+            else if (item.itemtile.name == "apple" || item.itemtile.name == "gruszka")
             {
                 food = item;
 
@@ -46,20 +46,20 @@ public class ObjectiveManager : MonoBehaviour
             {
                 radiationsuit = item;
             }
-            else if(item.itemtile.name == "destroyedwall")
+            else if (item.itemtile.name == "destroyedwall")
             {
                 destroyedwall = item;
             }
 
 
         }
-        if(szko != null)
+        if (szko != null)
         {
-            if(PlayerSettings.level == 0 && szko.amount >= 2)
+            if (PlayerSettings.level == 0 && szko.amount >= 2)
             {
-            PlayerSettings.level = 1;
-               
-               
+                PlayerSettings.level = 1;
+
+
             }
             else if (PlayerSettings.level == 1 && WorldOptions.killedEnemies == 10)
             {
@@ -67,11 +67,11 @@ public class ObjectiveManager : MonoBehaviour
 
 
             }
-            else if (PlayerSettings.level == 1 && Input.GetKeyDown(KeyCode.H))
+            else if (PlayerSettings.level == 1  || PlayerSettings.level == 0 && Input.GetKeyDown(KeyCode.H))
             {
                 PlayerSettings.level = 3;
             }
-            
+
             //food
             else if (PlayerSettings.level == 2 && Input.GetKeyDown(KeyCode.H))
             {
@@ -98,15 +98,17 @@ public class ObjectiveManager : MonoBehaviour
             else if (PlayerSettings.level == 6 && destroyedwall != null)
             {
                 PlayerSettings.level = 7;
-                music.clip = musicclip;
+                BaseFunc.Instance.SaveWorld(mapa,mapa2,WorldSettings.worldname);
+                PlayerPrefs.Save();
+                SceneManager.LoadScene("end");
+
             }
 
+            /*
+            else if (PlayerSettings.level == 1 && )
+            {
+
+            }*/
         }
-
-        /*
-        else if (PlayerSettings.level == 1 && )
-        {
-
-        }*/
     }
 }

@@ -52,7 +52,11 @@ public class LevelObjectives : MonoBehaviour
                 loretopic.text = "The end";
                 objectivetext.text = "Congratulations! You went to the outside world!";
                 break;
-           
+            case 8:
+                loretopic.text = "The end";
+                objectivetext.text = "Congratulations! You went to the outside world!";
+                break;
+
         }
     }
       
