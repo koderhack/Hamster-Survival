@@ -67,9 +67,12 @@ public class WorldOptions : MonoBehaviour
     public Toggle fullscreentooggle;
     Resolution[] resolutions;
     public Dropdown resolutionDropdown;
+ 
+
 
     public void Start()
     {
+   
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();

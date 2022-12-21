@@ -1,3 +1,6 @@
+﻿using JetBrains.Annotations;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -13,13 +16,18 @@ public class ObjectiveManager : MonoBehaviour
     public AudioSource music;
     public Tilemap mapa;
     public Tilemap mapa2;
+    public GameObject endpanel;
+    public TextMeshProUGUI textanimend;
+    public AudioSource effects;
+    public AudioClip speak;
+    public GameObject panelanimtext;
 
     // Start is called before the first frame update
     void Start()
     {
-
-
-
+        endpanel.SetActive(false);
+        
+        panelanimtext.SetActive(false);
 
 
     }
@@ -98,9 +106,9 @@ public class ObjectiveManager : MonoBehaviour
             else if (PlayerSettings.level == 6 && destroyedwall != null)
             {
                 PlayerSettings.level = 7;
-                BaseFunc.Instance.SaveWorld(mapa,mapa2,WorldSettings.worldname);
-                PlayerPrefs.Save();
-                SceneManager.LoadScene("end");
+                endpanel.SetActive(true);
+                StartCoroutine(TextAnim());
+
 
             }
 
@@ -110,5 +118,22 @@ public class ObjectiveManager : MonoBehaviour
 
             }*/
         }
+
+    }
+    public IEnumerator TextAnim()
+    {
+        effects.clip = speak;
+        panelanimtext.SetActive(true);
+        textanimend.text = "Congratulations Harry! You have accomplished the impossible! ";
+        yield return new WaitForSeconds(5);
+        textanimend.text = "You managed to survive and get out for the first time ever! Bravo!";
+
+        yield return new WaitForSeconds(5);
+        textanimend.text = " The End" +
+            " Programmer: Koder " +
+            " Graphics designers: Koder,Mc_go��b ";
+        yield return new WaitForSeconds(10);
+      panelanimtext.SetActive(false);
+        endpanel.SetActive(false);
     }
 }

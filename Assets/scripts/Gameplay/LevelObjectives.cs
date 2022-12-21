@@ -9,9 +9,19 @@ public class LevelObjectives : MonoBehaviour
     public GameObject panel;
     public Text objectivetext;
     public Text loretopic;
-  
-    // Start is called before the first frame update
 
+    // Start is called before the first frame update
+    public void Start()
+    {
+        if (WorldSettings.creative == true)
+        {
+            panel.SetActive(false);
+        }
+        else
+        {
+            panel.SetActive(true);
+        }
+    }
     // Update is called once per frame
     public void Update()
     {

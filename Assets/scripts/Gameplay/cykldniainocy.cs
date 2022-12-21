@@ -26,9 +26,9 @@ public class cykldniainocy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dayLength = 1200;
+        dayLength = 12;//1200
         dayStart = 0;
-        nightStart = 600;
+        nightStart = 6;//600
        
        
        
@@ -39,21 +39,15 @@ public class cykldniainocy : MonoBehaviour
     void Update()
     {
 
-
+        timer = Time.fixedTime;
     
 
         if (WorldSettings.creative == false)
         {
             daycontroller = AdditionalSettings.daycontroller;
            
-                 if (daycontroller == true)
-                {
-                    timer = 0;
-                }
-                else
-                {
-                    timer = 600;
-                }
+              
+           
             
       
 
@@ -61,16 +55,16 @@ public class cykldniainocy : MonoBehaviour
 
            
 
-            if (timer >= dayStart)
+            if (timer >= dayStart )
             {
                 //dzieñ tak
                 isday = true;
                 MonstersSpawn.active = true;
                 wskaznik.text = "Day";
-                AdditionalSettings.daycontroller = isday;
+               
 
             }
-            if (timer >= nightStart)
+            if (timer >= nightStart || daycontroller == false)
             {
                 MonstersSpawn.active = false;
                 //dzieñ nie (noc)
@@ -80,7 +74,7 @@ public class cykldniainocy : MonoBehaviour
             }
             if (timer >= dayLength)
             {
-                timer = 0;
+                timer = 6;
               //reset timera
             }
         }
