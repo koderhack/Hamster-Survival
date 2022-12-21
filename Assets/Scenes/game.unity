@@ -36688,6 +36688,7 @@ MonoBehaviour:
   textanimend: {fileID: 1844044030}
   effects: {fileID: 864318189}
   speak: {fileID: 8300000, guid: 7a369827e007c4f4c89106287b1d539f, type: 3}
+  panelanimtext: {fileID: 324925672}
 --- !u!114 &472204835
 MonoBehaviour:
   m_ObjectHideFlags: 0
