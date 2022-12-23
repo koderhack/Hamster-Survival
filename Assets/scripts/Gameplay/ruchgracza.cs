@@ -21,7 +21,7 @@ public class ruchgracza : MonoBehaviour
     public float runSpeed = 40f;
     public TMP_Text textkolowrotek;
     [SerializeField] private Animator animator;
-    [SerializeField] private string animationwheel = "Wheelanim";
+ 
     public float blockDestroyTime = 1;
     bool jump = false;
     bool crouch = false;
@@ -57,7 +57,7 @@ public class ruchgracza : MonoBehaviour
     int jFound;
     int kFound;
     public Color pustykolor;
-    bool soundPlaying = false;
+    
     public Animator animatorplayer;
     public int layerindex;
     public GameObject chomik;
@@ -151,13 +151,14 @@ public class ruchgracza : MonoBehaviour
                     if (item.itemtile.name == "apple" ||  item.itemtile.name == "gruszka" || item.itemtile.name == "dynia")
                     {
                         PlayerSettings.hunger += item.HungerPoints();
+                        PlayerSettings.life += 5;
                         inventory.DeleteItem(item);
                         uiInventory.RefreshInventoryItems();
 
                     }
                     if(item.itemtile.name == "antiradiationsuit")
                     {
-                        if(suitmenu.active == false)
+                        if(suitmenu.activeSelf == false)
                         {
                             suitmenu.SetActive(true);
                             suithud.SetActive(true);
@@ -175,9 +176,19 @@ public class ruchgracza : MonoBehaviour
                 }
             }
         }
-        if (PlayerSettings.hunger == 0)
+        if (PlayerSettings.hunger <= 0)
         {
-            StartCoroutine(HungerKill());
+            if (PlayerSettings.hunger <= 0)
+            {
+                if (PlayerSettings.life != 0)
+                {
+                    PlayerSettings.life-= 1;
+                   
+                  
+                }
+
+
+            }
 
         }
         if (transform.position != lastPos)
@@ -842,7 +853,7 @@ public class ruchgracza : MonoBehaviour
     IEnumerator Sleep()
     {
 
-        if (cykldniainocy.isday)
+        if (cykldniainocy.daytime)
         {
 
             animatorplayer.SetBool("isSleeping", true);
@@ -852,7 +863,7 @@ public class ruchgracza : MonoBehaviour
 
             animatorplayer.SetBool("isSleeping", false);
 
-            AdditionalSettings.daycontroller = false;
+            cykldniainocy.timeRemaining = 0;
         }
 
 
@@ -860,22 +871,7 @@ public class ruchgracza : MonoBehaviour
         
 
     }
-    IEnumerator HungerKill()
-    {
-        if (PlayerSettings.hunger <= 0)
-        {
-            while (PlayerSettings.life != 0)
-            {
-                PlayerSettings.hunger--;
-                yield return new WaitForSeconds(5);
-                PlayerSettings.hunger--;
-            }
 
-
-        }
-
-
-    }
 
     void FixedUpdate()
     {

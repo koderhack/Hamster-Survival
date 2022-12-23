@@ -15,7 +15,7 @@ public class ApiController : MonoBehaviour
     
 
     private readonly string ApiUrl = "https://api.quotable.io/random?tags=motivational";
-    private readonly string ApiUrl2 = "https://itch.io/api/1/x/wharf/latest?game_id=1574373&channel_name=win-pre-alpha-0.0.2";
+    //private readonly string ApiUrl2 = "https://itch.io/api/1/x/wharf/latest?game_id=1574373&channel_name=win-pre-alpha-0.0.2";
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +34,7 @@ public class ApiController : MonoBehaviour
         UnityWebRequest request = UnityWebRequest.Get(url);
         yield return request.SendWebRequest();
 
-        if (request.isNetworkError || request.isHttpError)
+        if (request.result == UnityWebRequest.Result.ProtocolError|| request.result == UnityWebRequest.Result.ProtocolError)
         {
             string path = Path.Combine(Application.persistentDataPath, "quotes.txt");
             using (StreamReader sr = new StreamReader(path))

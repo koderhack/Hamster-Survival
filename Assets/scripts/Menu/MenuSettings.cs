@@ -22,12 +22,7 @@ public class MenuSettings : MonoBehaviour
     public Button btncreate2;
     public Text worldname;
     public int worldindex;
-    string name;
-    bool worldcreate;
     string Namedir;
-    int indexmenu;
-    Text name1;
-    int index1;
     int startvalue;
     public GameObject panelcredits;
     public GameObject panelinfo;
@@ -38,8 +33,10 @@ public class MenuSettings : MonoBehaviour
     bool hardcore;
     public GameObject modebtn;
     public Button hcbtn;
+    public GameObject settingspanel;
     public void Start()
     {
+        settingspanel.SetActive(false);
         panelworlds.SetActive(false);
         paneldelete.SetActive(false);
         panelcreate.SetActive(false);
@@ -121,6 +118,7 @@ public class MenuSettings : MonoBehaviour
         panelworlds.SetActive(true);
         panelcredits.SetActive(false);
         panelinfo.SetActive(false);
+        settingspanel.SetActive(false);
     }
     public void Create1()
     {
@@ -133,6 +131,7 @@ public class MenuSettings : MonoBehaviour
         panelcreate.SetActive(false);
         panelworlds.SetActive(false);
         panelinfo.SetActive(false);
+        settingspanel.SetActive(false);
     }
     public void Back()
     {

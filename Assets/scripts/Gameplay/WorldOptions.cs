@@ -6,7 +6,7 @@ using System.Linq;
 using System.IO;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+
 using System;
 using UnityEngine.Events;
 using TMPro;
@@ -24,15 +24,6 @@ public class WorldOptions : MonoBehaviour
     public GameObject player;
     public GameObject escpanel;
     private bool gamePaused = false;
-    public GameObject settingspanel;
-    public Slider fovslider;
-    public Slider effectsvolumeslider;
-    public Slider musicvolumeslider;
-    public AudioSource music;
-    public AudioSource effects;
-    public float fovslidervalue;
-    public float effectsvolumeslidervalue;
-    public float musicvolumeslidervalue;
     public UI_inventory inventoryui;
     public GameObject diepanel;
     public GameObject survipanel;
@@ -59,41 +50,15 @@ public class WorldOptions : MonoBehaviour
     public AudioClip death;
     public AudioSource musicmain;
     public TextMeshProUGUI textcraftinfo;
-    public GameObject generaltab;
-    public GameObject audiotab;
-    public GameObject videotab;
-    public Dropdown quality;
-    public int fullscreenvalue;
-    public Toggle fullscreentooggle;
-    Resolution[] resolutions;
-    public Dropdown resolutionDropdown;
- 
+    public GameObject settingspanel;
+    public AudioSource music;
+    public TextMeshProUGUI presstext;
 
 
     public void Start()
     {
-   
-        resolutions = Screen.resolutions;
-        resolutionDropdown.ClearOptions();
-        List<string> options = new List<string>();
-        int currentResolutionIndex = 0;
 
-        for (int i = 0; i < resolutions.Length; i++)
-        {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option);
-            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height) 
-            { 
-
-                currentResolutionIndex = i;
-            }
-        }
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
-        generaltab.SetActive(true);
-        audiotab .SetActive(false);
-        videotab.SetActive(false);
+        presstext.text = "";
         panelanim.SetActive(false);
         panelanimtext.SetActive(false);
         killedEnemies = AdditionalSettings.killedmobs;
@@ -115,33 +80,17 @@ public class WorldOptions : MonoBehaviour
             }
         }
 
-        if (PlayerPrefs.GetInt("full") == 1)
-        {
-           fullscreentooggle.isOn = true;
-            
-        }
-        else
-        {
-           fullscreentooggle.isOn = false;
-        }
+       
 
-        fovslider.value = PlayerPrefs.GetFloat("FOV", fovslidervalue);
-        if (PlayerPrefs.HasKey("qualityindex"))
-        {
-            quality.value =  PlayerPrefs.GetInt("qualityindex", 0);
-        }
+       
         
-        Camera.main.orthographicSize = fovslider.value;
+    
         diepanel.SetActive(false);
-        effectsvolumeslider.value = PlayerPrefs.GetFloat("VolumeEffects", effectsvolumeslidervalue);
-        musicvolumeslider.value = PlayerPrefs.GetFloat("VolumeMusic", musicvolumeslidervalue);
-        settingspanel.SetActive(false);
+       
+       
         mapa2 = GameObject.FindGameObjectWithTag("tilemap2").GetComponent<Tilemap>();
         escpanel.SetActive(false);
-        effectsvolumeslider.minValue = 0;
-        effectsvolumeslider.maxValue = 1;
-        musicvolumeslider.minValue = 0;
-        musicvolumeslider.maxValue = 1;
+       
         craftpanel.SetActive(false);
 
 
@@ -184,42 +133,9 @@ public class WorldOptions : MonoBehaviour
         source.volume = effectsvolumeslidervalue;
      * 
      */
-    public void SetResolution(int resolutionindex)
-    {
-        Resolution resolution = resolutions[resolutionindex];
-        Screen.SetResolution(resolution.width, resolution.height,Screen.fullScreen);
-    }
-    public void SetQuality(int index)
-    {   
-     
-        PlayerPrefs.SetInt("qualityindex", quality.value);
-        PlayerPrefs.Save();
-        QualitySettings.SetQualityLevel(index);
-     
-        
-    }
-    public void SetFullScreen(bool fullscreen)
-    {
-        if(fullscreen == true)
-        {
-        PlayerPrefs.SetInt("full", 1);
-        PlayerPrefs.Save();
-        }
-        else
-        {
-            PlayerPrefs.SetInt("full", 0);
-            PlayerPrefs.Save();
-        }
-      
-        Screen.fullScreen = fullscreen;
-    }
-    public void ChangeFOVSlider(float value)
-    {
-        fovslidervalue = value;
-        PlayerPrefs.SetFloat("FOV", fovslidervalue);
-        PlayerPrefs.Save();
-        Camera.main.orthographicSize = fovslidervalue;
-    }
+   
+
+ 
     public void CraftItem(CraftableItem itemcraftable)
     {
         List<Item> inventory1 = inventory.GetItemList();
@@ -239,8 +155,7 @@ public class WorldOptions : MonoBehaviour
         //iteration trought the items in inventory
         foreach (Item item in inventory1.ToList())
         {
-            int itemcount = 0;
-
+          
 
             if (craftsystem == 1)
             {
@@ -349,20 +264,7 @@ public class WorldOptions : MonoBehaviour
 
 
 
-    public void ChangeEffectsVolumeSlider()
-    {
-        effectsvolumeslidervalue = effectsvolumeslider.value;
-        PlayerPrefs.SetFloat("VolumeEffects", effectsvolumeslidervalue);
-        PlayerPrefs.Save();
-        source.volume = effectsvolumeslidervalue;
-    }
-    public void ChangeMusicVolumeSlider()
-    {
-        musicvolumeslidervalue = musicvolumeslider.value;
-        PlayerPrefs.SetFloat("VolumeMusic", musicvolumeslidervalue);
-        PlayerPrefs.Save();
-        musicmain.volume = musicvolumeslidervalue;
-    }
+    
     public void SaveButton()
     {
         BaseFunc.Instance.SaveWorld(mapa, mapa2, WorldSettings.worldname);
@@ -377,6 +279,7 @@ public class WorldOptions : MonoBehaviour
     }
     public IEnumerator textanim()
     {
+        presstext.text = "Press esc to skip animation";
         gravemode = true;
       musicmain.Stop();
         source.clip = effect;
@@ -393,6 +296,7 @@ public class WorldOptions : MonoBehaviour
         textanimstart.text = "Now the hamster must survive in an evil world. Will he succeed in doing so?";
         yield return new WaitForSeconds(5);
         textanimstart.text = "";
+        presstext.text = "";
         panelanimtext.SetActive(false);
         musicmain.Play();
         gravemode = false;
@@ -411,35 +315,7 @@ public class WorldOptions : MonoBehaviour
         }
        
     }
-    public void SettingsBtn()
-    {
-
-        settingspanel.SetActive(true);
-    }
-    public void SettingsCloseBtn()
-    {
-        settingspanel.SetActive(false);
-
-    }
-    public void GeneralTabBtn()
-    {
-        generaltab.SetActive(true);
-        audiotab.SetActive(false);
-        videotab.SetActive(false);
-    }
-    public void AudioTabBtn()
-    {
-      
-        audiotab.SetActive(true);
-        videotab.SetActive(false); 
-        generaltab.SetActive(false);
-    }
-    public void VideoTabBtn()
-    {
-        videotab.SetActive(true);
-        audiotab.SetActive(false);
-        generaltab.SetActive(false);
-    }
+  
     public void RespawnBtn()
     {
         diepanel.SetActive(false);
@@ -454,13 +330,17 @@ public class WorldOptions : MonoBehaviour
     {
         int numbermonsters = GameObject.FindGameObjectsWithTag("enemy").Length;
     
-          if(diepanel.active == true)
+       
+           if(panelanim.activeSelf == true && Input.GetKeyDown(KeyCode.Escape) ) 
         {
-            
-           
-           
-        }
-                
+            textanimstart.text = "";
+            panelanimtext.SetActive(false);
+            musicmain.Play();
+            gravemode = false;
+            source.Stop();
+            panelanim.SetActive(false);
+            presstext.text = "";
+        }     
             
         
         if (Input.GetKeyDown(KeyCode.F6))
@@ -486,7 +366,7 @@ public class WorldOptions : MonoBehaviour
                 debug.text = $"Player Position: {player.transform.position}\n" +
                 $"MousePosition:{mouseWorldPos}\n" +
                 $"Mouse Tile Position: {mouseTileCoords}\n" +
-                $"IsDay: {cykldniainocy.isday}\n" +
+                $"IsDay: {cykldniainocy.daytime}\n" +
                 $"Creative: {WorldSettings.creative}\n" +
                 $"Monsters:{numbermonsters}\n" +
                 $"If the grave in not accesible,press G when the debug is enabled\n";

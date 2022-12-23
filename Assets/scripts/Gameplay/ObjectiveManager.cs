@@ -75,11 +75,7 @@ public class ObjectiveManager : MonoBehaviour
 
 
             }
-            else if (PlayerSettings.level == 1  || PlayerSettings.level == 0 && Input.GetKeyDown(KeyCode.H))
-            {
-                PlayerSettings.level = 3;
-            }
-
+       
             //food
             else if (PlayerSettings.level == 2 && Input.GetKeyDown(KeyCode.H))
             {
@@ -123,6 +119,7 @@ public class ObjectiveManager : MonoBehaviour
     public IEnumerator TextAnim()
     {
         effects.clip = speak;
+        effects.Play();
         panelanimtext.SetActive(true);
         textanimend.text = "Congratulations Harry! You have accomplished the impossible! ";
         yield return new WaitForSeconds(5);

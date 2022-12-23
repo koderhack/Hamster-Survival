@@ -8,30 +8,26 @@ using UnityEngine.UI;
 public class cykldniainocy : MonoBehaviour
 {
 
-    private int dayLength;   
-    private int dayStart;
-    private int nightStart;    
-    private float currentTime;
-    
-    
-    private float DayValue;
-    private float NightValue;
-    public static float timer = 0;
-    public static bool isday;
-    public static bool daycontroller;
+ 
 
-   
+
+    public float dayLength = 180.0f;
+    public float nightLength = 180.0f;
+    public static float timeRemaining;
+  
+
+    public  static bool daytime { get;  private set; }
+
     public Text wskaznik;
    
     // Start is called before the first frame update
     void Start()
     {
-        dayLength = 12;//1200
-        dayStart = 0;
-        nightStart = 6;//600
-       
-       
-       
+
+        daytime = AdditionalSettings.daycontroller;
+
+
+
 
 
     }
@@ -39,46 +35,28 @@ public class cykldniainocy : MonoBehaviour
     void Update()
     {
 
-        timer = Time.fixedTime;
-    
-
-        if (WorldSettings.creative == false)
+        timeRemaining -= Time.deltaTime;
+        if (timeRemaining <= 0)
         {
-            daycontroller = AdditionalSettings.daycontroller;
-           
-              
-           
-            
-      
-
-          
-
-           
-
-            if (timer >= dayStart )
+            daytime = !daytime;
+            if (daytime)
             {
-                //dzieñ tak
-                isday = true;
-                MonstersSpawn.active = true;
+              MonstersSpawn.active = true;
                 wskaznik.text = "Day";
-               
+                timeRemaining = dayLength;
+                AdditionalSettings.daycontroller = daytime;
+            }
+            else
+            {
+                MonstersSpawn.active = false; 
+                wskaznik.text = "Night";
+                timeRemaining = nightLength;
+                AdditionalSettings.daycontroller = daytime;
 
             }
-            if (timer >= nightStart || daycontroller == false)
-            {
-                MonstersSpawn.active = false;
-                //dzieñ nie (noc)
-                isday = false;
-                AdditionalSettings.daycontroller = isday;
-                wskaznik.text = "Night";
-            }
-            if (timer >= dayLength)
-            {
-                timer = 6;
-              //reset timera
-            }
+           
         }
-        
+
 
     }
 

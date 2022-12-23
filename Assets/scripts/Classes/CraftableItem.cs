@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 [CreateAssetMenu()]
 public class CraftableItem : ScriptableObject
 {
-    public string name;
+    public string name1;
     public int count;
     public string name2;
     public int count2;

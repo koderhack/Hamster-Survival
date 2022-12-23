@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour
     private Vector3 directiontotheplayer;
     private Vector3 LocalScale;
     public float jumpforce;
-    public Collider2D collider;
     AudioSource source;
     public AudioClip zombieroar;
     public GameObject player;
