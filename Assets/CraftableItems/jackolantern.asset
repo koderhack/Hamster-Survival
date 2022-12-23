@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abcbdc5fa7e0f14da741ad56cb7b990, type: 3}
   m_Name: jackolantern
   m_EditorClassIdentifier: 
-  name: wydrazonadynia
+  name1: wydrazonadynia
   count: 1
   name2: lightblock
   count2: 1

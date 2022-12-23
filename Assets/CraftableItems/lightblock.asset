@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abcbdc5fa7e0f14da741ad56cb7b990, type: 3}
   m_Name: lightblock
   m_EditorClassIdentifier: 
-  name: fire
+  name1: fire
   count: 1
   name2: szko
   count2: 1

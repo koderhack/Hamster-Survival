@@ -159,7 +159,7 @@ public class WorldOptions : MonoBehaviour
 
             if (craftsystem == 1)
             {
-                if (item.sprite.name == itemcraftable.name)
+                if (item.sprite.name == itemcraftable.name1)
                 {
                     if (item != null && item.amount >= itemcraftable.count)
                     {
@@ -204,13 +204,13 @@ public class WorldOptions : MonoBehaviour
         }
         if (craftsystem == 2)
         {
-            if(inventory.GetItem(itemcraftable.name) != null && inventory.GetItem(itemcraftable.name2) != null)
+            if(inventory.GetItem(itemcraftable.name1) != null && inventory.GetItem(itemcraftable.name2) != null)
             {
              
 
                 for (int i = 0; i < itemcraftable.count; i++)
                 {
-                    inventory.DeleteItem(itemcraftable.name);
+                    inventory.DeleteItem(itemcraftable.name1);
                     inventoryui.RefreshInventoryItems();
                 }
                 for (int i = 0; i < itemcraftable.count2; i++)
@@ -307,11 +307,11 @@ public class WorldOptions : MonoBehaviour
     {
         if(item.name2 == "")
         {
-            textcraftinfo.text = $"To craft this item you need {item.count} x {item.name}. ";
+            textcraftinfo.text = $"To craft this item you need {item.count} x {item.name1}. ";
         }
         else {
 
-            textcraftinfo.text = $"To craft this item you need {item.count} x {item.name} and {item.count2} x {item.name2}. ";
+            textcraftinfo.text = $"To craft this item you need {item.count} x {item.name1} and {item.count2} x {item.name2}. ";
         }
        
     }

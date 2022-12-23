@@ -2426,7 +2426,7 @@ RectTransform:
   m_Children:
   - {fileID: 1844044029}
   m_Father: {fileID: 1998753727}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -48792,8 +48792,8 @@ RectTransform:
   - {fileID: 1710664798}
   - {fileID: 646526989}
   - {fileID: 641403938}
-  - {fileID: 324925673}
   - {fileID: 2079457530}
+  - {fileID: 324925673}
   - {fileID: 703312475}
   m_Father: {fileID: 781722277}
   m_RootOrder: 0
@@ -49882,7 +49882,6 @@ GameObject:
   - component: {fileID: 2079457530}
   - component: {fileID: 2079457533}
   - component: {fileID: 2079457532}
-  - component: {fileID: 2079457531}
   m_Layer: 5
   m_Name: panelanimend
   m_TagString: Untagged
@@ -49902,32 +49901,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1998753727}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &2079457531
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079457529}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1f89e4bd9976ccd4dba16cf3a9f4ec6c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &2079457532
 MonoBehaviour:
   m_ObjectHideFlags: 0

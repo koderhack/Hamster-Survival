@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abcbdc5fa7e0f14da741ad56cb7b990, type: 3}
   m_Name: books 1
   m_EditorClassIdentifier: 
-  name: deski
+  name1: deski
   count: 3
   name2: 
   count2: 0

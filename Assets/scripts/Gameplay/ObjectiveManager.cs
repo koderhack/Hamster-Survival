@@ -103,8 +103,9 @@ public class ObjectiveManager : MonoBehaviour
             {
                 PlayerSettings.level = 7;
                 endpanel.SetActive(true);
+                panelanimtext.SetActive(true);
                 StartCoroutine(TextAnim());
-
+                
 
             }
 

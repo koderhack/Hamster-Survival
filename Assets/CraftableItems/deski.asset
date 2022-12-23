@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abcbdc5fa7e0f14da741ad56cb7b990, type: 3}
   m_Name: deski
   m_EditorClassIdentifier: 
-  name: drewno
+  name1: drewno
   count: 2
   name2: 
   count2: 0
