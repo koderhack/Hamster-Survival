@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 5078726692763566990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9837085, y: 2.1591158, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5078726692799254075}
   m_RootOrder: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e994d2310e7eec24c9b2fff65de34529, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e145a2fb2d975d4183267fecaef6bbe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,11 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a85f626fc12a1441827e0eee3265528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
-  jumpforce: 2
-  collider: {fileID: 5078726692799254068}
-  source: {fileID: 0}
-  zombieroar: {fileID: 8300000, guid: 5663ad033524f0146a5e2df19fb35259, type: 3}
+  moveSpeed: 21.72
+  jumpforce: 9.3
+  zombieroar: {fileID: 8300000, guid: 189b0704b6b7cec4b89b712ec9f130ad, type: 3}
   player: {fileID: 0}
 --- !u!50 &5078726692799254069
 Rigidbody2D:
