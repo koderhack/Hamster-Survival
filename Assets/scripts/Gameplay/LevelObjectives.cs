@@ -21,56 +21,32 @@ public class LevelObjectives : MonoBehaviour
         {
             panel.SetActive(true);
         }
+       
     }
-    // Update is called once per frame
     public void Update()
     {
-        switch (PlayerSettings.level)
+        StartCoroutine(Hints());
+        if(PlayerSettings.level += 1)
         {
-
-            case 0:
-                objectivetext.text = "Objective: Get out of the cage";
-                loretopic.text = "Get Out to survive!";
-                break;
-            case 1:
-                objectivetext.text = $"Objective: Kill 10 enemies {WorldOptions.killedEnemies}/10";
-                loretopic.text = $"They can't stop you!";
-                break;
-            case 2:
-                objectivetext.text = "Objective:"
-                + "Sleep through the first day";
-                loretopic.text = "Zzzzz..., Zzzzz...";
-                break;
-            case 3:
-                objectivetext.text = "Objective: Find and craft food";
-                loretopic.text = "You must eat to live!";
-                break;
-            case 4:
-                objectivetext.text = $"Objective: Craft a Jack-o'-lantern";
-                loretopic.text = $"You will find out in the future";
-                break;
-        
-            case 5:
-                objectivetext.text = "Objective: Craft an anti-radiation suit";
-                loretopic.text = "The outside world is dangerous!";
-                break;
-            case 6:
-                objectivetext.text = "Objective: Get out of the home";
-                loretopic.text = "The bookcase is a key!";
-                break;
-            case 7:
-                loretopic.text = "The end";
-                objectivetext.text = "Congratulations! You went to the outside world!";
-                break;
-            case 8:
-                loretopic.text = "The end";
-                objectivetext.text = "Congratulations! You went to the outside world!";
-                break;
 
         }
     }
-      
-       
+    // Update is called once per frame
+    public IEnumerator Hints()
+    {
+        objectivetext.text = "You can craft things by pressing E";
+        loretopic.text = "Hint:";
+        yield return new WaitForSeconds(10);
+        objectivetext.text = "Sleep via H";
+        loretopic.text = "Hint:";
+        yield return new WaitForSeconds(10);
+        objectivetext.text = "Search for food in the fridge";
+        loretopic.text = "Hint:";
+        yield return new WaitForSeconds(10);
+        objectivetext.text = "Find a lantern and heal with it";
+        loretopic.text = "Hint:";
     }
+   // public IEnumerator  
+}
 
 

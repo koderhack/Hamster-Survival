@@ -21,7 +21,9 @@ public class ObjectiveManager : MonoBehaviour
     public AudioSource effects;
     public AudioClip speak;
     public GameObject panelanimtext;
-
+    public TextMeshProUGUI leveltext;
+    public static bool[] done;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -35,86 +37,85 @@ public class ObjectiveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        leveltext.text = PlayerSettings.level.ToString();
         foreach (var item in inventory.itemList)
         {
-            if (item.itemtile.name == "szko")
+            if (item.itemtile.name == "szko" )
             {
                 szko = item;
+               
             }
-            else if (item.itemtile.name == "jackolantern")
+            else if (item.itemtile.name == "jackolantern" )
             {
                 lantern = item;
+               
+
             }
-            else if (item.itemtile.name == "apple" || item.itemtile.name == "gruszka")
+            else if (item.itemtile.name == "apple" || item.itemtile.name == "gruszka" )
             {
                 food = item;
-
+            
             }
             else if (item.itemtile.name == "antiradiationsuit")
             {
                 radiationsuit = item;
+               
             }
-            else if (item.itemtile.name == "destroyedwall")
+            else if (item.itemtile.name == "destroyedwall" )
             {
                 destroyedwall = item;
+               
             }
 
-
+          
         }
-        if (szko != null)
+
+        if (szko != null && szko.amount >= 2 && PlayerSettings.done[0] == false)
         {
-            if (PlayerSettings.level == 0 && szko.amount >= 2)
-            {
-                PlayerSettings.level = 1;
+            PlayerSettings.level += 1;
+             PlayerSettings.done[0] = true;
 
-
-            }
-            else if (PlayerSettings.level == 1 && WorldOptions.killedEnemies == 10)
-            {
-                PlayerSettings.level = 2;
-
-
-            }
-       
-            //food
-            else if (PlayerSettings.level == 2 && Input.GetKeyDown(KeyCode.H))
-            {
-                PlayerSettings.level = 3;
-
-
-            }
-            else if (PlayerSettings.level == 3 && food != null)
-            {
-                PlayerSettings.level = 4;
-
-
-            }
-            else if (PlayerSettings.level == 4 && lantern != null)
-            {
-                PlayerSettings.level = 5;
-
-
-            }
-            else if (PlayerSettings.level == 5 && radiationsuit != null)
-            {
-                PlayerSettings.level = 6;
-            }
-            else if (PlayerSettings.level == 6 && destroyedwall != null)
-            {
-                PlayerSettings.level = 7;
-                endpanel.SetActive(true);
-                panelanimtext.SetActive(true);
-                StartCoroutine(TextAnim());
-                
-
-            }
-
-            /*
-            else if (PlayerSettings.level == 1 && )
-            {
-
-            }*/
         }
+        else if ( WorldOptions.killedEnemies == 1 && PlayerSettings.done[1] == false)
+        {
+            PlayerSettings.level += 1;
+            PlayerSettings.done[1] = true;
+
+        }
+        //food
+        else if (Input.GetKeyDown(KeyCode.H) && PlayerSettings.done[2] == false)
+        {
+            PlayerSettings.level += 1;
+
+            PlayerSettings.done[2] = true;
+        }
+        else if ( food != null && PlayerSettings.done[3] == false)
+        {
+            PlayerSettings.level += 1;
+         PlayerSettings.done[3] = true;
+
+        }
+        else if ( lantern != null && PlayerSettings.done[4] == false)
+        {
+            PlayerSettings.level += 1;
+ PlayerSettings.done[4] = true;
+
+        }
+        else if (radiationsuit != null && PlayerSettings.done[5] == false)
+        {
+            PlayerSettings.level += 1;
+            PlayerSettings.done[5] = true;
+        }
+        else if  (destroyedwall != null)
+        {
+            PlayerSettings.level += 1;
+           
+            endpanel.SetActive(true);
+            StartCoroutine(TextAnim());
+
+
+        }
+
 
     }
     public IEnumerator TextAnim()
@@ -134,4 +135,5 @@ public class ObjectiveManager : MonoBehaviour
       panelanimtext.SetActive(false);
         endpanel.SetActive(false);
     }
+    
 }

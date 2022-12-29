@@ -8,6 +8,6 @@ public static class PlayerSettings
     public static float hunger;
     public static float sport;
     public static int level;
-
+    public static bool[] done;
 
 }

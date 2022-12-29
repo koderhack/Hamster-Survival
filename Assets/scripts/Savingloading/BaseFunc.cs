@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Runtime.Serialization.Formatters ;
 using System.Security.Cryptography;
 using Newtonsoft.Json;
+using System.Linq.Expressions;
 
 public class BaseFunc : MonoBehaviour
 {
@@ -450,6 +451,7 @@ public class BaseFunc : MonoBehaviour
         PlayerSettings.hunger = 100;
         PlayerSettings.sport = 100;
         PlayerSettings.level = 0;
+        PlayerSettings.done = new bool[8];
     }
     public void WriteAdditionalSettings()
     {
@@ -468,7 +470,8 @@ public class BaseFunc : MonoBehaviour
         data.sport  = PlayerSettings.sport;
         data.hunger = PlayerSettings.hunger;
         data.level = PlayerSettings.level;
-      
+        data.done = PlayerSettings.done;
+
         bf.Serialize(file, data);
         file.Close();
     }
@@ -502,7 +505,8 @@ public class BaseFunc : MonoBehaviour
          
             PlayerSettings.sport = data.sport;
             PlayerSettings.level = data.level;
-            
+            PlayerSettings.done = data.done;
+
             file.Close();
           
             
@@ -655,6 +659,7 @@ public class BaseFunc : MonoBehaviour
         SavePlayerSettings(worldname);
         SaveAdditionalSettings(worldname);
         SaveInventory(worldname);
+
         Savelevel(mapa,worldname);
         Savelevel2(mapa2, worldname);
        
@@ -665,6 +670,7 @@ public class BaseFunc : MonoBehaviour
         LoadPlayerSettings(worldname);
         LoadAdditionalSettings(worldname);
         LoadInventory(worldname,uiinventory);
+
         LoadLevel(mapa, tilelight,pumpkinlight, lightoryginal,pumpkinlightoryginal,worldname);
         LoadLevel2(mapa2, tilelight,pumpkinlight, lightoryginal,pumpkinlightoryginal, worldname);
        
@@ -674,6 +680,7 @@ public class BaseFunc : MonoBehaviour
          mapa = GameObject.FindGameObjectWithTag("tilemap").GetComponent<Tilemap>();
         mapa2 = GameObject.FindGameObjectWithTag("tilemap2").GetComponent<Tilemap>(); 
         inventory.itemList = new List<Item>();
+        
         string name = SceneManager.GetActiveScene().name;
        // Debug.Log(name);
         GenerateWorldStructure(worldname);
@@ -722,6 +729,8 @@ class PlayerData
     public float hunger;
     public float sport;
     public int level;
+    public bool[] done;
+
 }
 public class LevelData
 {
@@ -733,8 +742,6 @@ public class LevelData
 public class InventoryDataSave
 {
     public List<ItemSave> inventorysave;
-
-
 
 }
 
