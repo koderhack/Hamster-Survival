@@ -876,7 +876,7 @@ public class ruchgracza : MonoBehaviour
     void FixedUpdate()
     {
 
-        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump,LadderMovement.moveindicator);
         jump = false;
 
 

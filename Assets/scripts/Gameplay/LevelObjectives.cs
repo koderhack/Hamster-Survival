@@ -26,10 +26,6 @@ public class LevelObjectives : MonoBehaviour
     public void Update()
     {
         StartCoroutine(Hints());
-        if(PlayerSettings.level += 1)
-        {
-
-        }
     }
     // Update is called once per frame
     public IEnumerator Hints()

@@ -6,18 +6,31 @@ using UnityEngine.Tilemaps;
 
 public class LadderMovement : MonoBehaviour
 {
-    private float vertical;
-    private float speed;
-    private bool isLadder;
-    private bool isClimbing;
+    public float vertical;
+    public float speed;
+    public static bool isLadder;
+    public static bool isClimbing;
+    public static bool moveindicator;
 
     [SerializeField] private Rigidbody2D rb;
     public void Update()
     {
         vertical = Input.GetAxis("Vertical");
-        if (isLadder && Mathf.Abs(vertical) > 0f)
+        if (isLadder)
         {
             isClimbing= true;
+            moveindicator= false;
+        }
+        else
+        {
+            moveindicator = true;
+            isClimbing = false;
+        }
+        if(isClimbing && Input.GetAxis("Horizontal") == -1 || Input.GetAxis("Horizontal") == 1)
+        {
+            isLadder = false;
+            isClimbing = false;
+             moveindicator = true;
         }
     }
     public void FixedUpdate()
@@ -39,33 +52,41 @@ public class LadderMovement : MonoBehaviour
       
         if (collision.tag == "tilemap")
         {
-            var cellPos = collision.gameObject.GetComponent<Tilemap>().WorldToCell(transform.position);
-            var tile1 = collision.gameObject.GetComponent<Tilemap>().GetTile(cellPos);
-            if (tile1 != null)
+            
+            var cellPos2 = collision.gameObject.GetComponent<Tilemap>().WorldToCell(new Vector3(transform.position.x + 1, transform.position.y, 0));
+   
+            var tile2 = collision.gameObject.GetComponent<Tilemap>().GetTile(cellPos2);
+
+         
+            if (tile2 != null)
             {
-                if (tile1.name == "drabina")
+                if (tile2.name == "drabina")
                 {
+                    
                     isLadder = true;
                 }
-            }
-        }
-
-
-    }
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "tilemap")
-        {
-            var cellPos = collision.gameObject.GetComponent<Tilemap>().WorldToCell(transform.position);
-            var tile1 = collision.gameObject.GetComponent<Tilemap>().GetTile(cellPos);
-            if (tile1 != null)
-            {
-                if (tile1.name == "drabina")
+                else
                 {
                     isLadder = false;
-                    isClimbing = false;
+                   isClimbing = false;
+                    moveindicator = true;
                 }
             }
+            else
+            {
+                isLadder = false;
+                isClimbing = false;
+                moveindicator = true;
+            }
+
+           
+               
+                 
+                
+            
         }
+
+
     }
+    
 }

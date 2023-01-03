@@ -325,6 +325,9 @@ public class WorldOptions : MonoBehaviour
         Instantiate(grave, player.transform.position, Quaternion.identity);
         player.transform.position = new Vector3(-10.3733997f, 1.1336f, 0);
         gravemode = true;
+        LadderMovement.isLadder = false;
+        LadderMovement.isClimbing = false;
+        LadderMovement.moveindicator = true;
     }
     public void Update()
     {

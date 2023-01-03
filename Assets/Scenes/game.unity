@@ -44033,6 +44033,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 656fc4d496687ec4eb246e881607a1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vertical: 5
+  speed: 5
   rb: {fileID: 1464513143}
 --- !u!1 &1469608162
 GameObject:
