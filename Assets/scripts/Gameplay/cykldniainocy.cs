@@ -14,7 +14,7 @@ public class cykldniainocy : MonoBehaviour
     public float dayLength = 180.0f;
     public float nightLength = 180.0f;
     public static float timeRemaining;
-  
+ 
 
     public  static bool daytime { get;  private set; }
 
@@ -42,9 +42,11 @@ public class cykldniainocy : MonoBehaviour
             if (daytime)
             {
               MonstersSpawn.active = true;
-                wskaznik.text = "Day";
+                wskaznik.text = $"Day {AdditionalSettings.days}";
                 timeRemaining = dayLength;
                 AdditionalSettings.daycontroller = daytime;
+                AdditionalSettings.days += 1;
+
             }
             else
             {

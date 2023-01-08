@@ -458,6 +458,7 @@ public class BaseFunc : MonoBehaviour
         AdditionalSettings.pozycjagracza = new Vector3(-10.3733997f, 1.1336f, 0);
         AdditionalSettings.killedmobs = 0;
         AdditionalSettings.daycontroller = true;
+        AdditionalSettings.days = 0;
     }
     public void SavePlayerSettings(string worldname)
     {
@@ -487,6 +488,7 @@ public class BaseFunc : MonoBehaviour
         
         data.killedmobs = AdditionalSettings.killedmobs;
         data.daycontroller = AdditionalSettings.daycontroller;
+        data.days = AdditionalSettings.days;
 
         bf.Serialize(file, data);
         file.Close();
@@ -531,6 +533,8 @@ public class BaseFunc : MonoBehaviour
             AdditionalSettings.pozycjagracza = new Vector3(data.pozycjax, data.pozycjay, 0);
             AdditionalSettings.killedmobs = data.killedmobs;
             AdditionalSettings.daycontroller = data.daycontroller;
+            AdditionalSettings.days = data.days;
+
             file.Close();
        
 
@@ -752,6 +756,7 @@ class AdditionalData
     public float pozycjay;
     public int killedmobs;
     public bool daycontroller;
+    public int days;
 }
 
 [Serializable]

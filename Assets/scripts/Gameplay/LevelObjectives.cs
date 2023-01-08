@@ -41,6 +41,7 @@ public class LevelObjectives : MonoBehaviour
         yield return new WaitForSeconds(10);
         objectivetext.text = "Find a lantern and heal with it";
         loretopic.text = "Hint:";
+        yield return new WaitForSeconds(10);
     }
    // public IEnumerator  
 }
