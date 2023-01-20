@@ -98,7 +98,7 @@ GameObject:
   m_Layer: 0
   m_Name: Enemy
   m_TagString: enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: 2e145a2fb2d975d4183267fecaef6bbe, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -167,7 +167,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03230095, y: -0.13997185}
+  m_Offset: {x: -0.0010983348, y: 0.001975298}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -178,7 +178,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4952841, y: 1.8828986}
+  m_Size: {x: 1.0193435, y: 1.0145154}
   m_EdgeRadius: 0
 --- !u!61 &1010736720542276232
 BoxCollider2D:
@@ -193,7 +193,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03243357, y: -0.13838303}
+  m_Offset: {x: -0.0030531883, y: -0.0006107092}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -204,5 +204,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4886657, y: 1.8908427}
+  m_Size: {x: 1.02525, y: 1.0141103}
   m_EdgeRadius: 0

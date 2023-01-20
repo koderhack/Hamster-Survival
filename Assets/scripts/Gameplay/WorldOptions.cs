@@ -307,11 +307,11 @@ public class WorldOptions : MonoBehaviour
     {
         if(item.name2 == "")
         {
-            textcraftinfo.text = $"To craft this item you need {item.count} x {item.name1}. ";
+            textcraftinfo.text = $"To craft this item you need {item.count} x {item.name1eng} ";
         }
         else {
 
-            textcraftinfo.text = $"To craft this item you need {item.count} x {item.name1} and {item.count2} x {item.name2}. ";
+            textcraftinfo.text = $"To craft this item you need {item.count} x {item.name1eng} and {item.count2} x {item.name2eng}. ";
         }
        
     }

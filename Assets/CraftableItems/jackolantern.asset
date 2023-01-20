@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: jackolantern
   m_EditorClassIdentifier: 
   name1: wydrazonadynia
+  name1eng: drowned pumpkin
   count: 1
   name2: lightblock
+  name2eng: lantern
   count2: 1
   newsprite: {fileID: 21300000, guid: 11854bde5979b9944959a6e941d72a70, type: 3}
   newtile: {fileID: 11400000, guid: 5b82a6073e0cf4540855c5f6fe6c9848, type: 2}

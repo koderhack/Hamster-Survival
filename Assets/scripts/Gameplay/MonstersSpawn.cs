@@ -50,7 +50,7 @@ public class MonstersSpawn : MonoBehaviour
                 {
                     Vector3 position = new Vector3(Random.Range(0, 20), Random.Range(0, 20), 20);
                     Vector3Int positiontilemap = new Vector3Int((int)position.x,(int)position.y,0);
-                    if (tilemain.GetTile(positiontilemap) == null || tilemain.GetTile(positiontilemap) != lantern)
+                    if (tilemain.GetTile(positiontilemap) == null || tilemain.GetTile(positiontilemap) != lantern || position != player.transform.position)
                     {
                         
                            

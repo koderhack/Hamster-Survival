@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: books 1
   m_EditorClassIdentifier: 
   name1: deski
+  name1eng: 'planks '
   count: 3
   name2: 
+  name2eng: 
   count2: 0
   newsprite: {fileID: 21300000, guid: 11a4ea1ebf163b64a8a5608cbef0dfda, type: 3}
   newtile: {fileID: 11400000, guid: 0694393ba85fe6e41bc740b1a94b7a13, type: 2}

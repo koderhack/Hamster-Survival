@@ -33,16 +33,33 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+
         MoveEnemy();
 
         if (hp <= 0)
         {
             Destroy(this.gameObject);
             WorldOptions.killedEnemies++;
-            
-        }
 
+        }
+        if (player.transform.position.x + 5 >= transform.position.x || player.transform.position.y + 5 >= transform.position.y)
+        {
+            timer += Time.deltaTime;
+            if (timer >= interval)
+            {
+
+                if (source.isPlaying == false)
+                {
+                    source.clip = zombieroar;
+                    source.Play();
+                }
+
+
+
+                timer -= interval;
+                interval = UnityEngine.Random.Range(2, 5);
+            }
+        }
     }
     private void MoveEnemy()
     {
@@ -51,32 +68,14 @@ public class Enemy : MonoBehaviour
         if (player.transform.position.x + 5 >= transform.position.x || player.transform.position.y + 5 >= transform.position.y)
         {
             rb.velocity = new Vector2(directiontotheplayer.x, 0) * moveSpeed;
-            timer += Time.deltaTime;
-            if (timer >= interval)
-            {
+
             
 
-                if (source.isPlaying == false)
-                {
-                source.clip = zombieroar;
-                source.Play();
-                }
-
-
-
-
-
-
-                timer -= interval;
-                interval = UnityEngine.Random.Range(2, 5);
-            }
-          
-
         }
-       
-        
-       
-       
+
+
+
+
     }
 
 

@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: wydrazonadynia2
   m_EditorClassIdentifier: 
   name1: dynia
+  name1eng: pumpkin
   count: 1
   name2: 
+  name2eng: 
   count2: 0
   newsprite: {fileID: 21300000, guid: a698959492d008c469cea672e1aad5c5, type: 3}
   newtile: {fileID: 11400000, guid: e18673b60ed61694c819c09822dc0bee, type: 2}
