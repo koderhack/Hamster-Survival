@@ -13,7 +13,7 @@
 2. **Objective**:
    - Survive as long as you can.
 
-![Screenshot]([path_to_screenshot_image](https://img.itch.zone/aW1nLzEwNzU5Nzk2LmdpZg==/original/hGwlvS.gif))
+![Screenshot](https://img.itch.zone/aW1nLzEwNzU5Nzk2LmdpZg==/original/hGwlvS.gif)
 
 ## System Requirements
 
