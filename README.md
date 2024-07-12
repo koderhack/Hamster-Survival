@@ -1,6 +1,6 @@
 # Hamster Survival
 
-![Hamster Survival Logo](path_to_logo_image)
+![Hamster Survival Logo](https://img.itch.zone/aW1nLzEwNzU5OTU2LnBuZw==/original/pIBqIz.png)
 
 **Hamster Survival** is an engaging game where you play as a hamster struggling to survive in a world full of dangers. Collect food, avoid obstacles, and try to survive as long as possible!
 
@@ -11,9 +11,9 @@
    - Avoid obstacles and collect food to survive!.
 
 2. **Objective**:
-   - Survive as long as you can and achieve the highest score.
+   - Survive as long as you can.
 
-![Screenshot](path_to_screenshot_image)
+![Screenshot]([path_to_screenshot_image](https://img.itch.zone/aW1nLzEwNzU5Nzk2LmdpZg==/original/hGwlvS.gif))
 
 ## System Requirements
 
@@ -55,9 +55,9 @@ If you wish to repost this project, please adhere to the following guidelines:
 
 ## Contact
 
-If you have any questions, issues, or suggestions, contact us via the [contact form on itch.io](https://koder123456.itch.io/hamstersurvival) or open a new issue in this repository.
+If you have any questions, issues, or suggestions, contact us via the email (koder1@interia.pl) or open a new issue in this repository.
 
-![Game Preview](path_to_another_image)
+![Game Preview](https://img.itch.zone/aW1nLzEwNzU5ODUyLmdpZg==/original/UNNcj4.gif)
 
 Thank you for your interest in our game, and we look forward to your contributions!
 
