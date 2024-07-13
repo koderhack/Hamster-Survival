@@ -14,7 +14,7 @@ public class ApiController : MonoBehaviour
    
     
 
-    private readonly string ApiUrl = "https://api.quotable.io/random?tags=motivational";
+    private readonly string ApiUrl = "";
     //private readonly string ApiUrl2 = "https://itch.io/api/1/x/wharf/latest?game_id=1574373&channel_name=win-pre-alpha-0.0.2";
     // Start is called before the first frame update
     void Start()

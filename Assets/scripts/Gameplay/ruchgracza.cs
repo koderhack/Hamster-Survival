@@ -4,12 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System;
-using System.Runtime;
-using UnityEngine.Events;
-using UnityEngine.Networking.Types;
-
+using UnityEngine.Networking;
 
 public class ruchgracza : MonoBehaviour
 {
